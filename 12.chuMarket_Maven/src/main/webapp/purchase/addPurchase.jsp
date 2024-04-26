@@ -1,15 +1,15 @@
 <%
 	/***************************************************
-	*	ÀÛ¼ºÀÚ : Ãß°æ¿î
-	*	ÀÛ¼ºÀÏ : 2024-03-31
-	*	³»  ¿ë : ±âÁ¸ÀÇ FrameSet Çü½ÄÀ» 
+	*	ì‘ì„±ì : ì¶”ê²½ìš´
+	*	ì‘ì„±ì¼ : 2024-03-31
+	*	ë‚´  ìš© : ê¸°ì¡´ì˜ FrameSet í˜•ì‹ì„ 
 	*			 header / article / footer 
-	*			 jspInclude ¹æ½ÄÀ¸·Î ¼öÁ¤ 
-	*			 Bulma Css FrameWork Àû¿ë¿¡ µû¸¥
-	*			 ÆäÀÌÁö UI ¼öÁ¤
+	*			 jspInclude ë°©ì‹ìœ¼ë¡œ ìˆ˜ì • 
+	*			 Bulma Css FrameWork ì ìš©ì— ë”°ë¥¸
+	*			 í˜ì´ì§€ UI ìˆ˜ì •
 	****************************************************/
 %>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -54,7 +54,7 @@
 					<td background="/images/ct_ttl_img02.gif" width="100%" style="padding-left: 10px;">
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							<tr>
-								<td width="93%" class="ct_ttl01">±¸¸Å¿Ï·á</td>
+								<td width="93%" class="ct_ttl01">êµ¬ë§¤ì™„ë£Œ</td>
 								<td width="20%" align="right">&nbsp;</td>
 							</tr>
 						</table>
@@ -64,14 +64,14 @@
 					</td>
 				</tr>
 			</table>
-			<h3 align="center" >±¸¸Å°¡ ¿Ï·áµÇ¾ú½À´Ï´Ù! ±¸¸Å¹øÈ£ : ${pur.tranNo}</h3>
+			<h3 align="center" >êµ¬ë§¤ê°€ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤! êµ¬ë§¤ë²ˆí˜¸ : ${pur.tranNo}</h3>
 			<table width="600" border="0" cellspacing="0" cellpadding="0"	align="center" style="margin-top: 13px;">
 				<tr>
 					<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 				</tr>
 				<tr>
 					<td width="300" class="ct_write">
-						»óÇ°¹øÈ£ <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+						ìƒí’ˆë²ˆí˜¸ <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 					</td>
 					<td bgcolor="D6D6D6" width="1"></td>
 					<td class="ct_write01" width="299">
@@ -87,7 +87,7 @@
 				</tr>
 				<tr>
 					<td width="104" class="ct_write">
-						»óÇ°¸í <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+						ìƒí’ˆëª… <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 					</td>
 					<td bgcolor="D6D6D6" width="1"></td>
 					<td class="ct_write01">${pur.purchaseProd.prodName}</td>
@@ -97,7 +97,7 @@
 				</tr>
 				<tr>
 					<td width="104" class="ct_write">
-						»óÇ°»ó¼¼Á¤º¸ <img	src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+						ìƒí’ˆìƒì„¸ì •ë³´ <img	src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 					</td>
 					<td bgcolor="D6D6D6" width="1"></td>
 					<td class="ct_write01">${pur.purchaseProd.prodDetail}</td>
@@ -106,7 +106,7 @@
 					<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 				</tr>
 				<tr>
-					<td width="104" class="ct_write">Á¦Á¶ÀÏÀÚ</td>
+					<td width="104" class="ct_write">ì œì¡°ì¼ì</td>
 					<td bgcolor="D6D6D6" width="1"></td>
 					<td class="ct_write01">${pur.purchaseProd.manuDate}</td>
 				</tr>
@@ -114,7 +114,7 @@
 					<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 				</tr>
 				<tr>
-					<td width="104" class="ct_write">°¡°İ</td>
+					<td width="104" class="ct_write">ê°€ê²©</td>
 					<td bgcolor="D6D6D6" width="1"></td>
 					<td class="ct_write01">${pur.purchaseProd.price}</td>
 				</tr>
@@ -122,7 +122,7 @@
 					<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 				</tr>
 				<tr>
-					<td width="104" class="ct_write">µî·ÏÀÏÀÚ</td>
+					<td width="104" class="ct_write">ë“±ë¡ì¼ì</td>
 					<td bgcolor="D6D6D6" width="1"></td>
 					<td class="ct_write01">${pur.purchaseProd.regDate}</td>
 				</tr>
@@ -131,7 +131,7 @@
 				</tr>
 				<tr>
 					<td width="104" class="ct_write">
-						±¸¸ÅÀÚ¾ÆÀÌµğ <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+						êµ¬ë§¤ìì•„ì´ë”” <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 					</td>
 					<td bgcolor="D6D6D6" width="1"></td>
 					<td class="ct_write01">${pur.buyer.userName}</td>
@@ -140,11 +140,11 @@
 					<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 				</tr>
 				<tr>
-					<td width="104" class="ct_write">±¸¸Å¹æ¹ı</td>
+					<td width="104" class="ct_write">êµ¬ë§¤ë°©ë²•</td>
 					<td bgcolor="D6D6D6" width="1"></td>
 					<td class="ct_write01">
 						<c:if test="${! empty pur.paymentOption}">
-							${pur.paymentOption == "1" ? 'Çö±İ±¸¸Å' : '½Å¿ë±¸¸Å'}
+							${pur.paymentOption == "1" ? 'í˜„ê¸ˆêµ¬ë§¤' : 'ì‹ ìš©êµ¬ë§¤'}
 						</c:if>
 					</td>
 				</tr>
@@ -152,7 +152,7 @@
 					<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 				</tr>
 				<tr>
-					<td width="104" class="ct_write">±¸¸ÅÀÚÀÌ¸§</td>
+					<td width="104" class="ct_write">êµ¬ë§¤ìì´ë¦„</td>
 					<td bgcolor="D6D6D6" width="1"></td>
 					<td class="ct_write01">
 						${pur.receiverName}
@@ -162,7 +162,7 @@
 					<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 				</tr>
 				<tr>
-					<td width="104" class="ct_write">±¸¸ÅÀÚ¿¬¶ôÃ³</td>
+					<td width="104" class="ct_write">êµ¬ë§¤ìì—°ë½ì²˜</td>
 					<td bgcolor="D6D6D6" width="1"></td>
 					<td class="ct_write01">
 						${pur.receiverPhone}
@@ -172,7 +172,7 @@
 					<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 				</tr>
 				<tr>
-					<td width="104" class="ct_write">±¸¸ÅÀÚÁÖ¼Ò</td>
+					<td width="104" class="ct_write">êµ¬ë§¤ìì£¼ì†Œ</td>
 					<td bgcolor="D6D6D6" width="1"></td>
 					<td class="ct_write01">
 						${pur.divyAddr}
@@ -182,7 +182,7 @@
 					<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 				</tr>
 				<tr>
-					<td width="104" class="ct_write">±¸¸Å¿äÃ»»çÇ×</td>
+					<td width="104" class="ct_write">êµ¬ë§¤ìš”ì²­ì‚¬í•­</td>
 					<td bgcolor="D6D6D6" width="1"></td>
 					<td class="ct_write01">
 						${pur.divyRequest}
@@ -192,7 +192,7 @@
 					<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 				</tr>
 				<tr>
-					<td width="104" class="ct_write">¹è¼ÛÈñ¸ÁÀÏÀÚ</td>
+					<td width="104" class="ct_write">ë°°ì†¡í¬ë§ì¼ì</td>
 					<td bgcolor="D6D6D6" width="1"></td>
 					<td width="200" class="ct_write01">
 						${pur.divyDate}
@@ -202,7 +202,7 @@
 					<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 				</tr>
 				<tr>
-					<td width="104" class="ct_write">ÁÖ¹®³¯Â¥</td>
+					<td width="104" class="ct_write">ì£¼ë¬¸ë‚ ì§œ</td>
 					<td bgcolor="D6D6D6" width="1"></td>
 					<td width="200" class="ct_write01">
 						${pur.orderDate}
@@ -212,7 +212,7 @@
 					<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 				</tr>
 				<tr>
-					<td width="104" class="ct_write">±¸¸Å¼ö·®</td>
+					<td width="104" class="ct_write">êµ¬ë§¤ìˆ˜ëŸ‰</td>
 					<td bgcolor="D6D6D6" width="1"></td>
 					<td width="200" class="ct_write01">
 						${pur.tranStock}
@@ -226,7 +226,7 @@
 						<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
 					</td>
 					<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top: 3px;">
-						<a href="javascript:submitForm('update');">¼öÁ¤</a>
+						<a href="javascript:submitForm('update');">ìˆ˜ì •</a>
 					</td>
 					<td width="14" height="23">
 						<img src="/images/ct_btnbg03.gif" width="14" height="23"/>
@@ -236,7 +236,7 @@
 						<img src="/images/ct_btnbg01.gif"width="17" height="23"/>
 					</td>
 					<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top: 3px;">
-						<a href="javascript:submitForm('list')">±¸¸Å¸ñ·Ï</a>
+						<a href="javascript:submitForm('list')">êµ¬ë§¤ëª©ë¡</a>
 					</td>
 					<td width="14" height="23">
 						<img src="/images/ct_btnbg03.gif" width="14" height="23"/>

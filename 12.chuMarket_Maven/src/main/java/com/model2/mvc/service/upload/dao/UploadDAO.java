@@ -10,18 +10,18 @@ import com.model2.mvc.service.domain.Upload;
 @Repository("uploadDAO")
 public class UploadDAO implements com.model2.mvc.service.upload.UploadDAO
 {
-	///ÇÊµå
+	///í•„ë“œ
 	@Autowired
 	@Qualifier("sqlSessionTemplate")
 	private SqlSession sqlSession;
 
-	///»ı¼ºÀÚ
+	///ìƒì„±ì
 	public UploadDAO()
 	{
 		System.out.println(this.getClass());
 	}
 	
-	///¸Ş¼Òµå
+	///ë©”ì†Œë“œ
 	public void addUpload(Upload upload)
 	{
 		sqlSession.insert("UploadMapper.addUpload", upload);

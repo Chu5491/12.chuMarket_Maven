@@ -1,14 +1,14 @@
 <%
 	/***************************************************
-	*	ÀÛ¼ºÀÚ : Ãß°æ¿î
-	*	ÀÛ¼ºÀÏ : 2024-04-07
-	*	³»  ¿ë : ±âÁ¸ÀÇ FrameSet Çü½ÄÀ» 
+	*	ìž‘ì„±ìž : ì¶”ê²½ìš´
+	*	ìž‘ì„±ì¼ : 2024-04-07
+	*	ë‚´  ìš© : ê¸°ì¡´ì˜ FrameSet í˜•ì‹ì„ 
 	*			 header / article / footer 
-	*			 jspInclude ¹æ½ÄÀ¸·Î ¼öÁ¤ 
-	*			 ¹«ÇÑ ½ºÅ©·Ñ ±â´É Ãß°¡ÀÛ¾÷ ÁøÇà Áß
+	*			 jspInclude ë°©ì‹ìœ¼ë¡œ ìˆ˜ì • 
+	*			 ë¬´í•œ ìŠ¤í¬ë¡¤ ê¸°ëŠ¥ ì¶”ê°€ìž‘ì—… ì§„í–‰ ì¤‘
 	****************************************************/
 %>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 	<head>
 	<title>Model2 MVC Shop</title>
@@ -32,17 +32,17 @@
 			        $(this).css('cursor', 'pointer');
 			    });
 				
-				// articleList ¿ä¼Ò¿¡ È£¹ö ÀÌº¥Æ®¸¦ ¹ÙÀÎµùÇÕ´Ï´Ù.
+				// articleList ìš”ì†Œì— í˜¸ë²„ ì´ë²¤íŠ¸ë¥¼ ë°”ì¸ë”©í•©ë‹ˆë‹¤.
 			    $(".articleList").on
 			    ({
 	    	        mouseenter: function() 
 	    	        {
-	    	            // È£¹ö »óÅÂÀÏ ¶§ ¹è°æ»öÀ» »¡°£»öÀ¸·Î º¯°æÇÕ´Ï´Ù.
+	    	            // í˜¸ë²„ ìƒíƒœì¼ ë•Œ ë°°ê²½ìƒ‰ì„ ë¹¨ê°„ìƒ‰ìœ¼ë¡œ ë³€ê²½í•©ë‹ˆë‹¤.
 	    	            $(this).css("background-color", "#B4FAB4");
 	    	        },
 	    	        mouseleave: function() 
 	    	        {
-	    	            // È£¹ö°¡ ÇØÁ¦µÉ ¶§ ¹è°æ»öÀ» ¿ø·¡´ë·Î µÇµ¹¸³´Ï´Ù.
+	    	            // í˜¸ë²„ê°€ í•´ì œë  ë•Œ ë°°ê²½ìƒ‰ì„ ì›ëž˜ëŒ€ë¡œ ë˜ëŒë¦½ë‹ˆë‹¤.
 	    	            $(this).css("background-color", "");
 	    	        }
 			    }, ".card");
@@ -61,7 +61,7 @@
 				
 				$(".articleList").on("click", ".card", function(event) 
 				{
-				    // Å¬¸¯µÈ ¿ä¼Ò°¡ ½ÇÁ¦·Î .ct_list_pop ¿ä¼ÒÀÎÁö È®ÀÎÇÕ´Ï´Ù.
+				    // í´ë¦­ëœ ìš”ì†Œê°€ ì‹¤ì œë¡œ .ct_list_pop ìš”ì†Œì¸ì§€ í™•ì¸í•©ë‹ˆë‹¤.
 				    if($(event.target).hasClass("ct_list_pop")) 
 				  	{
 				        let flag = $(event.target).attr("name");
@@ -76,7 +76,7 @@
 				        }
 				    }else 
 				    {
-				        // Å¬¸¯µÈ ¿ä¼Ò°¡ .card ¿ä¼ÒÀÎ °æ¿ì¿¡ ½ÇÇàÇÒ ÄÚµå¸¦ ¿©±â¿¡ ÀÛ¼ºÇÕ´Ï´Ù.
+				        // í´ë¦­ëœ ìš”ì†Œê°€ .card ìš”ì†Œì¸ ê²½ìš°ì— ì‹¤í–‰í•  ì½”ë“œë¥¼ ì—¬ê¸°ì— ìž‘ì„±í•©ë‹ˆë‹¤.
 				        let no = $(this).children('div').children('div').children('div').children('p[name="prod"]').attr("id");
 				        $(window.location).attr("href", "/product/getProduct?prodNo=" + no + "&menu=search");
 				    }
@@ -88,35 +88,35 @@
 			$(document).ready(function() 
 			{
 				
-				//ÇöÀç ÆäÀÌÁö value
+				//í˜„ìž¬ íŽ˜ì´ì§€ value
 			    let currentPage = $("input[name='currentPage']").val();	
 			    let searchCondition = $("select[name='searchCondition']").val();	
 			    let searchKeyword = $("input[name='searchKeyword']").val();
-				//ajax Åë½Å ¿©ºÎ ( ÀüÃ¼ µ¥ÀÌÅÍ¸¦ ÀÌ¹Ì È£Ãâ ¸¶¹«¸®ÇÑ °æ¿ì ´õ ÀÌ»óÀÇ request¸¦ ¸·±â À§ÇØ ¼±¾ð )
+				//ajax í†µì‹  ì—¬ë¶€ ( ì „ì²´ ë°ì´í„°ë¥¼ ì´ë¯¸ í˜¸ì¶œ ë§ˆë¬´ë¦¬í•œ ê²½ìš° ë” ì´ìƒì˜ requestë¥¼ ë§‰ê¸° ìœ„í•´ ì„ ì–¸ )
 				let doAjax = true;
 				
-				//ºñµ¿±â ÀÛ¾÷ÀÌ ÁøÇàÁßÀÌ¸é Ãß°¡·Î ¿äÃ»ÇÏÁö ¾Ê±â À§ÇÑ flag
+				//ë¹„ë™ê¸° ìž‘ì—…ì´ ì§„í–‰ì¤‘ì´ë©´ ì¶”ê°€ë¡œ ìš”ì²­í•˜ì§€ ì•Šê¸° ìœ„í•œ flag
 			    let isLoading = false; 
 				
-				//Ã¹ ÆäÀÌÁö ÁøÀÔ ½Ã µ¥ÀÌÅÍ È£Ãâ
+				//ì²« íŽ˜ì´ì§€ ì§„ìž… ì‹œ ë°ì´í„° í˜¸ì¶œ
 			    listAjax();
 			    
-			    // ½ºÅ©·Ñ ÀÌº¥Æ® ÇÚµé·¯ µî·Ï
+			    // ìŠ¤í¬ë¡¤ ì´ë²¤íŠ¸ í•¸ë“¤ëŸ¬ ë“±ë¡
 			    $(window).scroll(function() 
 			    {
-			        // ÆäÀÌÁö°¡ ·Îµù ÁßÀÌ°Å³ª ÀÌ¹Ì Ajax ¿äÃ»À» º¸³½ °æ¿ì¿¡´Â Ãß°¡ ¿äÃ»À» º¸³»Áö ¾ÊÀ½
+			        // íŽ˜ì´ì§€ê°€ ë¡œë”© ì¤‘ì´ê±°ë‚˜ ì´ë¯¸ Ajax ìš”ì²­ì„ ë³´ë‚¸ ê²½ìš°ì—ëŠ” ì¶”ê°€ ìš”ì²­ì„ ë³´ë‚´ì§€ ì•ŠìŒ
 			        if (isLoading) return;
 	
 			        let scrollPosition = $(window).scrollTop();
 			        let windowHeight = $(window).height();
 			        let documentHeight = $(document).height();
 	
-			        // ½ºÅ©·ÑÀÌ ÆäÀÌÁö ÇÏ´Ü¿¡ µµ´ÞÇßÀ» ¶§ Ajax ¿äÃ»À» º¸³¿
+			        // ìŠ¤í¬ë¡¤ì´ íŽ˜ì´ì§€ í•˜ë‹¨ì— ë„ë‹¬í–ˆì„ ë•Œ Ajax ìš”ì²­ì„ ë³´ëƒ„
 			        if (scrollPosition >= documentHeight - windowHeight * 2) 
 			        {
-			            isLoading = true; // Ajax ¿äÃ» ÁßÀÎ »óÅÂ·Î ¼³Á¤
+			            isLoading = true; // Ajax ìš”ì²­ ì¤‘ì¸ ìƒíƒœë¡œ ì„¤ì •
 			            
-			            //¸®½ºÆ®¸¦ È£Ãâ
+			            //ë¦¬ìŠ¤íŠ¸ë¥¼ í˜¸ì¶œ
 			            if(doAjax)
 			            {
 			            	listAjax();
@@ -173,15 +173,15 @@
 									html += "				<br/>";
 															if(list[i].prodStock <= 0)
 															{
-									html += "					Àç°í¾øÀ½";		
+									html += "					ìž¬ê³ ì—†ìŒ";		
 															}else
 															{
 																if(list[i].prodStock <= 5)
 																{
-									html += "						<b style='color:red;'>Ç°ÀýÀÓ¹Ú</b>";						
+									html += "						<b style='color:red;'>í’ˆì ˆìž„ë°•</b>";						
 																}else
 																{
-									html += "						<b style='color:green;'>ÆÇ¸ÅÁß</b>";							
+									html += "						<b style='color:green;'>íŒë§¤ì¤‘</b>";							
 																}
 															}
 									html += "				<br>";
@@ -200,13 +200,13 @@
 			                    
 			                }else
 			                {
-			                	//´õ ÀÌ»ó Á¶È¸ÇÒ µ¥ÀÌÅÍ°¡ ¾øÀ¸¸é false¸¦ ÅëÇØ ´õ ÀÌ»óÀÇ Åë½ÅÀ» ÇÏÁö ¾Êµµ·Ï flag ¼³Á¤
+			                	//ë” ì´ìƒ ì¡°íšŒí•  ë°ì´í„°ê°€ ì—†ìœ¼ë©´ falseë¥¼ í†µí•´ ë” ì´ìƒì˜ í†µì‹ ì„ í•˜ì§€ ì•Šë„ë¡ flag ì„¤ì •
 			                	doAjax = false;
 			                }
 			            },
 			            complete: function() 
 			            {
-			                isLoading = false; // Ajax ¿äÃ» ¿Ï·á ÈÄ »óÅÂ ¾÷µ¥ÀÌÆ®
+			                isLoading = false; // Ajax ìš”ì²­ ì™„ë£Œ í›„ ìƒíƒœ ì—…ë°ì´íŠ¸
 			            }
 			        });
 			    }
@@ -230,9 +230,9 @@
 							<td align="right">
 								<div class="select">
 									<select name="searchCondition" class="ct_input_g" style="height:40px">
-										<option value="no" ${! empty param.searchCondition && param.searchCondition == 'no' ? 'selected' : ""}>»óÇ°¹øÈ£</option>
-										<option value="name" ${! empty param.searchCondition && param.searchCondition == 'name' ? 'selected' : ""}>»óÇ°¸í</option>
-										<option value="price" ${! empty param.searchCondition && param.searchCondition == 'price' ? 'selected' : ""}>»óÇ°°¡°Ý</option>
+										<option value="no" ${! empty param.searchCondition && param.searchCondition == 'no' ? 'selected' : ""}>ìƒí’ˆë²ˆí˜¸</option>
+										<option value="name" ${! empty param.searchCondition && param.searchCondition == 'name' ? 'selected' : ""}>ìƒí’ˆëª…</option>
+										<option value="price" ${! empty param.searchCondition && param.searchCondition == 'price' ? 'selected' : ""}>ìƒí’ˆê°€ê²©</option>
 									</select>
 								</div>
 								<input type="text" name="searchKeyword"  value="${param.searchKeyword }" 
@@ -245,7 +245,7 @@
 											<img src="/images/ct_btnbg01.gif" width="17" height="23">
 										</td>
 										<td align="right" width="70">
-											<button class="button ct_btn01" style="height:40px">°Ë»ö</button>
+											<button class="button ct_btn01" style="height:40px">ê²€ìƒ‰</button>
 										</td>
 										<td width="14" height="23">
 											<img src="/images/ct_btnbg03.gif" width="14" height="23">

@@ -20,7 +20,7 @@ import com.model2.mvc.service.product.ProductService;
 import com.model2.mvc.service.purchase.PurchaseService;
 import com.model2.mvc.service.user.UserService;
 
-//==> È¸¿ø°ü¸® Controller
+//==> íšŒì›ê´€ë¦¬ Controller
 @RestController
 @RequestMapping("/purchase/*")
 public class PurchaseRestController 
@@ -37,15 +37,15 @@ public class PurchaseRestController
 	@Autowired
 	@Qualifier("userServiceImpl")
 	private UserService userService;
-	//setter Method ±¸Çö ¾ÊÀ½
+	//setter Method êµ¬í˜„ ì•ŠìŒ
 		
 	public PurchaseRestController()
 	{
 		System.out.println(this.getClass());
 	}
 	
-	//==> classpath:config/common.properties  ,  classpath:config/commonservice.xml ÂüÁ¶ ÇÒ°Í
-	//==> ¾Æ·¡ÀÇ µÎ°³¸¦ ÁÖ¼®À» Ç®¾î ÀÇ¹Ì¸¦ È®ÀÎ ÇÒ°Í
+	//==> classpath:config/common.properties  ,  classpath:config/commonservice.xml ì°¸ì¡° í• ê²ƒ
+	//==> ì•„ë˜ì˜ ë‘ê°œë¥¼ ì£¼ì„ì„ í’€ì–´ ì˜ë¯¸ë¥¼ í™•ì¸ í• ê²ƒ
 	//@Value("#{commonProperties['pageUnit']}")
 	//@Value("#{commonProperties['pageUnit'] ?: 3}")
 	//@Value("${pageUnit ? : 3}")
@@ -61,7 +61,7 @@ public class PurchaseRestController
 	{
 		System.out.println("/purchase/json/getPurchase :: GET");
 		
-		// Business logic ¼öÇà
+		// Business logic ìˆ˜í–‰
 		Purchase pur = purchaseService.getPurchase(tranNo);
 		if(pur != null)
 		{
@@ -83,7 +83,7 @@ public class PurchaseRestController
 		
 		search.setPageSize(pageSize);
 		
-		// Business logic ¼öÇà
+		// Business logic ìˆ˜í–‰
 		Map<String , Object> map = purchaseService.getPurchaseList(search,user.getUserId());
 		
 		Page resultPage = new Page( search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
@@ -103,7 +103,7 @@ public class PurchaseRestController
 		System.out.println("/purchase/listSale :: GET");
 		
 		Map<String , Object> map = purchaseService.getSaleList(prodNo);
-		// Business logic ¼öÇà
+		// Business logic ìˆ˜í–‰
 		
 		System.out.println("listSale :: " + map.get("list"));
 		

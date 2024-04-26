@@ -30,7 +30,7 @@ import com.model2.mvc.service.market.MarketService;
 import com.model2.mvc.service.product.ProductService;
 import com.model2.mvc.service.user.UserService;
 
-//==> È¸¿ø°ü¸® Controller
+//==> íšŒì›ê´€ë¦¬ Controller
 @RestController
 @RequestMapping("/market/*")
 public class MarketRestController 
@@ -47,15 +47,15 @@ public class MarketRestController
 	@Autowired
 	@Qualifier("userServiceImpl")
 	private UserService userService;
-	//setter Method ±¸Çö ¾ÊÀ½
+	//setter Method êµ¬í˜„ ì•ŠìŒ
 
 	public MarketRestController()
 	{
 		System.out.println(this.getClass());
 	}
 	
-	//==> classpath:config/common.properties  ,  classpath:config/commonservice.xml ÂüÁ¶ ÇÒ°Í
-	//==> ¾Æ·¡ÀÇ µÎ°³¸¦ ÁÖ¼®À» Ç®¾î ÀÇ¹Ì¸¦ È®ÀÎ ÇÒ°Í
+	//==> classpath:config/common.properties  ,  classpath:config/commonservice.xml ì°¸ì¡° í• ê²ƒ
+	//==> ì•„ë˜ì˜ ë‘ê°œë¥¼ ì£¼ì„ì„ í’€ì–´ ì˜ë¯¸ë¥¼ í™•ì¸ í• ê²ƒ
 	//@Value("#{commonProperties['pageUnit']}")
 	//@Value("#{commonProperties['pageUnit'] ?: 3}")
 	//@Value("${pageUnit ? : 3}")
@@ -75,14 +75,14 @@ public class MarketRestController
 		{
 			search.setCurrentPage(1);
 		}
-		System.out.println("°Ë»ö¾î : " + search.getSearchCondition() );
+		System.out.println("ê²€ìƒ‰ì–´ : " + search.getSearchCondition() );
 		
 		search.setPageSize(pageSize);
 		
 		System.out.println("/market/getMarket");
 		
 		
-		// Business logic ¼öÇà
+		// Business logic ìˆ˜í–‰
 		Market market = marketService.getMarket(marketNo);
 		Map<String , Object> map = productService.getMarketProductList(search,marketNo);
 		
@@ -95,7 +95,7 @@ public class MarketRestController
 		int totalCount  = productService.getProductTotal(search);
 
 		System.out.println("Market Info : " + market);
-		// Model °ú View ¿¬°á
+		// Model ê³¼ View ì—°ê²°
 		map.put("market", market);
 		map.put("list", map.get("list"));
 		map.put("resultPage", resultPage);

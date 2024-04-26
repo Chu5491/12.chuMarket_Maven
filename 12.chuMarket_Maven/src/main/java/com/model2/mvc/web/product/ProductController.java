@@ -33,13 +33,13 @@ import com.model2.mvc.service.product.ProductService;
 import com.model2.mvc.service.upload.UploadService;
 import com.model2.mvc.service.user.UserService;
 
-//==> È¸¿ø°ü¸® Controller
+//==> íšŒì›ê´€ë¦¬ Controller
 @Controller
 @RequestMapping("/product/*")
 public class ProductController 
 {
 	///Field
-	@Value("${fileDir}")
+	@Value("#['fileDir']")
     private String fileDir;
 	
 	@Autowired
@@ -57,15 +57,15 @@ public class ProductController
 	@Autowired
 	@Qualifier("uploadServiceImpl")
 	private UploadService uploadService;
-	//setter Method ±¸Çö ¾ÊÀ½
+	//setter Method êµ¬í˜„ ì•ŠìŒ
 		
 	public ProductController()
 	{
 		System.out.println(this.getClass());
 	}
 	
-	//==> classpath:config/common.properties  ,  classpath:config/commonservice.xml ÂüÁ¶ ÇÒ°Í
-	//==> ¾Æ·¡ÀÇ µÎ°³¸¦ ÁÖ¼®À» Ç®¾î ÀÇ¹Ì¸¦ È®ÀÎ ÇÒ°Í
+	//==> classpath:config/common.properties  ,  classpath:config/commonservice.xml ì°¸ì¡° í• ê²ƒ
+	//==> ì•„ë˜ì˜ ë‘ê°œë¥¼ ì£¼ì„ì„ í’€ì–´ ì˜ë¯¸ë¥¼ í™•ì¸ í• ê²ƒ
 	//@Value("#{commonProperties['pageUnit']}")
 	//@Value("#{commonProperties['pageUnit'] ?: 3}")
 	//@Value("${pageUnit ? : 3}")
@@ -89,7 +89,7 @@ public class ProductController
 		
 		prod.setMarket(marketService.getMarket(prod.getMarket().getMarketNo()));
 		
-		// Model °ú View ¿¬°á
+		// Model ê³¼ View ì—°ê²°
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("prod", prod);
 		modelAndView.addObject("upload", upload);
@@ -107,7 +107,7 @@ public class ProductController
 				{
 					if(cookie.getName().equals("history"))
 					{
-						// ÄíÅ° ÀÖÀ¸¸é Ãß°¡
+						// ì¿ í‚¤ ìˆìœ¼ë©´ ì¶”ê°€
 						history 	= cookie.getValue();
 						history += ":" + prodNo;
 						cookie 	= new Cookie("history", history);
@@ -116,7 +116,7 @@ public class ProductController
 						break;
 					}else
 					{
-						// ÄíÅ°°¡ ¾øÀ¸¸é »õ·Î »ı¼º
+						// ì¿ í‚¤ê°€ ì—†ìœ¼ë©´ ìƒˆë¡œ ìƒì„±
 						cookie = new Cookie("history", Integer.toString(prodNo));
 						cookie.setPath("/");
 						response.addCookie(cookie);
@@ -124,7 +124,7 @@ public class ProductController
 				}
 			}else
 			{
-				// ÄíÅ°°¡ ¾øÀ¸¸é »õ·Î »ı¼º
+				// ì¿ í‚¤ê°€ ì—†ìœ¼ë©´ ìƒˆë¡œ ìƒì„±
 				
 				Cookie cookie = new Cookie("history", Integer.toString(prodNo));
 				cookie.setPath("/");
@@ -155,39 +155,39 @@ public class ProductController
 		
 		if(!upload.isEmpty())
 		{
-			//ÆÄÀÏ ÀúÀåÀ» À§ÇÑ µµ¸ŞÀÎ »ı¼º
+			//íŒŒì¼ ì €ì¥ì„ ìœ„í•œ ë„ë©”ì¸ ìƒì„±
 			Upload file = new Upload();
 			
-			//ÆÄÀÏ µµ¸ŞÀÎ set ÀÛ¾÷
+			//íŒŒì¼ ë„ë©”ì¸ set ì‘ì—…
 			file.setProdNo(prod.getProdNo());
 			file.setFile(upload);                                                                                                                                                                                                               
 			file.setPhysName(upload.getOriginalFilename());
 			file.setFileDir(fileDir);
 			
-			//ÆÄÀÏ È®ÀåÀÚ¸í ÃßÃâ
+			//íŒŒì¼ í™•ì¥ìëª… ì¶”ì¶œ
 			String extension = StringUtils.getFilenameExtension(file.getPhysName());
 			
-			//ÆÄÀÏ ³í¸®¸í ¹× È®ÀåÀÚ Ãß°¡ÀÛ¾÷
+			//íŒŒì¼ ë…¼ë¦¬ëª… ë° í™•ì¥ì ì¶”ê°€ì‘ì—…
 			file.setLogiName(UUID.randomUUID().toString() + "." + extension);
 			
-			//¹°¸® ÆÄÀÏ¸í product µµ¸ŞÀÎ ÀúÀå
+			//ë¬¼ë¦¬ íŒŒì¼ëª… product ë„ë©”ì¸ ì €ì¥
 			prod.setFileName(file.getPhysName());
 			
 			System.out.println("file Domain :: " + file);
             
-			//ÆÄÀÏ ÀúÀåÀ» À§ÇÑ path ¼³Á¤
+			//íŒŒì¼ ì €ì¥ì„ ìœ„í•œ path ì„¤ì •
 			String fullPath = request.getServletContext().getRealPath("/") + file.getFileDir() + file.getLogiName();
            
-            System.out.println("ÆÄÀÏ ÀúÀå fullPath :: "+ fullPath);; 
+            System.out.println("íŒŒì¼ ì €ì¥ fullPath :: "+ fullPath);; 
             
-            //ÆÄÀÏ °æ·Î¿¡ ÀúÀå
+            //íŒŒì¼ ê²½ë¡œì— ì €ì¥
             file.getFile().transferTo(new File(fullPath));
             
-            //ÆÄÀÏÁ¤º¸ db¿¡ ÀúÀå
+            //íŒŒì¼ì •ë³´ dbì— ì €ì¥
             uploadService.addUpload(file);
 		}
 		
-		// Model °ú View ¿¬°á
+		// Model ê³¼ View ì—°ê²°
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("menu", "search");
 		
@@ -202,44 +202,44 @@ public class ProductController
 		System.out.println("/product/updateProduct");
 		
 		Upload pastFile = uploadService.getUpload(prod.getProdNo());
-		System.out.println("±âÁ¸ ÆÄÀÏ ¿©ºÎ :: " + pastFile);
+		System.out.println("ê¸°ì¡´ íŒŒì¼ ì—¬ë¶€ :: " + pastFile);
 		Upload file = new Upload();
 		
 		if(!upload.isEmpty())
 		{
-			//ÆÄÀÏ µµ¸ŞÀÎ set ÀÛ¾÷
+			//íŒŒì¼ ë„ë©”ì¸ set ì‘ì—…
 			file.setProdNo(prod.getProdNo());
 			file.setFile(upload);                                                                                                                                                                                                               
 			file.setPhysName(upload.getOriginalFilename());
 			file.setFileDir(fileDir);
 			
-			//ÆÄÀÏ È®ÀåÀÚ¸í ÃßÃâ
+			//íŒŒì¼ í™•ì¥ìëª… ì¶”ì¶œ
 			String extension = StringUtils.getFilenameExtension(file.getPhysName());
 			
-			//ÆÄÀÏ ³í¸®¸í ¹× È®ÀåÀÚ Ãß°¡ÀÛ¾÷
+			//íŒŒì¼ ë…¼ë¦¬ëª… ë° í™•ì¥ì ì¶”ê°€ì‘ì—…
 			file.setLogiName(UUID.randomUUID().toString() + "." + extension);
 			
-			//¹°¸® ÆÄÀÏ¸í product µµ¸ŞÀÎ ÀúÀå
+			//ë¬¼ë¦¬ íŒŒì¼ëª… product ë„ë©”ì¸ ì €ì¥
 			prod.setFileName(file.getPhysName());
 			
 			System.out.println("file Domain :: " + file);
             
-			//ÆÄÀÏ ÀúÀåÀ» À§ÇÑ path ¼³Á¤
+			//íŒŒì¼ ì €ì¥ì„ ìœ„í•œ path ì„¤ì •
 			String fullPath = request.getServletContext().getRealPath("/") + file.getFileDir() + file.getLogiName();
            
-            System.out.println("ÆÄÀÏ ÀúÀå fullPath :: "+ fullPath);; 
+            System.out.println("íŒŒì¼ ì €ì¥ fullPath :: "+ fullPath);; 
             
-            //ÆÄÀÏ °æ·Î¿¡ ÀúÀå
+            //íŒŒì¼ ê²½ë¡œì— ì €ì¥
             file.getFile().transferTo(new File(fullPath));
             
-            //ÆÄÀÏÁ¤º¸ db¿¡ ÀúÀå
+            //íŒŒì¼ì •ë³´ dbì— ì €ì¥
             if(pastFile == null)
             {
-            	//±âÁ¸¿¡ Ã·ºÎÆÄÀÏÀÌ ¾ø´Ù¸é »õ·Î µî·Ï
+            	//ê¸°ì¡´ì— ì²¨ë¶€íŒŒì¼ì´ ì—†ë‹¤ë©´ ìƒˆë¡œ ë“±ë¡
             	uploadService.addUpload(file);
             }else
             {
-            	//±âÁ¸¿¡ Ã·ºÎÆÄÀÏÀÌ ÀÖ´Ù¸é ¾÷µ¥ÀÌÆ®
+            	//ê¸°ì¡´ì— ì²¨ë¶€íŒŒì¼ì´ ìˆë‹¤ë©´ ì—…ë°ì´íŠ¸
             	file.setFileNo(pastFile.getFileNo());
             	uploadService.updateUpload(file);
             }
@@ -253,7 +253,7 @@ public class ProductController
 		
 		file = uploadService.getUpload(prod.getProdNo());
 		
-		// Model °ú View ¿¬°á
+		// Model ê³¼ View ì—°ê²°
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("prod", prod);
 		modelAndView.addObject("menu", "search");
@@ -272,11 +272,11 @@ public class ProductController
 		{
 			search.setCurrentPage(1);
 		}
-		System.out.println("°Ë»ö¾î : " + search.getSearchCondition() );
+		System.out.println("ê²€ìƒ‰ì–´ : " + search.getSearchCondition() );
 		
 		search.setPageSize(pageSize);
 		Map<String , Object> map;
-		// Business logic ¼öÇà
+		// Business logic ìˆ˜í–‰
 		Market market;
 		
 		if(menu.equals("bsns"))
@@ -294,7 +294,7 @@ public class ProductController
 		
 		int totalCount  = productService.getProductTotal(search);
 		
-		// Model °ú View ¿¬°á
+		// Model ê³¼ View ì—°ê²°
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("list", map.get("list"));
 		modelAndView.addObject("resultPage", resultPage);

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="UploadMapper">
+ 	
+	<resultMap id="uploadSelectMap" type="upload">
+		<result property="fileNo" 			column="FILE_NO" 			jdbcType="INTEGER"/>
+		<result property="prodNo" 			column="PROD_NO" 			jdbcType="INTEGER"/>
+		<result property="physName" 		column="PHYS_NAME" 			jdbcType="VARCHAR"/>
+		<result property="logiName" 		column="LOGI_NAME" 			jdbcType="VARCHAR"/>
+	</resultMap>
+  	
+	<!-- INSERT 매핑구문 (insert SQL 등록) :: insert element -->
+  	<insert id="addUpload" parameterType="upload">
+  		INSERT
+  		INTO PRODUCTFILE
+  		(
+  			FILE_NO,
+  			PROD_NO,
+  		 	PHYS_NAME,
+  		 	LOGI_NAME
+  		)
+  		VALUES
+  		(
+  			SEQ_PRODUCTFILE_FILE_NO.NEXTVAL,
+  			#{prodNo},
+  			#{physName},
+  			#{logiName}
+  		)
+  	</insert>
+  	<!-- INSERT 매핑구문 (insert SQL 등록) :: insert element -->
+  	
+  	<!-- SELECT 매핑 구문 (select SQL ) :: select elemnet -->
+  	<select id="getUpload" parameterType="int" resultMap="uploadSelectMap">
+  		SELECT
+  		*
+  		FROM PRODUCTFILE
+  		WHERE 
+  		PROD_NO = #{value}
+  	</select>
+  	<!-- SELECT 매핑 구문 (select SQL ) :: select elemnet -->
+  	
+  	<!-- UPDATE 매핑구문 (update SQL 등록) :: update element -->  	
+  	<update id="updateUpload" parameterType="upload">
+  		UPDATE 
+  		PRODUCTFILE 
+  		SET 
+		PHYS_NAME = #{physName},
+		LOGI_NAME = #{logiName}			 
+		WHERE FILE_NO = #{fileNo}
+  	</update>
+  	<!-- UPDATE 매핑구문 (update SQL 등록) :: update element -->  
+</mapper>

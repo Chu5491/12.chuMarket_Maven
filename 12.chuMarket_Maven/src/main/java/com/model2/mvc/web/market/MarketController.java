@@ -28,7 +28,7 @@ import com.model2.mvc.service.market.MarketService;
 import com.model2.mvc.service.product.ProductService;
 import com.model2.mvc.service.user.UserService;
 
-//==> È¸¿ø°ü¸® Controller
+//==> íšŒì›ê´€ë¦¬ Controller
 @Controller
 @RequestMapping("/market/*")
 public class MarketController 
@@ -45,15 +45,15 @@ public class MarketController
 	@Autowired
 	@Qualifier("userServiceImpl")
 	private UserService userService;
-	//setter Method ±¸Çö ¾ÊÀ½
+	//setter Method êµ¬í˜„ ì•ŠìŒ
 
 	public MarketController()
 	{
 		System.out.println(this.getClass());
 	}
 	
-	//==> classpath:config/common.properties  ,  classpath:config/commonservice.xml ÂüÁ¶ ÇÒ°Í
-	//==> ¾Æ·¡ÀÇ µÎ°³¸¦ ÁÖ¼®À» Ç®¾î ÀÇ¹Ì¸¦ È®ÀÎ ÇÒ°Í
+	//==> classpath:config/common.properties  ,  classpath:config/commonservice.xml ì°¸ì¡° í• ê²ƒ
+	//==> ì•„ë˜ì˜ ë‘ê°œë¥¼ ì£¼ì„ì„ í’€ì–´ ì˜ë¯¸ë¥¼ í™•ì¸ í• ê²ƒ
 	//@Value("#{commonProperties['pageUnit']}")
 	//@Value("#{commonProperties['pageUnit'] ?: 3}")
 	//@Value("${pageUnit ? : 3}")
@@ -65,13 +65,13 @@ public class MarketController
 	int pageSize = 3;
 	
 	@RequestMapping(value="addMarket",method = RequestMethod.GET)
-	public ModelAndView addMarket(@SessionAttribute("userInfo") User user) throws Exception 
+	public ModelAndView addMarket(@SessionAttribute("user") User user) throws Exception 
 	{
 		System.out.println("/market/addMarket :: GET");
 		
 		Market market = marketService.getMarket(user.getUserId());
 		System.out.println(market);
-		// Model °ú View ¿¬°á
+		// Model ê³¼ View ì—°ê²°
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("market", market);
 		modelAndView.setViewName("forward:/market/addMarketView.jsp");
@@ -86,7 +86,7 @@ public class MarketController
 		
 		marketService.addMarket(market);
 		market.setManaFlag("W");
-		// Model °ú View ¿¬°á
+		// Model ê³¼ View ì—°ê²°
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("forward:/market/addMarketView.jsp");
 		
@@ -100,7 +100,7 @@ public class MarketController
 		
 		marketService.deleteMarket(marketNo);
 		
-		// Model °ú View ¿¬°á
+		// Model ê³¼ View ì—°ê²°
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("redirect:/market/addMarket");
 		
@@ -116,13 +116,13 @@ public class MarketController
 		{
 			search.setCurrentPage(1);
 		}
-		System.out.println("°Ë»ö¾î : " + search.getSearchCondition() );
+		System.out.println("ê²€ìƒ‰ì–´ : " + search.getSearchCondition() );
 		
 		search.setPageSize(pageSize);
 		
 		System.out.println("/market/getMarket");
 		
-		// Business logic ¼öÇà
+		// Business logic ìˆ˜í–‰
 		Market market = marketService.getMarket(marketNo);
 		Map<String , Object> map = productService.getMarketProductList(search,marketNo);
 		
@@ -135,7 +135,7 @@ public class MarketController
 		int totalCount  = productService.getProductTotal(search);
 
 		System.out.println("Market Info : " + market);
-		// Model °ú View ¿¬°á
+		// Model ê³¼ View ì—°ê²°
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("market", market);
 		modelAndView.addObject("list", map.get("list"));
@@ -154,13 +154,13 @@ public class MarketController
 		{
 			search.setCurrentPage(1);
 		}
-		System.out.println("°Ë»ö¾î : " + search.getSearchCondition() );
+		System.out.println("ê²€ìƒ‰ì–´ : " + search.getSearchCondition() );
 		
 		search.setPageSize(pageSize);
 		
 		System.out.println("/market/listMarket");
 		
-		// Business logic ¼öÇà
+		// Business logic ìˆ˜í–‰
 		Map<String , Object> map = marketService.listMarket(search);
 		
 		System.out.println("getmarketlist : " + map);
@@ -169,7 +169,7 @@ public class MarketController
 		
 		System.out.println(resultPage);
 		
-		// Model °ú View ¿¬°á
+		// Model ê³¼ View ì—°ê²°
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("list", map.get("list"));
 		modelAndView.addObject("resultPage", resultPage);
@@ -205,7 +205,7 @@ public class MarketController
 		userService.updateUser(user);
 		marketService.updateMarket(market);
 		
-		// Model °ú View ¿¬°á
+		// Model ê³¼ View ì—°ê²°
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("redirect:/market/listMarket");
 		

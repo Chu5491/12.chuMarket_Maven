@@ -1,15 +1,15 @@
 <%
 	/***************************************************
-	*	ÀÛ¼ºÀÚ : Ãß°æ¿î
-	*	ÀÛ¼ºÀÏ : 2024-03-31
-	*	³»  ¿ë : ±âÁ¸ÀÇ FrameSet Çü½ÄÀ» 
+	*	ì‘ì„±ì : ì¶”ê²½ìš´
+	*	ì‘ì„±ì¼ : 2024-03-31
+	*	ë‚´  ìš© : ê¸°ì¡´ì˜ FrameSet í˜•ì‹ì„ 
 	*			 header / article / footer 
-	*			 jspInclude ¹æ½ÄÀ¸·Î ¼öÁ¤ 
-	*			 Bulma Css FrameWork Àû¿ë¿¡ µû¸¥
-	*			 ÆäÀÌÁö UI ¼öÁ¤
+	*			 jspInclude ë°©ì‹ìœ¼ë¡œ ìˆ˜ì • 
+	*			 Bulma Css FrameWork ì ìš©ì— ë”°ë¥¸
+	*			 í˜ì´ì§€ UI ìˆ˜ì •
 	****************************************************/
 %>
-<%@ page contentType="text/html; charset=euc-kr" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
@@ -29,13 +29,13 @@
 			
 			
 			/* ########################## User ########################## */
-			$(".ct_btn01:contains('¼öÁ¤')").on("click" , function() 
+			$(".ct_btn01:contains('ìˆ˜ì •')").on("click" , function() 
 		 	{
 				var name = $("input[name=userName]").val();
 				var detailForm = $("form[name=detailForm]");
 				if(name == null || name.length <1)
 				{
-					alert("ÀÌ¸§Àº ¹İµå½Ã ÀÔ·ÂÇÏ¼Å¾ß ÇÕ´Ï´Ù.");
+					alert("ì´ë¦„ì€ ë°˜ë“œì‹œ ì…ë ¥í•˜ì…”ì•¼ í•©ë‹ˆë‹¤.");
 					return;
 				}
 					
@@ -44,7 +44,7 @@
 					$("input[name=phone]").val($("select[name=phone1]").val() + "-" + $("input[name=phone2]").val() + "-" + $("input[name=phone3]").val());
 				}else
 				{
-					alert("ÀüÈ­¹øÈ£´Â ¹İµå½Ã ÀÔ·ÂÇÏ¼Å¾ß ÇÕ´Ï´Ù.");
+					alert("ì „í™”ë²ˆí˜¸ëŠ” ë°˜ë“œì‹œ ì…ë ¥í•˜ì…”ì•¼ í•©ë‹ˆë‹¤.");
 					$("input[name=phone2]").focus();
 					return;
 				}
@@ -53,7 +53,7 @@
 				
 			}); 
 			
-			$(".ct_btn01:contains('Ãë¼Ò')").on("click" , function() 
+			$(".ct_btn01:contains('ì·¨ì†Œ')").on("click" , function() 
 		 	{
 				history.go(-1);
 			}); 
@@ -72,7 +72,7 @@
 				<table class="table" width="100%" height="37" border="0" cellpadding="0" cellspacing="0">
 					<tr>
 						<td background="/images/ct_ttl_img02.gif" width="100%" style="padding:7 0 10 10px; margin:0 0 10 0px">
-							<b>È¸¿øÁ¤º¸¼öÁ¤</b>
+							<b>íšŒì›ì •ë³´ìˆ˜ì •</b>
 						</td>
 					</tr>
 				</table>
@@ -80,13 +80,13 @@
 					<table class="table" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:13px;">
 						<tr>
 							<td width="130" class="ct_write">
-								¾ÆÀÌµğ <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle">
+								ì•„ì´ë”” <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle">
 							</td>
 							<td class="ct_write01">${user.userId}</td>
 						</tr>
 						<tr>
 							<td width="130" class="ct_write">
-								ÀÌ¸§ <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle">
+								ì´ë¦„ <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle">
 							</td>
 							<td class="ct_write01">
 								<input type="text" name="userName" value="${user.userName}" class="ct_input_g input" 
@@ -94,14 +94,14 @@
 							</td>
 						</tr>
 						<tr>
-							<td width="130" class="ct_write">ÁÖ¼Ò</td>
+							<td width="130" class="ct_write">ì£¼ì†Œ</td>
 							<td class="ct_write01">
 								<input type="text" name="addr" value="${user.addr}" class="ct_input_g input" 
 											style="width:370px; height:30px"  maxLength="100">
 							</td>
 						</tr>
 						<tr>
-							<td width="130" class="ct_write">ÈŞ´ëÀüÈ­¹øÈ£</td>
+							<td width="130" class="ct_write">íœ´ëŒ€ì „í™”ë²ˆí˜¸</td>
 							<td class="ct_write01">
 								<div class="select is-small">
 									<select name="phone1" class="ct_input_g"  
@@ -123,7 +123,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td width="130" class="ct_write">ÀÌ¸ŞÀÏ </td>
+							<td width="130" class="ct_write">ì´ë©”ì¼ </td>
 							<td class="ct_write01">
 								<input 	type="text" name="email" value="${user.email}" class="ct_input_g input" 
 												style="width:300px; height:30px;" onChange="check_email(this.form);">
@@ -136,8 +136,8 @@
 							<td align="right">
 								<table border="0" cellspacing="0" cellpadding="0">
 									<tr>
-										<td><a class="button ct_btn01" style="height:40px">¼öÁ¤</a></td>
-										<td><a class="button ct_btn01" style="height:40px">Ãë¼Ò</a></td>				
+										<td><a class="button ct_btn01" style="height:40px">ìˆ˜ì •</a></td>
+										<td><a class="button ct_btn01" style="height:40px">ì·¨ì†Œ</a></td>				
 									</tr>
 								</table>
 							</td>

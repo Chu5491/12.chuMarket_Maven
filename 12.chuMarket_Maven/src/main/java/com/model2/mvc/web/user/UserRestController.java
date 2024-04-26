@@ -21,13 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.model2.mvc.common.Page;
 import com.model2.mvc.common.Search;
-import com.model2.mvc.service.domain.Market;
 import com.model2.mvc.service.domain.User;
-import com.model2.mvc.service.market.MarketService;
 import com.model2.mvc.service.user.UserService;
 
 
-//==> È¸¿ø°ü¸® RestController
+//==> íšŒì›ê´€ë¦¬ RestController
 @RestController
 @RequestMapping("/user/*")
 public class UserRestController 
@@ -36,14 +34,10 @@ public class UserRestController
 	@Autowired
 	@Qualifier("userServiceImpl")
 	private UserService userService;
-	
-	@Autowired
-	@Qualifier("marketServiceImpl")
-	private MarketService marketService;
-	//setter Method ±¸Çö ¾ÊÀ½
+	//setter Method êµ¬í˜„ ì•ŠìŒ
 		
-	//==> classpath:config/common.properties  ,  classpath:config/commonservice.xml ÂüÁ¶ ÇÒ°Í
-	//==> ¾Æ·¡ÀÇ µÎ°³¸¦ ÁÖ¼®À» Ç®¾î ÀÇ¹Ì¸¦ È®ÀÎ ÇÒ°Í
+	//==> classpath:config/common.properties  ,  classpath:config/commonservice.xml ì°¸ì¡° í• ê²ƒ
+	//==> ì•„ë˜ì˜ ë‘ê°œë¥¼ ì£¼ì„ì„ í’€ì–´ ì˜ë¯¸ë¥¼ í™•ì¸ í• ê²ƒ
 	//@Value("#{commonProperties['pageUnit']}")
 	//@Value("#{commonProperties['pageUnit'] ?: 3}")
 	//@Value("${pageUnit ? : 3}")
@@ -58,7 +52,7 @@ public class UserRestController
 		System.out.println(this.getClass());
 	}
 	
-	//Å×½ºÆ® ¿Ï·á
+	//í…ŒìŠ¤íŠ¸ ì™„ë£Œ
 	@RequestMapping(value="/json/getUser", method=RequestMethod.GET )
 	public User getUser( @RequestParam("userId") String userId) throws Exception 
 	{
@@ -69,7 +63,7 @@ public class UserRestController
 		return user;
 	}
 	
-	//Å×½ºÆ® ¿Ï·á
+	//í…ŒìŠ¤íŠ¸ ì™„ë£Œ
 	@RequestMapping( value="/json/login", method=RequestMethod.POST )
 	public User login(@RequestBody User user, HttpSession session ) throws Exception
 	{
@@ -77,32 +71,26 @@ public class UserRestController
 		//Business Logic
 		User dbUser=userService.getUser(user.getUserId());
 		
-		if( user.getPassword().equals(dbUser.getPassword()))
-		{
-			if(dbUser.getRole().equals("bsns"))
-			{
-				Market market = marketService.getMarket(dbUser.getUserId());
-				session.setAttribute("bsnsMarket", market);
-			}
+		if( user.getPassword().equals(dbUser.getPassword())){
 			session.setAttribute("userInfo", dbUser);
 		}
 		
 		return dbUser;
 	}
 	
-	//Å×½ºÆ® ¿Ï·á
+	//í…ŒìŠ¤íŠ¸ ì™„ë£Œ
 	@RequestMapping(value="/json/checkDuplication", method=RequestMethod.GET)
 	public String checkDuplication(@RequestParam("userId") String userId) throws Exception
 	{
 		System.out.println("/user/json/checkDuplication");
 		//Business Logic
 		boolean result=userService.checkDuplication(userId);
-		// Model °ú View ¿¬°á
+		// Model ê³¼ View ì—°ê²°
 
 		return "{\"result\": \""+result+"\"}";
 	}
 	
-	//Å×½ºÆ® ¿Ï·á
+	//í…ŒìŠ¤íŠ¸ ì™„ë£Œ
 	@RequestMapping(value="/json/listUser", method=RequestMethod.POST)
 	public List listUser( @RequestBody Search search ) throws Exception
 	{
@@ -115,18 +103,18 @@ public class UserRestController
 		}
 		search.setPageSize(pageSize);
 		
-		// Business logic ¼öÇà
+		// Business logic ìˆ˜í–‰
 		Map<String , Object> map=userService.getUserList(search);
 		
 		Page resultPage = new Page( search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
 		System.out.println(resultPage);
 		
-		// Model °ú View ¿¬°á
+		// Model ê³¼ View ì—°ê²°
 		
 		return (ArrayList)map.get("list");
 	}
 	
-	//Å×½ºÆ® ¿Ï·á
+	//í…ŒìŠ¤íŠ¸ ì™„ë£Œ
 	@RequestMapping(value="/json/getUserDomain", method=RequestMethod.POST)
 	public User getUserDomain( @RequestBody User user ) throws Exception
 	{
@@ -135,7 +123,7 @@ public class UserRestController
 		
 		System.out.println(user);
 		
-		// Model °ú View ¿¬°á
+		// Model ê³¼ View ì—°ê²°
 		
 		return user;
 	}

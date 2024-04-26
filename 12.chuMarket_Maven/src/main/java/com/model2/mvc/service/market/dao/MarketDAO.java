@@ -21,18 +21,18 @@ import com.model2.mvc.service.purchase.impl.PurchaseServiceImpl;
 @Repository("marketDAO")
 public class MarketDAO implements com.model2.mvc.service.market.MarketDAO
 {
-	///ÇÊµå
+	///í•„ë“œ
 	@Autowired
 	@Qualifier("sqlSessionTemplate")
 	private SqlSession sqlSession;
 
-	///»ı¼ºÀÚ
+	///ìƒì„±ì
 	public MarketDAO()
 	{
 		System.out.println(this.getClass());
 	}
 	
-	///¸Ş¼Òµå
+	///ë©”ì†Œë“œ
 	public Market getMarket(int marketNo) throws Exception 
 	{
 		return sqlSession.selectOne("MarketMapper.getMarketNo", marketNo);

@@ -1,15 +1,15 @@
 <%
 	/***************************************************
-	*	ÀÛ¼ºÀÚ : Ãß°æ¿î
-	*	ÀÛ¼ºÀÏ : 2024-03-31
-	*	³»  ¿ë : ±âÁ¸ÀÇ FrameSet Çü½ÄÀ» 
+	*	ì‘ì„±ì : ì¶”ê²½ìš´
+	*	ì‘ì„±ì¼ : 2024-03-31
+	*	ë‚´  ìš© : ê¸°ì¡´ì˜ FrameSet í˜•ì‹ì„ 
 	*			 header / article / footer 
-	*			 jspInclude ¹æ½ÄÀ¸·Î ¼öÁ¤ 
-	*			 Bulma Css FrameWork Àû¿ë¿¡ µû¸¥
-	*			 ÆäÀÌÁö UI ¼öÁ¤
+	*			 jspInclude ë°©ì‹ìœ¼ë¡œ ìˆ˜ì • 
+	*			 Bulma Css FrameWork ì ìš©ì— ë”°ë¥¸
+	*			 í˜ì´ì§€ UI ìˆ˜ì •
 	****************************************************/
 %>
-<%@ page contentType="text/html; charset=euc-kr" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
@@ -53,19 +53,19 @@
 			 	/* ########################## login / logout ########################## */	
 
 				/* ########################## History ########################## */	
-				$( ".Depth03:contains('ÃÖ±Ù º» »óÇ°')" ).on("click" , function() 
+				$( ".Depth03:contains('ìµœê·¼ ë³¸ ìƒí’ˆ')" ).on("click" , function() 
 			 	{
 					 popWin = window.open("/history.jsp","popWin","left=300, top=200, width=300, height=200, marginwidth=0, marginheight=0, scrollbars=no, scrolling=no, menubar=no, resizable=no");
 				});
 				/* ########################## History ########################## */	
 				
 				/* ########################## userInfo########################## */		 
-			 	$( ".Depth03:contains('°³ÀÎÁ¤º¸Á¶È¸')" ).on("click" , function() 
+			 	$( ".Depth03:contains('ê°œì¸ì •ë³´ì¡°íšŒ')" ).on("click" , function() 
 			 	{
 					$(window.location).attr("href","/user/getUser?userId=${userInfo.userId}");
 				});
 				
-			 	$( ".Depth03:contains('È¸¿øÁ¤º¸Á¶È¸')" ).on("click" , function() 
+			 	$( ".Depth03:contains('íšŒì›ì •ë³´ì¡°íšŒ')" ).on("click" , function() 
 			 	{
 			 		$(window.location).attr("href","/user/listUser");
 				}); 
@@ -73,7 +73,7 @@
 			 	
 			 	/* ########################## Product ########################## */	
 
-			 	$( ".Depth03:contains('ÆÇ¸Å»óÇ°µî·Ï')" ).on("click" , function() 
+			 	$( ".Depth03:contains('íŒë§¤ìƒí’ˆë“±ë¡')" ).on("click" , function() 
 			 	{
 			 		$(window.location).attr("href","/product/addProductView.jsp");
 				}); 
@@ -81,32 +81,32 @@
 				var role = "${userInfo.role}";
 			 	if(role == "bsns")
 			 	{
-			 		$( ".Depth03:contains('ÆÇ¸Å»óÇ°°ü¸®')" ).on("click" , function() 
+			 		$( ".Depth03:contains('íŒë§¤ìƒí’ˆê´€ë¦¬')" ).on("click" , function() 
 			 		{
 				 		$(window.location).attr("href","/market/getMarket?marketNo=${bsnsMarket.marketNo}&menu=bsns");
 					}); 
 			 	}else
 			 	if(role == "admin")
-				$( ".Depth03:contains('ÆÇ¸Å»óÇ°°ü¸®')" ).on("click" , function() {
+				$( ".Depth03:contains('íŒë§¤ìƒí’ˆê´€ë¦¬')" ).on("click" , function() {
 			 		$(window.location).attr("href","/product/listProduct?menu=manage");
 				}); 
 			 	
 			 	/* ########################## Product ########################## */	
 			 	
 			 	/* ########################## Purchase ########################## */	
-			 	$( ".Depth03:contains('±¸¸ÅÀÌ·ÂÁ¶È¸')" ).on("click" , function() 
+			 	$( ".Depth03:contains('êµ¬ë§¤ì´ë ¥ì¡°íšŒ')" ).on("click" , function() 
 			 	{
 			 		$(window.location).attr("href","/purchase/listPurchase");
 				}); 
 			 	/* ########################## Purchase ########################## */	
 			 	
 			 	/* ########################## Market ########################## */	
-			 	$( ".Depth03:contains('ÀÔÁ¡ ¹®ÀÇ')" ).on("click" , function() 
+			 	$( ".Depth03:contains('ì…ì  ë¬¸ì˜')" ).on("click" , function() 
 			 	{
 			 		$(window.location).attr("href","/market/addMarket");
 				}); 
 			 	
-			 	$( ".Depth03:contains('ÀÔÁ¡ ½ÅÃ» Á¶È¸')" ).on("click" , function() 
+			 	$( ".Depth03:contains('ì…ì  ì‹ ì²­ ì¡°íšŒ')" ).on("click" , function() 
 			 	{
 			 		$(window.location).attr("href","/market/listMarket");
 				}); 
@@ -136,21 +136,21 @@
 				<div class="navbar-start">
 					<c:if test="${userInfo.role == 'admin'}">
 						<a class="navbar-item Depth03">
-							È¸¿øÁ¤º¸Á¶È¸
+							íšŒì›ì •ë³´ì¡°íšŒ
 						</a>
 					</c:if>
 					<c:if test="${userInfo.role == 'admin'|| userInfo.role == 'bsns'}">
 						<a class="navbar-item Depth03">
-							ÆÇ¸Å»óÇ°µî·Ï
+							íŒë§¤ìƒí’ˆë“±ë¡
 						</a>
 						<a class="navbar-item Depth03">
-							ÆÇ¸Å»óÇ°°ü¸®
+							íŒë§¤ìƒí’ˆê´€ë¦¬
 						</a>
 					</c:if>
 					<c:if test="${!empty userInfo}">
 						<c:if test="${userInfo.role == 'user'}">
 							<a class="navbar-item Depth03">
-								±¸¸ÅÀÌ·ÂÁ¶È¸
+								êµ¬ë§¤ì´ë ¥ì¡°íšŒ
 							</a>
 						</c:if>
 					</c:if>
@@ -162,11 +162,11 @@
 						<div class="navbar-dropdown">
 							<c:if test="${!empty userInfo}">
 								<a class="navbar-item Depth03">
-									°³ÀÎÁ¤º¸Á¶È¸
+									ê°œì¸ì •ë³´ì¡°íšŒ
 								</a>
 							</c:if>
 							<a class="navbar-item Depth03">
-								ÃÖ±Ù º» »óÇ°
+								ìµœê·¼ ë³¸ ìƒí’ˆ
 							</a>
 							<c:if test="${!empty userInfo}">
 								<hr class="navbar-divider">
@@ -176,13 +176,13 @@
 									
 									<c:if test="${userInfo.role == 'user' || userInfo.role == 'bsns'}">
 										<a class="navbar-item Depth03">
-											ÀÔÁ¡ ¹®ÀÇ
+											ì…ì  ë¬¸ì˜
 										</a>
 									</c:if>
 									<c:if test="${userInfo.role == 'admin'}">
 										
 										<a class="navbar-item Depth03">
-											ÀÔÁ¡ ½ÅÃ» Á¶È¸
+											ì…ì  ì‹ ì²­ ì¡°íšŒ
 										</a>
 									</c:if>
 								</c:if>
@@ -206,7 +206,7 @@
 				</c:if>
 				<c:if test="${userInfo != null}">
 					<div class="navbar-end">
-						<h1 class="navbar-item subtitle"><b>${userInfo.userName}</b>  ´Ô È¯¿µÇÕ´Ï´Ù.</h1>
+						<h1 class="navbar-item subtitle"><b>${userInfo.userName}</b>  ë‹˜ í™˜ì˜í•©ë‹ˆë‹¤.</h1>
 					</div>
 					<div class="buttons">
 						<a class="button is-primary Depth03">

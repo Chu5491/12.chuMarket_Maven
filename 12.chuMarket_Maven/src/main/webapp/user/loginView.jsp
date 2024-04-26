@@ -1,15 +1,15 @@
 <%
 	/***************************************************
-	*	ÀÛ¼ºÀÚ : Ãß°æ¿î
-	*	ÀÛ¼ºÀÏ : 2024-03-31
-	*	³»  ¿ë : ±âÁ¸ÀÇ FrameSet Çü½ÄÀ» 
+	*	ì‘ì„±ì : ì¶”ê²½ìš´
+	*	ì‘ì„±ì¼ : 2024-03-31
+	*	ë‚´  ìš© : ê¸°ì¡´ì˜ FrameSet í˜•ì‹ì„ 
 	*			 header / article / footer 
-	*			 jspInclude ¹æ½ÄÀ¸·Î ¼öÁ¤ 
-	*			 Bulma Css FrameWork Àû¿ë¿¡ µû¸¥
-	*			 ÆäÀÌÁö UI ¼öÁ¤
+	*			 jspInclude ë°©ì‹ìœ¼ë¡œ ìˆ˜ì • 
+	*			 Bulma Css FrameWork ì ìš©ì— ë”°ë¥¸
+	*			 í˜ì´ì§€ UI ìˆ˜ì •
 	****************************************************/
 %>
-<%@ page contentType="text/html; charset=euc-kr" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 	<!-- Header -->
 	<header>
@@ -20,7 +20,7 @@
 	<!-- Script -->
 	<script type="text/javascript">
 	
-		//¿£ÅÍ ½Ã submit ÀÌº¥Æ®
+		//ì—”í„° ì‹œ submit ì´ë²¤íŠ¸
 		document.addEventListener("DOMContentLoaded", function()
 		{
 		  var inputFields = document.querySelectorAll('.ct_input_g');
@@ -46,13 +46,13 @@
 			
 			
 			
-			//==> Ãß°¡µÈºÎºĞ : "addUser"  Event ¿¬°á
+			//==> ì¶”ê°€ëœë¶€ë¶„ : "addUser"  Event ì—°ê²°
 			$("img[src='/images/btn_login.gif']").on("click" , function() 
 			{
 				fncLogin(); 
 			});
 			
-			//==> Ãß°¡µÈºÎºĞ : "addUser"  Event ¿¬°á
+			//==> ì¶”ê°€ëœë¶€ë¶„ : "addUser"  Event ì—°ê²°
 			$("img[src='/images/btn_add.gif']").on("click" , function() 
 			{
 				self.location = "/user/addUser"
@@ -65,14 +65,14 @@
 			var pw=document.loginForm.password.value;
 			if(id == null || id.length <1) 
 			{
-				alert('ID ¸¦ ÀÔ·ÂÇÏÁö ¾ÊÀ¸¼Ì½À´Ï´Ù.');
+				alert('ID ë¥¼ ì…ë ¥í•˜ì§€ ì•Šìœ¼ì…¨ìŠµë‹ˆë‹¤.');
 				document.loginForm.userId.focus();
 				return;
 			}
 			
 			if(pw == null || pw.length <1) 
 			{
-				alert('ÆĞ½º¿öµå¸¦ ÀÔ·ÂÇÏÁö ¾ÊÀ¸¼Ì½À´Ï´Ù.');
+				alert('íŒ¨ìŠ¤ì›Œë“œë¥¼ ì…ë ¥í•˜ì§€ ì•Šìœ¼ì…¨ìŠµë‹ˆë‹¤.');
 				document.loginForm.password.focus();
 				return;
 			}
@@ -101,19 +101,19 @@
 					
 					if( JSONData != null )
 					{
-						//[¹æ¹ı1]
+						//[ë°©ë²•1]
 						//$(window.parent.document.location).attr("href","/index.jsp");
 						
-						//[¹æ¹ı2]
+						//[ë°©ë²•2]
 						//window.parent.document.location.reload();
 						
-						//[¹æ¹ı3]
+						//[ë°©ë²•3]
 						$(document.location).attr("href","/");
 						
-						//==> ¹æ¹ı 1 , 2 , 3 °á°ú ÇĞÀÎ
+						//==> ë°©ë²• 1 , 2 , 3 ê²°ê³¼ í•™ì¸
 					}else
 					{
-						alert("¾ÆÀÌµğ , ÆĞ½º¿öµå¸¦ È®ÀÎÇÏ½Ã°í ´Ù½Ã ·Î±×ÀÎ...");
+						alert("ì•„ì´ë”” , íŒ¨ìŠ¤ì›Œë“œë¥¼ í™•ì¸í•˜ì‹œê³  ë‹¤ì‹œ ë¡œê·¸ì¸...");
 					}
 				}
 			}); 

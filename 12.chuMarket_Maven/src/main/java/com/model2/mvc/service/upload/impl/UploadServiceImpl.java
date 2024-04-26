@@ -11,18 +11,18 @@ import com.model2.mvc.service.domain.Upload;
 @Service("uploadServiceImpl")
 public class UploadServiceImpl implements UploadService
 {
-	///ÇÊµå
+	///í•„ë“œ
 	@Autowired
 	@Qualifier("uploadDAO")
 	private UploadDAO uploadDAO;
 
-	///»ı¼ºÀÚ
+	///ìƒì„±ì
 	public UploadServiceImpl() 
 	{
 		
 	}
 	
-	///¸Ş¼Òµå
+	///ë©”ì†Œë“œ
 	public void addUpload(Upload upload)
 	{
 		uploadDAO.addUpload(upload);

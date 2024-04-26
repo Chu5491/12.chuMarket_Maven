@@ -1,15 +1,15 @@
 <%
 	/***************************************************
-	*	ÀÛ¼ºÀÚ : Ãß°æ¿î
-	*	ÀÛ¼ºÀÏ : 2024-03-31
-	*	³»  ¿ë : ±âÁ¸ÀÇ FrameSet Çü½ÄÀ» 
+	*	ì‘ì„±ì : ì¶”ê²½ìš´
+	*	ì‘ì„±ì¼ : 2024-03-31
+	*	ë‚´  ìš© : ê¸°ì¡´ì˜ FrameSet í˜•ì‹ì„ 
 	*			 header / article / footer 
-	*			 jspInclude ¹æ½ÄÀ¸·Î ¼öÁ¤ 
-	*			 Bulma Css FrameWork Àû¿ë¿¡ µû¸¥
-	*			 ÆäÀÌÁö UI ¼öÁ¤
+	*			 jspInclude ë°©ì‹ìœ¼ë¡œ ìˆ˜ì • 
+	*			 Bulma Css FrameWork ì ìš©ì— ë”°ë¥¸
+	*			 í˜ì´ì§€ UI ìˆ˜ì •
 	****************************************************/
 %>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -43,7 +43,7 @@
 			
 			
 			/* ########################## Search ########################## */
-			$( ".ct_btn01:contains('°Ë»ö')" ).on("click" , function() 
+			$( ".ct_btn01:contains('ê²€ìƒ‰')" ).on("click" , function() 
 		 	{
 				fncGetList(1);
 			}); 
@@ -62,7 +62,7 @@
 				{
 					if(stock == 0)
 					{
-						alert("Ç°ÀıµÈ »óÇ°ÀÔ´Ï´Ù.");
+						alert("í’ˆì ˆëœ ìƒí’ˆì…ë‹ˆë‹¤.");
 					}else
 					{
 						$(window.location).attr("href","/product/getProduct?prodNo="+$(this).attr('id')+"&menu="+menu);
@@ -89,7 +89,7 @@
 				<table class="table" width="100%" height="37" border="0" cellpadding="0" cellspacing="0">
 					<tr>
 						<td background="/images/ct_ttl_img02.gif" width="100%">
-							<b>${menu =='search' ? '»óÇ° ¸ñ·ÏÁ¶È¸' : '»óÇ° °ü¸®'}</b>
+							<b>${menu =='search' ? 'ìƒí’ˆ ëª©ë¡ì¡°íšŒ' : 'ìƒí’ˆ ê´€ë¦¬'}</b>
 						</td>
 					</tr>
 				</table>
@@ -100,9 +100,9 @@
 							<td align="right">
 								<div class="select">
 									<select name="searchCondition" class="ct_input_g" style="height:40px">
-										<option value="no" ${! empty search.searchCondition && search.searchCondition == 'no' ? 'selected' : ""}>»óÇ°¹øÈ£</option>
-										<option value="name" ${! empty search.searchCondition && search.searchCondition == 'name' ? 'selected' : ""}>»óÇ°¸í</option>
-										<option value="price" ${! empty search.searchCondition && search.searchCondition == 'price' ? 'selected' : ""}>»óÇ°°¡°İ</option>
+										<option value="no" ${! empty search.searchCondition && search.searchCondition == 'no' ? 'selected' : ""}>ìƒí’ˆë²ˆí˜¸</option>
+										<option value="name" ${! empty search.searchCondition && search.searchCondition == 'name' ? 'selected' : ""}>ìƒí’ˆëª…</option>
+										<option value="price" ${! empty search.searchCondition && search.searchCondition == 'price' ? 'selected' : ""}>ìƒí’ˆê°€ê²©</option>
 									</select>
 								</div>
 								<input type="text" name="searchKeyword"  value="${search.searchKeyword }" 
@@ -115,7 +115,7 @@
 											<img src="/images/ct_btnbg01.gif" width="17" height="23">
 										</td>
 										<td align="right" width="70">
-											<button class="button ct_btn01" style="height:40px">°Ë»ö</button>
+											<button class="button ct_btn01" style="height:40px">ê²€ìƒ‰</button>
 										</td>
 										<td width="14" height="23">
 											<img src="/images/ct_btnbg03.gif" width="14" height="23">
@@ -128,15 +128,15 @@
 				
 					<table class="table" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
 						<tr>
-							<td colspan="13" >ÀüÃ¼ <span style="color:red;">${resultPage.totalCount}</span> °Ç¼ö, ÇöÀç <span style="color:red;">${resultPage.currentPage}</span> ÆäÀÌÁö</td>
+							<td colspan="13" >ì „ì²´ <span style="color:red;">${resultPage.totalCount}</span> ê±´ìˆ˜, í˜„ì¬ <span style="color:red;">${resultPage.currentPage}</span> í˜ì´ì§€</td>
 						</tr>
 						<tr>
 							<th align="center" class="ct_list_b" width="100">No</th>
-							<th class="ct_list_b" width="150">»óÇ°¸í</th>
-							<th class="ct_list_b" width="150">°¡°İ</th>
-							<th class="ct_list_b">µî·ÏÀÏ</th>	
-							<th class="ct_list_b">¼îÇÎ¸ô</th>	
-							<th class="ct_list_b">ÇöÀç»óÅÂ</th>	
+							<th class="ct_list_b" width="150">ìƒí’ˆëª…</th>
+							<th class="ct_list_b" width="150">ê°€ê²©</th>
+							<th class="ct_list_b">ë“±ë¡ì¼</th>	
+							<th class="ct_list_b">ì‡¼í•‘ëª°</th>	
+							<th class="ct_list_b">í˜„ì¬ìƒíƒœ</th>	
 						</tr>
 						<c:forEach var="prod" items="${list}" >
 							<c:set var="i" value="${ i+1 }" />
@@ -156,19 +156,19 @@
 								</td>
 								<td align="left" id="${prod.prodStock}">
 									<c:if test="${prod.prodStock <= 0}">
-										Àç°í¾øÀ½
+										ì¬ê³ ì—†ìŒ
 									</c:if>
 									<c:if test="${prod.prodStock > 0}">
 										<c:if test="${menu != 'manage' || menu != 'bsns'}">
 											<c:if test="${prod.prodStock <= 5}">
-												<b style="color:red;">Ç°ÀıÀÓ¹Ú</b> 
+												<b style="color:red;">í’ˆì ˆì„ë°•</b> 
 											</c:if>
 											<c:if test="${prod.prodStock > 5}">
-												<b style="color:green;">ÆÇ¸ÅÁß</b>
+												<b style="color:green;">íŒë§¤ì¤‘</b>
 											</c:if>
 										</c:if>
 										<c:if test="${menu == 'manage' || menu == 'bsns'}">
-											Àç°í : ${prod.prodStock} °³ ³²À½
+											ì¬ê³  : ${prod.prodStock} ê°œ ë‚¨ìŒ
 										</c:if>
 									</c:if>
 								</td>	

@@ -15,18 +15,18 @@ import com.model2.mvc.service.domain.*;
 @Repository("purDAO")
 public class PurchaseDAO implements com.model2.mvc.service.purchase.PurchaseDAO
 {
-	///ÇÊµå
+	///í•„ë“œ
 	@Autowired
 	@Qualifier("sqlSessionTemplate")
 	private SqlSession sqlSession;
 	
-	///»ı¼ºÀÚ
+	///ìƒì„±ì
 	public PurchaseDAO()
 	{
 		System.out.println(this.getClass());
 	}
 	
-	///¸Ş¼Òµå
+	///ë©”ì†Œë“œ
 	public Purchase getPurchase(int tran_no) throws Exception 
 	{
 		Purchase pur = sqlSession.selectOne("PurchaseMapper.getPurchase", tran_no);

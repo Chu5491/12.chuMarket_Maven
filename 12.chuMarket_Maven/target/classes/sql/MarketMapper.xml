@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MarketMapper">
+	
+	<resultMap id="marketSelectMap" type="market">
+		<result property="marketNo" 		 	 column="MARKET_NO" 		jdbcType="INTEGER"/>
+		<result property="userId" 				 column="USER_ID" 			jdbcType="VARCHAR"/>
+		<result property="marketName" 	 		 column="MARKET_NAME" 		jdbcType="VARCHAR"/>
+		<result property="marketIntro" 		 	 column="MARKET_INTRO"	 	jdbcType="VARCHAR" />
+		<result property="marketAddr"  	 		 column="MARKET_ADDR"	 	jdbcType="VARCHAR" />
+		<result property="openDate" 		 	 column="OPEN_DATE"		 	jdbcType="DATE" />
+		<result property="manaFlag" 	 	 	 column="MANA_FLAG" 		jdbcType="VARCHAR" />
+	</resultMap>
+  	
+	<!-- INSERT 매핑구문 (insert SQL 등록) :: insert element -->
+  	<insert id="addMarket" parameterType="market" useGeneratedKeys="true" keyProperty="marketNo,openDate" keyColumn="MARKET_NO,OPEN_DATE">
+  		INSERT
+  		INTO MARKET_INFO
+  		(
+  			MARKET_NO, USER_ID, MARKET_NAME, MARKET_INTRO, MARKET_ADDR, 
+  			OPEN_DATE, MANA_FLAG
+  		)
+  		VALUES
+  		(
+  			SEQ_MARKET_MARKET_NO.NEXTVAL,#{userId},#{marketName},#{marketIntro},#{marketAddr},SYSDATE,'W'
+  		)
+  	</insert>
+  	<!-- INSERT 매핑구문 (insert SQL 등록) :: insert element -->
+  	
+  	
+  	<!-- SELECT 매핑구문 (select SQL 등록) :: select element -->  	
+  	<select id="getMarketNo" parameterType="int" resultMap="marketSelectMap">
+  		SELECT
+  			MARKET_NO,
+  			USER_ID, 
+  			MARKET_NAME,
+  			MARKET_INTRO,
+  			MARKET_ADDR,
+  			OPEN_DATE,
+			MANA_FLAG
+			FROM MARKET_INFO 
+		WHERE 
+			MARKET_NO = #{value}
+  	</select>
+  	<!-- SELECT 매핑구문 (select SQL 등록) :: select element -->  	
+  	
+  	<!-- SELECT 매핑구문 (select SQL 등록) :: select element -->  	
+  	<select id="getMarketId" parameterType="STRING" resultMap="marketSelectMap">
+  		SELECT 
+  			MARKET_NO,
+  			USER_ID,
+  			MARKET_NAME,
+  			MARKET_INTRO,
+  			MARKET_ADDR,
+  			OPEN_DATE,
+			MANA_FLAG
+			FROM MARKET_INFO 
+		WHERE 
+			USER_ID = #{value}
+  	</select>
+  	<!-- SELECT 매핑구문 (select SQL 등록) :: select element --> 
+  	
+  	<!-- UPDATE 매핑구문 (update SQL 등록) :: update element -->  	
+  	<update id="updateMarket" parameterType="market">
+  		UPDATE MARKET_INFO 
+  			<set>
+	  			<if test="manaFlag != null">MANA_FLAG = #{manaFlag}</if>
+  			</set>
+			<where>
+				<if test="marketNo != null">MARKET_NO = #{marketNo}</if>
+			</where>
+  	</update>
+  	<!-- UPDATE 매핑구문 (update SQL 등록) :: update element -->  
+  	
+  	<!-- DELETE 매핑구문 (delete SQL 등록) :: delete element -->  	
+  	<delete id="deleteMarket" parameterType="int" >
+  		DELETE FROM 
+  		MARKET_INFO
+  		<where>
+  			MARKET_NO = ${value}
+  		</where>
+  	</delete>
+  	<!-- DELETE 매핑구문 (delete SQL 등록) :: delete element -->  
+  	
+  	
+  	<!-- SELECT 매핑구문 (select SQL 등록) :: select element -->  	
+  	<select id="listMarket" parameterType="search" resultMap="marketSelectMap">
+  		SELECT * FROM 
+			( 
+				SELECT inner_table. * ,  ROWNUM AS row_seq FROM 
+				( 
+					SELECT
+  						MARKET_NO,
+  						USER_ID,
+  						MARKET_NAME,
+  						MARKET_INTRO,
+  						MARKET_ADDR,
+  						OPEN_DATE,
+  						MANA_FLAG
+  					FROM MARKET_INFO
+  					<!-- 
+  					<if test="searchCondition != null">
+						<where>
+							<if test="searchCondition == 'no' and searchKeyword !='' ">
+					 			PROD_NO LIKE  '%'||#{searchKeyword}||'%'
+							</if>
+							<if test="searchCondition == 'name' and searchKeyword !='' ">
+					 			PROD_NAME LIKE  '%'||#{searchKeyword}||'%'
+							</if>
+							<if test="searchCondition == 'price' and searchKeyword !='' ">
+					 			PRICE = #{searchKeyword}
+							</if>
+						</where>
+					</if>
+					 -->
+					ORDER BY MARKET_NO
+				)inner_table
+				
+				WHERE ROWNUM &lt;= #{endRowNum}
+			)
+			WHERE row_seq BETWEEN #{startRowNum} AND #{endRowNum} 
+  	</select>
+	<!-- SELECT 매핑구문 (select SQL 등록) :: select element -->  
+	
+	<!-- SQL : SELECT ROW Count -->	 
+	<select  id="listMarketTotal"  parameterType="string" resultType="int">
+		SELECT COUNT(*) AS COUNT from MARKET_INFO 
+		<!-- 
+		<if test="searchCondition != null">
+			<where>
+				<if test="searchCondition == 'no' and searchKeyword !='' ">
+		 			PROD_NO LIKE  '%'||#{searchKeyword}||'%' 
+				</if>
+				<if test="searchCondition == 'name' and searchKeyword !='' ">
+		 			PROD_NAME LIKE  '%'||#{searchKeyword}||'%'
+				</if>
+				<if test="searchCondition == 'price' and searchKeyword !='' ">
+		 			PRICE = #{searchKeyword}
+				</if>
+			</where>
+		</if>
+		 -->
+	</select>
+	<!-- SQL : SELECT ROW Count -->	 
+
+</mapper>

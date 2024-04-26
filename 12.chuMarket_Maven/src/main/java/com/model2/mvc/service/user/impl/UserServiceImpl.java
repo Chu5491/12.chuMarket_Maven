@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService
 	{
 		User dbUser = userDAO.getUser(user.getUserId());
 		if(! dbUser.getPassword().equals(user.getPassword()))
-			throw new Exception("·Î±×ÀÎ¿¡ ½ÇÆĞÇß½À´Ï´Ù.");
+			throw new Exception("ë¡œê·¸ì¸ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.");
 		
 		return dbUser;
 	}

@@ -1,15 +1,15 @@
 <%
 	/***************************************************
-	*	юш╪╨юз : цъ╟Ф©Н
-	*	юш╪╨юо : 2024-03-31
-	*	Ё╩  ©К : ╠Ба╦юг FrameSet гЭ╫дю╩ 
+	*	Л·▒Л└╠Л·░ : Л╤■Й╡╫Л ╢
+	*	Л·▒Л└╠Л²╪ : 2024-03-31
+	*	К┌╢  Л ╘ : Й╦╟Л║╢Л²≤ FrameSet М≤∙Л▀²Л²└ 
 	*			 header / article / footer 
-	*			 jspInclude ╧Ф╫дю╦╥н ╪Жа╓ 
-	*			 Bulma Css FrameWork юШ©К©║ ╣Ш╦╔
-	*			 фДюлаЖ UI ╪Жа╓
+	*			 jspInclude К╟╘Л▀²Л°╪К║° Л┬≤Л═∙ 
+	*			 Bulma Css FrameWork Л═│Л ╘Л≈░ К■╟К╔╦
+	*			 М▌≤Л²╢Л╖─ UI Л┬≤Л═∙
 	****************************************************/
 %>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -32,29 +32,29 @@
 			
 			
 			/* ########################## Market ########################## */
-			$( ".ct_btn01:contains('юта║╫ец╩')" ).on("click" , function() 
+			$( ".ct_btn01:contains('Л·┘Л═░Л▀═Л╡╜')" ).on("click" , function() 
 		 	{
-				////////// юта║╫ец╩ е╛╦╞ ╫ц //////////
-				//Form ю╞х©╪╨ ╟каУ
+				////////// Л·┘Л═░Л▀═Л╡╜ М│╢К╕╜ Л▀° //////////
+				//Form Л°═М ╗Л└╠ Й╡─Л╕²
 			 	var name  = $("#marketName");
 				var intro = $("#marketIntro");
 				var addr  = $("#marketAddr");
 	
 				if(name.val() == null || name.val().length<1)
 				{
-					alert("╩Схё╦Мю╨ ╧щ╣Е╫ц ют╥бго©╘╬ъ гу╢о╢ы.");
+					alert("Л┐│М≤╦К╙┘Л²─ К╟≤К⌠°Л▀° Л·┘К═╔М∙≤Л≈╛Л∙╪ М∙╘К▀┬К▀╓.");
 					name.focus();
 					return;
 				}
 				if(intro.val() == null || intro.val().length<1)
 				{
-					alert("╪р╟Ё╢б ╧щ╣Е╫ц ют╥бго©╘╬ъ гу╢о╢ы.");
+					alert("Л├▄Й╟°К┼■ К╟≤К⌠°Л▀° Л·┘К═╔М∙≤Л≈╛Л∙╪ М∙╘К▀┬К▀╓.");
 					intro.focus();
 					return;
 				}
 				if(addr.val() == null || addr.val().length<1)
 				{
-					alert("╩Г╬ВюЕ аж╪р╢б ╧щ╣Е╫ц ют╥бго╪е╬ъ гу╢о╢ы.");
+					alert("Л┌╛Л≈┘Л·╔ Лё╪Л├▄К┼■ К╟≤К⌠°Л▀° Л·┘К═╔М∙≤Л┘■Л∙╪ М∙╘К▀┬К▀╓.");
 					addr.focus();
 					return;
 				}
@@ -62,9 +62,9 @@
 				detailForm.attr('action','/market/addMarket').submit();
 			}); 
 			
-			$( ".ct_btn01:contains('цК╪р')" ).on("click" , function() 
+			$( ".ct_btn01:contains('Л╥╗Л├▄')" ).on("click" , function() 
 			{
-				if($(this).text().trim() == 'цК╪р')
+				if($(this).text().trim() == 'Л╥╗Л├▄')
 				{
 					detailForm.each(function()
 					{
@@ -72,7 +72,7 @@
 					});
 				}else
 				{
-					 if (!confirm("цК╪р аЬгЮ ╫ц а╓╨╦╢б цй╠Бх╜╣г╦Г, юГ╫ец╩ ╫ц ╢ы╫ц юш╪╨го╪е╬ъ гу╢о╢ы. \nцК╪рго╫ц╟з╫ю╢о╠Н?")) 
+					 if (!confirm("Л╥╗Л├▄ Л╖└М√┴ Л▀° Л═∙КЁ╢К┼■ Л╢┬Й╦╟М≥■К░≤К╘╟, Л·╛Л▀═Л╡╜ Л▀° К▀╓Л▀° Л·▒Л└╠М∙≤Л┘■Л∙╪ М∙╘К▀┬К▀╓. \nЛ╥╗Л├▄М∙≤Л▀°Й╡═Л┼╣К▀┬Й╧▄?")) 
 					 {
 						 
 					 } else 
@@ -82,7 +82,7 @@
 				}
 			});
 			
-			$( ".ct_btn01:contains('юлюЭ')" ).on("click" , function() 
+			$( ".ct_btn01:contains('Л²╢Л═└')" ).on("click" , function() 
 			{
 				history.go(-1);
 			});
@@ -100,7 +100,7 @@
 				<table class="table" width="100%" height="37" border="0" cellpadding="0" cellspacing="0">
 					<tr>
 						<td background="/images/ct_ttl_img02.gif" width="100%">
-							<b>юта║╫ец╩</b>
+							<b>Л·┘Л═░Л▀═Л╡╜</b>
 						</td>
 					</tr>
 				</table>
@@ -112,7 +112,7 @@
 							</tr>
 							<tr>
 								<td width="130" class="ct_write">
-									╫ец╩╧Ьхё
+									Л▀═Л╡╜К╡┬М≤╦
 									<imgsrc="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle">
 								</td>
 								<td class="ct_write01">
@@ -128,7 +128,7 @@
 						</c:if>
 						<tr>
 							<td width="130" class="ct_write">
-								╫ец╩юз ╬фюл╣П 
+								Л▀═Л╡╜Л·░ Л∙└Л²╢К■■ 
 								<imgsrc="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle">
 							</td>
 							<td class="ct_write01">
@@ -143,7 +143,7 @@
 						</tr>
 						<tr>
 							<td width="130" class="ct_write">
-								╩Схё╦М 
+								Л┐│М≤╦К╙┘ 
 								<imgsrc="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle">
 							</td>
 							<td class="ct_write01">
@@ -165,7 +165,7 @@
 						</tr>
 						<tr>
 							<td width="130" class="ct_write">
-								╪р╟Ё 
+								Л├▄Й╟° 
 								<img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 							</td>
 							<td class="ct_write01">
@@ -187,7 +187,7 @@
 						</tr>
 						<tr>
 							<td width="130" class="ct_write">
-								╩Г╬ВюЕ аж╪р 
+								Л┌╛Л≈┘Л·╔ Лё╪Л├▄ 
 								<img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 							</td>
 							<td class="ct_write01">
@@ -210,7 +210,7 @@
 						<c:if test="${!empty market }">
 							<tr>
 								<td width="130" class="ct_write">
-									╫ец╩ гЖх╡
+									Л▀═Л╡╜ М≤└М≥╘
 									<img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 								</td>
 								<td class="ct_write01">
@@ -218,17 +218,17 @@
 										<tr>
 											<c:if test="${market.manaFlag == 'W'}">
 												<td width="105">
-													╫бюн ╢К╠Баъ
+													Л┼╧Л²╦ К▄─Й╦╟Л╓▒
 												</td>
 											</c:if>
 											<c:if test="${market.manaFlag == 'Y'}">
 												<td width="105">
-													╫бюн©о╥А [©╣╬В╟║╢и]
+													Л┼╧Л²╦Л≥└Кё▄ [Л≤│Л≈┘Й╟─К┼╔]
 												</td>
 											</c:if>
 											<c:if test="${market.manaFlag == 'F'}">
 												<td width="105">
-													©╣╬ВаъаЖ [©╣╬В ╨р╟║╢и]
+													Л≤│Л≈┘Л╓▒Л╖─ [Л≤│Л≈┘ К╤┬Й╟─К┼╔]
 												</td>
 											</c:if>
 										</tr>
@@ -247,14 +247,14 @@
 							<table border="0" cellspacing="0" cellpadding="0">
 								<c:if test="${!empty market }">
 									<tr>
-										<td style="float:right;"><a class="button ct_btn01" style="height:40px;">юта║цК╪р</a></td>	
-										<td style="float:right;"><a class="button ct_btn01" style="height:40px;">юлюЭ</a></td>	
+										<td style="float:right;"><a class="button ct_btn01" style="height:40px;">Л·┘Л═░Л╥╗Л├▄</a></td>	
+										<td style="float:right;"><a class="button ct_btn01" style="height:40px;">Л²╢Л═└</a></td>	
 									</tr>
 								</c:if>
 								<c:if test="${empty market }">
 									<tr>
-										<td style="float:right;"><a class="button ct_btn01" style="height:40px;">юта║╫ец╩</a></td>	
-										<td style="float:right;"><a class="button ct_btn01" style="height:40px;">цК╪р</a></td>	
+										<td style="float:right;"><a class="button ct_btn01" style="height:40px;">Л·┘Л═░Л▀═Л╡╜</a></td>	
+										<td style="float:right;"><a class="button ct_btn01" style="height:40px;">Л╥╗Л├▄</a></td>	
 									</tr>
 								</c:if>
 							</table>

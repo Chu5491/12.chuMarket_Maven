@@ -1,15 +1,15 @@
 <%
 	/***************************************************
-	*	ÀÛ¼ºÀÚ : Ãß°æ¿î
-	*	ÀÛ¼ºÀÏ : 2024-03-31
-	*	³»  ¿ë : ±âÁ¸ÀÇ FrameSet Çü½ÄÀ» 
+	*	ì‘ì„±ì : ì¶”ê²½ìš´
+	*	ì‘ì„±ì¼ : 2024-03-31
+	*	ë‚´  ìš© : ê¸°ì¡´ì˜ FrameSet í˜•ì‹ì„ 
 	*			 header / article / footer 
-	*			 jspInclude ¹æ½ÄÀ¸·Î ¼öÁ¤ 
-	*			 Bulma Css FrameWork Àû¿ë¿¡ µû¸¥
-	*			 ÆäÀÌÁö UI ¼öÁ¤
+	*			 jspInclude ë°©ì‹ìœ¼ë¡œ ìˆ˜ì • 
+	*			 Bulma Css FrameWork ì ìš©ì— ë”°ë¥¸
+	*			 í˜ì´ì§€ UI ìˆ˜ì •
 	****************************************************/
 %>
-<%@ page contentType="text/html; charset=euc-kr" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 
@@ -30,10 +30,10 @@
 			/* ########################## Style ########################## */	
 			
 			/* ########################## User ########################## */
-			$( ".ct_btn01:contains('°Ë»ö')" ).on("click" , function() 
+			$( ".ct_btn01:contains('ê²€ìƒ‰')" ).on("click" , function() 
 		 	{
 				//Debug..
-				//alert(  $( ".ct_btn01:contains('°Ë»ö')" ) );
+				//alert(  $( ".ct_btn01:contains('ê²€ìƒ‰')" ) );
 				fncGetList(1);
 			}); 
 			
@@ -45,7 +45,7 @@
 			$(".ct_list_pop > td:nth-child(2)").on("click" , function() 
 			{
 				//Debug..
-				//alert(  $( ".ct_list_pop > td:nth-child(3)" ) + " È¸¿øÁ¤º¸Á¶È¸" );
+				//alert(  $( ".ct_list_pop > td:nth-child(3)" ) + " íšŒì›ì •ë³´ì¡°íšŒ" );
 		 		$(window.location).attr("href","/user/getUser?userId="+$(this).text().trim());
 			}); 
 			/* ########################## User ########################## */
@@ -62,7 +62,7 @@
 				<table class="table" width="100%" height="37" border="0" cellpadding="0" cellspacing="0">
 					<tr>
 						<td background="/images/ct_ttl_img02.gif" width="100%">
-							<b>È¸¿ø ¸ñ·ÏÁ¶È¸</b>
+							<b>íšŒì› ëª©ë¡ì¡°íšŒ</b>
 						</td>
 					</tr>
 				</table>
@@ -75,11 +75,11 @@
 								  <select name="searchCondition" class="ct_input_g" style="height:40px">
 								    <option 
 										value="0" ${! empty search.searchCondition && search.searchCondition == 0 ? "selected" : "" }>
-										È¸¿øID
+										íšŒì›ID
 									</option>
 									<option 
 										value="1" ${! empty search.searchCondition && search.searchCondition == 1 ? "selected" : "" }>
-										È¸¿ø¸í
+										íšŒì›ëª…
 									</option>
 								  </select>
 								</div>
@@ -87,20 +87,20 @@
 									class="ct_input_g input" style="width:200px; height:40px" >
 							</td>
 							<td align="right" width="70">
-								<button class="button ct_btn01" style="height:40px">°Ë»ö</button>
+								<button class="button ct_btn01" style="height:40px">ê²€ìƒ‰</button>
 							</td>
 						</tr>
 					</table>
 				
 					<table class="table" width="100%" border="0" cellspacing="0" cellpadding="0" >
 						<tr>
-							<td colspan="11" >ÀüÃ¼ <span style="color:red;">${resultPage.totalCount}</span> °Ç¼ö, ÇöÀç <span style="color:red;">${resultPage.currentPage}</span> ÆäÀÌÁö</td>
+							<td colspan="11" >ì „ì²´ <span style="color:red;">${resultPage.totalCount}</span> ê±´ìˆ˜, í˜„ì¬ <span style="color:red;">${resultPage.currentPage}</span> í˜ì´ì§€</td>
 						</tr>
 						<tr>
 							<th align="center" class="ct_list_b" width="100">No</th>
-							<th align="center" class="ct_list_b" width="150">È¸¿øID</th>
-							<th align="center" class="ct_list_b" width="150">È¸¿ø¸í</th>
-							<th align="center" class="ct_list_b">ÀÌ¸ŞÀÏ</th>		
+							<th align="center" class="ct_list_b" width="150">íšŒì›ID</th>
+							<th align="center" class="ct_list_b" width="150">íšŒì›ëª…</th>
+							<th align="center" class="ct_list_b">ì´ë©”ì¼</th>		
 						</tr>
 							<c:set var="i" value="0"/>
 							<c:forEach var="user" items="${list}">

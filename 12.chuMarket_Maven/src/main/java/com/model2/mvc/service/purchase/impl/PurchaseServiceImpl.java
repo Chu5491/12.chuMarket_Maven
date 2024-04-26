@@ -19,7 +19,7 @@ import com.model2.mvc.service.product.ProductDAO;
 @Service("purchaseServiceImpl")
 public class PurchaseServiceImpl implements PurchaseService
 {
-	///ÇÊµå
+	///í•„ë“œ
 	@Autowired
 	@Qualifier("purDAO")
 	private PurchaseDAO purDAO;
@@ -32,13 +32,13 @@ public class PurchaseServiceImpl implements PurchaseService
 	@Qualifier("userDAO")
 	private UserDAO userDAO;
 	
-	///»ı¼ºÀÚ
+	///ìƒì„±ì
 	public PurchaseServiceImpl()
 	{
 		purDAO = new PurchaseDAO();
 	}
 	
-	///¸Ş¼Òµå
+	///ë©”ì†Œë“œ
 	public Purchase addPurchase(Purchase pur) throws Exception
 	{
 		purDAO.addPurchase(pur);

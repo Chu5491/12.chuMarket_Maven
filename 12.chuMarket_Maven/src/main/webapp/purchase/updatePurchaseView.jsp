@@ -1,15 +1,15 @@
 <%
 	/***************************************************
-	*	ÀÛ¼ºÀÚ : Ãß°æ¿î
-	*	ÀÛ¼ºÀÏ : 2024-03-31
-	*	³»  ¿ë : ±âÁ¸ÀÇ FrameSet Çü½ÄÀ» 
+	*	ì‘ì„±ì : ì¶”ê²½ìš´
+	*	ì‘ì„±ì¼ : 2024-03-31
+	*	ë‚´  ìš© : ê¸°ì¡´ì˜ FrameSet í˜•ì‹ì„ 
 	*			 header / article / footer 
-	*			 jspInclude ¹æ½ÄÀ¸·Î ¼öÁ¤ 
-	*			 Bulma Css FrameWork Àû¿ë¿¡ µû¸¥
-	*			 ÆäÀÌÁö UI ¼öÁ¤
+	*			 jspInclude ë°©ì‹ìœ¼ë¡œ ìˆ˜ì • 
+	*			 Bulma Css FrameWork ì ìš©ì— ë”°ë¥¸
+	*			 í˜ì´ì§€ UI ìˆ˜ì •
 	****************************************************/
 %>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -26,7 +26,7 @@
 		{
 			if(value > ${pur.purchaseProd.prodStock + pur.tranStock})
 			{
-				alert('ÇöÀç ${pur.purchaseProd.prodStock + pur.tranStock}°³ ±îÁö ±¸¸ÅÇÒ ¼ö ÀÖ½À´Ï´Ù!!');	
+				alert('í˜„ì¬ ${pur.purchaseProd.prodStock + pur.tranStock}ê°œ ê¹Œì§€ êµ¬ë§¤í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤!!');	
 				document.updatePurchase.tranStock.value= ${pur.purchaseProd.prodStock + pur.tranStock};
 			}
 		}
@@ -45,7 +45,7 @@
 					<td background="/images/ct_ttl_img02.gif" width="100%" style="padding-left: 10px;">
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							<tr>
-								<td width="93%" class="ct_ttl01">±¸¸ÅÁ¤º¸¼öÁ¤</td>
+								<td width="93%" class="ct_ttl01">êµ¬ë§¤ì •ë³´ìˆ˜ì •</td>
 								<td width="20%" align="right">&nbsp;</td>
 							</tr>
 						</table>
@@ -61,7 +61,7 @@
 					<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 				</tr>
 				<tr>
-					<td width="104" class="ct_write">±¸¸ÅÀÚ¾ÆÀÌµğ</td>
+					<td width="104" class="ct_write">êµ¬ë§¤ìì•„ì´ë””</td>
 					<td bgcolor="D6D6D6" width="1"></td>
 					<td class="ct_write01">
 						${pur.buyer.userId}
@@ -72,13 +72,13 @@
 					<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 				</tr>
 				<tr>
-					<td width="104" class="ct_write">±¸¸Å¹æ¹ı</td>
+					<td width="104" class="ct_write">êµ¬ë§¤ë°©ë²•</td>
 					<td bgcolor="D6D6D6" width="1"></td>
 					<td class="ct_write01">
 						<select name="paymentOption" class="ct_input_g" style="width: 100px; height: 19px" 
 							maxLength="20">
-							<option value="1" ${paymentOption == "1" ? 'selected' : ''}>Çö±İ±¸¸Å</option>
-							<option value="2" ${paymentOption == "2" ? 'selected' : ''}>½Å¿ë±¸¸Å</option>
+							<option value="1" ${paymentOption == "1" ? 'selected' : ''}>í˜„ê¸ˆêµ¬ë§¤</option>
+							<option value="2" ${paymentOption == "2" ? 'selected' : ''}>ì‹ ìš©êµ¬ë§¤</option>
 						</select>
 					</td>
 				</tr>
@@ -86,7 +86,7 @@
 					<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 				</tr>
 				<tr>
-					<td width="104" class="ct_write">±¸¸ÅÀÚÀÌ¸§</td>
+					<td width="104" class="ct_write">êµ¬ë§¤ìì´ë¦„</td>
 					<td bgcolor="D6D6D6" width="1"></td>
 					<td class="ct_write01">
 						<input type="text" name="receiverName" 	class="ct_input_g" style="width: 100px; height: 19px" 
@@ -97,7 +97,7 @@
 					<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 				</tr>
 				<tr>
-					<td width="104" class="ct_write">±¸¸ÅÀÚ ¿¬¶ôÃ³</td>
+					<td width="104" class="ct_write">êµ¬ë§¤ì ì—°ë½ì²˜</td>
 					<td bgcolor="D6D6D6" width="1"></td>
 					<td class="ct_write01">
 						<input type="text" name="receiverPhone" class="ct_input_g" style="width: 100px; height: 19px" 
@@ -109,7 +109,7 @@
 					<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 				</tr>
 				<tr>
-					<td width="104" class="ct_write">±¸¸ÅÀÚÁÖ¼Ò</td>
+					<td width="104" class="ct_write">êµ¬ë§¤ìì£¼ì†Œ</td>
 					<td bgcolor="D6D6D6" width="1"></td>
 					<td class="ct_write01">
 						<input type="text" name="divyAddr" class="ct_input_g" style="width: 100px; height: 19px" 
@@ -120,7 +120,7 @@
 					<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 				</tr>
 				<tr>
-					<td width="104" class="ct_write">±¸¸Å¿äÃ»»çÇ×</td>
+					<td width="104" class="ct_write">êµ¬ë§¤ìš”ì²­ì‚¬í•­</td>
 					<td bgcolor="D6D6D6" width="1"></td>
 					<td class="ct_write01">
 						<input type="text" name="divyRequest" 	class="ct_input_g" style="width: 100px; height: 19px" 
@@ -131,7 +131,7 @@
 					<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 				</tr>
 				<tr>
-					<td width="104" class="ct_write">¹è¼ÛÈñ¸ÁÀÏÀÚ</td>
+					<td width="104" class="ct_write">ë°°ì†¡í¬ë§ì¼ì</td>
 					<td bgcolor="D6D6D6" width="1"></td>
 					<td width="200" class="ct_write01">
 						<input type="text" readonly="readonly" name="divyDate" class="ct_input_g" 
@@ -144,13 +144,13 @@
 					<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 				</tr>
 				<tr>
-					<td width="104" class="ct_write">±¸¸Å ¼ö·®</td>
+					<td width="104" class="ct_write">êµ¬ë§¤ ìˆ˜ëŸ‰</td>
 					<td bgcolor="D6D6D6" width="1"></td>
 					<td class="ct_write01">
 						<input type="text" name="tranStock" id="tranStock" class="ct_input_g" style="width: 100px; height: 19px" maxLength="20" 
-							onkeyup="javascript:checkStock(this.value);" value="${pur.tranStock }"/> °³
+							onkeyup="javascript:checkStock(this.value);" value="${pur.tranStock }"/> ê°œ
 						<br><br>
-						¡Ø ¼ıÀÚ¸¸ ÀÔ·Â / ÃÖ´ë ${pur.purchaseProd.prodStock + pur.tranStock}°³±îÁö ±¸¸Å °¡´É
+						â€» ìˆ«ìë§Œ ì…ë ¥ / ìµœëŒ€ ${pur.purchaseProd.prodStock + pur.tranStock}ê°œê¹Œì§€ êµ¬ë§¤ ê°€ëŠ¥
 					</td>
 				</tr>
 				<tr>
@@ -168,7 +168,7 @@
 								<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
 							</td>
 							<td background="/images/ct_btnbg02.gif" class="ct_btn01"	style="padding-top: 3px;">
-								<input type="submit" value="¼öÁ¤"/>
+								<input type="submit" value="ìˆ˜ì •"/>
 							</td>
 							<td width="14" height="23">
 								<img src="/images/ct_btnbg03.gif" width="14" height="23"/>
@@ -178,7 +178,7 @@
 								<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
 							</td>
 							<td background="/images/ct_btnbg02.gif" class="ct_btn01" style="padding-top: 3px;">
-								<a href="javascript:history.go(-1)">Ãë¼Ò</a>
+								<a href="javascript:history.go(-1)">ì·¨ì†Œ</a>
 							</td>
 							<td width="14" height="23">
 								<img src="/images/ct_btnbg03.gif" width="14" height="23"/>

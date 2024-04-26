@@ -1,15 +1,15 @@
 <%
 	/***************************************************
-	*	ÀÛ¼ºÀÚ : Ãß°æ¿î
-	*	ÀÛ¼ºÀÏ : 2024-03-31
-	*	³»  ¿ë : ±âÁ¸ÀÇ FrameSet Çü½ÄÀ» 
+	*	ìž‘ì„±ìž : ì¶”ê²½ìš´
+	*	ìž‘ì„±ì¼ : 2024-03-31
+	*	ë‚´  ìš© : ê¸°ì¡´ì˜ FrameSet í˜•ì‹ì„ 
 	*			 header / article / footer 
-	*			 jspInclude ¹æ½ÄÀ¸·Î ¼öÁ¤ 
-	*			 Bulma Css FrameWork Àû¿ë¿¡ µû¸¥
-	*			 ÆäÀÌÁö UI ¼öÁ¤
+	*			 jspInclude ë°©ì‹ìœ¼ë¡œ ìˆ˜ì • 
+	*			 Bulma Css FrameWork ì ìš©ì— ë”°ë¥¸
+	*			 íŽ˜ì´ì§€ UI ìˆ˜ì •
 	****************************************************/
 %>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -72,23 +72,23 @@
 					<table class="table" width="100%" height="37" border="0" cellpadding="0" cellspacing="0">
 						<tr>
 							<td background="/images/ct_ttl_img02.gif" width="100%">
-								<b>ÀÔÁ¡ ¸ñ·ÏÁ¶È¸</b>
+								<b>ìž…ì  ëª©ë¡ì¡°íšŒ</b>
 							</td>
 						</tr>
 					</table>
 					<div class="container is-max-desktop" style="align:center;" >
 						<table class="table" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:10px;">
 							<tr>
-								<td colspan="13" >ÀüÃ¼ ${resultPage.totalCount} °Ç¼ö, ÇöÀç ${resultPage.currentPage} ÆäÀÌÁö</td>
+								<td colspan="13" >ì „ì²´ ${resultPage.totalCount} ê±´ìˆ˜, í˜„ìž¬ ${resultPage.currentPage} íŽ˜ì´ì§€</td>
 							</tr>
 							<tr>
 								<th class="ct_list_b" width="30">No</th>
-								<th class="ct_list_b" width="90">¾÷Ã¼¹øÈ£</th>
-								<th class="ct_list_b" width="*">»óÈ£¸í</th>
-								<th class="ct_list_b" width="*">¼Ò°³</th>
-								<th class="ct_list_b" width="*">È¸¿ø¾ÆÀÌµð</th>
-								<th class="ct_list_b" width="*">¿µ¾÷ ½ÃÀÛÀÏ</th>	
-								<th class="ct_list_b">ÇöÀç»óÅÂ</th>	
+								<th class="ct_list_b" width="90">ì—…ì²´ë²ˆí˜¸</th>
+								<th class="ct_list_b" width="*">ìƒí˜¸ëª…</th>
+								<th class="ct_list_b" width="*">ì†Œê°œ</th>
+								<th class="ct_list_b" width="*">íšŒì›ì•„ì´ë””</th>
+								<th class="ct_list_b" width="*">ì˜ì—… ì‹œìž‘ì¼</th>	
+								<th class="ct_list_b">í˜„ìž¬ìƒíƒœ</th>	
 							</tr>
 							<c:forEach var="market" items="${list}" >
 								<c:set var="i" value="${ i+1 }" />
@@ -105,17 +105,17 @@
 									<td align="left">${market.openDate }</td>
 									<td align="left" >
 										<c:if test="${market.manaFlag == 'W'}">
-											½ÂÀÎ ´ë±âÁß
+											ìŠ¹ì¸ ëŒ€ê¸°ì¤‘
 											&nbsp;
-											<a id="${market.manaFlag}" style="color:#4285F4">½ÂÀÎ</a>
+											<a id="${market.manaFlag}" style="color:#4285F4">ìŠ¹ì¸</a>
 										</c:if>
 										<c:if test="${market.manaFlag == 'Y'}">
-											½ÂÀÎ ¿Ï·á
+											ìŠ¹ì¸ ì™„ë£Œ
 											&nbsp;
-											<a id="${market.manaFlag}" style="color:#4285F4">¿µ¾÷Á¤Áö</a>							
+											<a id="${market.manaFlag}" style="color:#4285F4">ì˜ì—…ì •ì§€</a>							
 										</c:if>
 										<c:if test="${market.manaFlag == 'F'}">
-											¿µ¾÷ Á¤Áö
+											ì˜ì—… ì •ì§€
 										</c:if>
 									</td>	
 								</tr>

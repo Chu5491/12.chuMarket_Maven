@@ -1,18 +1,18 @@
 <%
 	/***************************************************
-	*	ÀÛ¼ºÀÚ : Ãß°æ¿î
-	*	ÀÛ¼ºÀÏ : 2024-03-31
-	*	³»  ¿ë : ±âÁ¸ÀÇ FrameSet Çü½ÄÀ» 
+	*	ìž‘ì„±ìž : ì¶”ê²½ìš´
+	*	ìž‘ì„±ì¼ : 2024-03-31
+	*	ë‚´  ìš© : ê¸°ì¡´ì˜ FrameSet í˜•ì‹ì„ 
 	*			 header / article / footer 
-	*			 jspInclude ¹æ½ÄÀ¸·Î ¼öÁ¤ 
-	*			 Bulma Css FrameWork Àû¿ë¿¡ µû¸¥
-	*			 ÆäÀÌÁö UI ¼öÁ¤
+	*			 jspInclude ë°©ì‹ìœ¼ë¡œ ìˆ˜ì • 
+	*			 Bulma Css FrameWork ì ìš©ì— ë”°ë¥¸
+	*			 íŽ˜ì´ì§€ UI ìˆ˜ì •
 	*	
-	*	ÁÖ  ÀÇ : ÇØ´ç ÆäÀÌÁö´Â ÆË¾÷Ã¢¿¡¼­ ÀÛµ¿µÊ
-	*			 ´Ù¸¥ ÆäÀÌÁö¿Í ÄÚµåÀÇ Â÷ÀÌ°¡ Á¸Àç
+	*	ì£¼  ì˜ : í•´ë‹¹ íŽ˜ì´ì§€ëŠ” íŒì—…ì°½ì—ì„œ ìž‘ë™ë¨
+	*			 ë‹¤ë¥¸ íŽ˜ì´ì§€ì™€ ì½”ë“œì˜ ì°¨ì´ê°€ ì¡´ìž¬
 	****************************************************/
 %>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- Script -->
@@ -62,7 +62,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>±¸¸Å ¸ñ·ÏÁ¶È¸</title>
+		<title>êµ¬ë§¤ ëª©ë¡ì¡°íšŒ</title>
 		<meta charset="euc-kr">
 		<link rel="stylesheet" href="/css/admin.css" type="text/css">
 	</head>
@@ -75,19 +75,19 @@
 				<table class="table" width="100%" height="37" border="0" cellpadding="0" cellspacing="0">
 					<tr>
 						<td background="/images/ct_ttl_img02.gif" width="100%" style="padding-top: 12px;">
-							<b>±¸¸Å ¸ñ·ÏÁ¶È¸</b>
+							<b>êµ¬ë§¤ ëª©ë¡ì¡°íšŒ</b>
 						</td>
 					</tr>
 				</table>
 				<table class="table" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px;">
 					<tr>
 						<th class="ct_list_b" width="100">No</th>
-						<th class="ct_list_b" width="150">È¸¿øID</th>
-						<th class="ct_list_b" width="150">È¸¿ø¸í</th>
-						<th class="ct_list_b">ÀüÈ­¹øÈ£</th>
-						<th class="ct_list_b">±¸¸Å¼ö·®</th>
-						<th class="ct_list_b">¹è¼ÛÇöÈ²</th>
-						<th class="ct_list_b">Á¤º¸¼öÁ¤</th>
+						<th class="ct_list_b" width="150">íšŒì›ID</th>
+						<th class="ct_list_b" width="150">íšŒì›ëª…</th>
+						<th class="ct_list_b">ì „í™”ë²ˆí˜¸</th>
+						<th class="ct_list_b">êµ¬ë§¤ìˆ˜ëŸ‰</th>
+						<th class="ct_list_b">ë°°ì†¡í˜„í™©</th>
+						<th class="ct_list_b">ì •ë³´ìˆ˜ì •</th>
 					</tr>
 					<c:if test="${! empty list }">
 						<c:forEach var="pur" items="${list}">
@@ -107,22 +107,22 @@
 									${pur.buyer.userName}
 								</td>
 								<td align="left">${pur.receiverPhone}</td>
-								<td align="left">${pur.tranStock} °³</td>
+								<td align="left">${pur.tranStock} ê°œ</td>
 								<td align="left">
 									<c:if test="${pur.tranCode == '1'}">
-										ÆÇ¸Å¿Ï·á
+										íŒë§¤ì™„ë£Œ
 									</c:if>
 									<c:if test="${pur.tranCode == '2'}">
-										¹è¼ÛÁß
+										ë°°ì†¡ì¤‘
 									</c:if>
 									<c:if test="${pur.tranCode == '3'}">
-										¹è¼Û¿Ï·á
+										ë°°ì†¡ì™„ë£Œ
 									</c:if>
 								</td>
 								<td align="left">
 									<c:if test="${pur.tranCode == '1'}">
 										<a id="${pur.tranNo}" style="color:#4285F4" >
-								  			¹è¼ÛÇÏ±â
+								  			ë°°ì†¡í•˜ê¸°
 								  		</a>
 									</c:if>
 								</td>
@@ -134,7 +134,7 @@
 					</c:if>
 					<c:if test="${empty list }">
 						<tr>
-							<td colspan="7" height="3" align="center"><h3>ÇöÀç »óÇ°Àº ±¸¸Å Á¤º¸°¡ ¾ø½À´Ï´Ù!</h3></td>
+							<td colspan="7" height="3" align="center"><h3>í˜„ìž¬ ìƒí’ˆì€ êµ¬ë§¤ ì •ë³´ê°€ ì—†ìŠµë‹ˆë‹¤!</h3></td>
 						</tr>
 					</c:if>
 				</table>

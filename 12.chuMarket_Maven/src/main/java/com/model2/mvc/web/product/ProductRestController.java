@@ -35,7 +35,7 @@ import com.model2.mvc.service.product.ProductService;
 import com.model2.mvc.service.user.UserService;
 
 
-//==> È¸¿ø°ü¸® RestController
+//==> íšŒì›ê´€ë¦¬ RestController
 @RestController
 @RequestMapping("/product/*")
 public class ProductRestController 
@@ -53,10 +53,10 @@ public class ProductRestController
 	@Qualifier("marketServiceImpl")
 	private MarketService marketService;
 	
-	//setter Method ±¸Çö ¾ÊÀ½
+	//setter Method êµ¬í˜„ ì•ŠìŒ
 		
-	//==> classpath:config/common.properties  ,  classpath:config/commonservice.xml ÂüÁ¶ ÇÒ°Í
-	//==> ¾Æ·¡ÀÇ µÎ°³¸¦ ÁÖ¼®À» Ç®¾î ÀÇ¹Ì¸¦ È®ÀÎ ÇÒ°Í
+	//==> classpath:config/common.properties  ,  classpath:config/commonservice.xml ì°¸ì¡° í• ê²ƒ
+	//==> ì•„ë˜ì˜ ë‘ê°œë¥¼ ì£¼ì„ì„ í’€ì–´ ì˜ë¯¸ë¥¼ í™•ì¸ í• ê²ƒ
 	//@Value("#{commonProperties['pageUnit']}")
 	//@Value("#{commonProperties['pageUnit'] ?: 3}")
 	//@Value("${pageUnit ? : 3}")
@@ -71,7 +71,7 @@ public class ProductRestController
 		System.out.println(this.getClass());
 	}
 	
-	//Å×½ºÆ® ¿Ï·á
+	//í…ŒìŠ¤íŠ¸ ì™„ë£Œ
 	@RequestMapping(value="json/getProduct", method=RequestMethod.GET)
 	public Map getProduct(@RequestParam("prodNo") int prodNo, @RequestParam("menu") String menu ) throws Exception 
 	{
@@ -81,7 +81,7 @@ public class ProductRestController
 		
 		Map<String,Object> map = new HashMap<String,Object>();
 		
-		// Model °ú View ¿¬°á
+		// Model ê³¼ View ì—°ê²°
 		map.put("prod", prod);
 		map.put("menu", menu);
 		
@@ -103,7 +103,7 @@ public class ProductRestController
 		search.setPageSize(pageSize);
 		Map<String , Object> map;
 		
-		// Business logic ¼öÇà
+		// Business logic ìˆ˜í–‰
 		map = productService.getProductList(search);
 		
 		Page resultPage = new Page( search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
@@ -111,19 +111,16 @@ public class ProductRestController
 		
 		int totalCount  = productService.getProductTotal(search);
 		
-		// Model °ú View ¿¬°á
+		// Model ê³¼ View ì—°ê²°
 		map.put("menu", menu);
 		map.put("resultPage", resultPage);
 		map.put("search", search);
-		System.out.println(search);
 		return map;
 	}
 	
-	@RequestMapping(value="json/listProduct",method=RequestMethod.POST,produces="text/plain;charset=UTF-8")
+	@RequestMapping(value="json/listProduct",method=RequestMethod.POST)
 	public Map listProduct(@RequestBody Search search, @RequestParam("menu") String menu) throws Exception 
 	{
-		System.out.println(search);
-		
 		System.out.println("/product/json/listProduct :: POST");
 		
 		if(search.getCurrentPage() == 0 )
@@ -133,7 +130,7 @@ public class ProductRestController
 		
 		search.setPageSize(pageSize);
 		Map<String , Object> map;
-		// Business logic ¼öÇà
+		// Business logic ìˆ˜í–‰
 		map = productService.getProductList(search);
 		
 		Page resultPage = new Page( search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);

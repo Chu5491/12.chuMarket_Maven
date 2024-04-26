@@ -11,67 +11,64 @@ import com.model2.mvc.service.domain.User;
 
 /*
  * FileName : LogonCheckInterceptor.java
- *  ¤· Controller È£ÃâÀü interceptor ¸¦ ÅëÇØ ¼±Ã³¸®/ÈÄÃ³¸®/¿Ï·áÃ³¸®¸¦ ¼öÇà
- *  	- preHandle() : Controller È£ÃâÀü ¼±Ã³¸®   
- * 			(true return ==> Controller È£Ãâ / false return ==> Controller ¹ÌÈ£Ãâ ) 
- *  	- postHandle() : Controller È£Ãâ ÈÄ ÈÄÃ³¸®
- *    	- afterCompletion() : view »ı¼ºÈÄ Ã³¸®
+ *  ã…‡ Controller í˜¸ì¶œì „ interceptor ë¥¼ í†µí•´ ì„ ì²˜ë¦¬/í›„ì²˜ë¦¬/ì™„ë£Œì²˜ë¦¬ë¥¼ ìˆ˜í–‰
+ *  	- preHandle() : Controller í˜¸ì¶œì „ ì„ ì²˜ë¦¬   
+ * 			(true return ==> Controller í˜¸ì¶œ / false return ==> Controller ë¯¸í˜¸ì¶œ ) 
+ *  	- postHandle() : Controller í˜¸ì¶œ í›„ í›„ì²˜ë¦¬
+ *    	- afterCompletion() : view ìƒì„±í›„ ì²˜ë¦¬
  *    
- *    ==> ·Î±×ÀÎÇÑ È¸¿øÀÌ¸é Controller È£Ãâ : true return
- *    ==> ºñ ·Î±×ÀÎÇÑ È¸¿øÀÌ¸é Controller ¹Ì È£Ãâ : false return
+ *    ==> ë¡œê·¸ì¸í•œ íšŒì›ì´ë©´ Controller í˜¸ì¶œ : true return
+ *    ==> ë¹„ ë¡œê·¸ì¸í•œ íšŒì›ì´ë©´ Controller ë¯¸ í˜¸ì¶œ : false return
  */
-public class LogonCheckInterceptor extends HandlerInterceptorAdapter 
-{
+public class LogonCheckInterceptor extends HandlerInterceptorAdapter {
 
 	///Field
 	
 	///Constructor
-	public LogonCheckInterceptor()
-	{
+	public LogonCheckInterceptor(){
 		System.out.println("\nCommon :: "+this.getClass()+"\n");		
 	}
 	
 	///Method
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception 
-	{
+	public boolean preHandle(	HttpServletRequest request,
+														HttpServletResponse response, 
+														Object handler) throws Exception {
+		
 		System.out.println("\n[ LogonCheckInterceptor start........]");
 		
-		//==> ·Î±×ÀÎ À¯¹«È®ÀÎ
+		//==> ë¡œê·¸ì¸ ìœ ë¬´í™•ì¸
 		HttpSession session = request.getSession(true);
-		User user = (User)session.getAttribute("userInfo");
+		User user = (User)session.getAttribute("user");
 
-		//==> ·Î±×ÀÎÇÑ È¸¿øÀÌ¶ó¸é...
-		if(   user != null   )  
-		{
-			//==> ·Î±×ÀÎ »óÅÂ¿¡¼­ Á¢±Ù ºÒ°¡ URI
+		//==> ë¡œê·¸ì¸í•œ íšŒì›ì´ë¼ë©´...
+		if(   user != null   )  {
+			//==> ë¡œê·¸ì¸ ìƒíƒœì—ì„œ ì ‘ê·¼ ë¶ˆê°€ URI
 			String uri = request.getRequestURI();
+			
 			if(		uri.indexOf("addUser") != -1 ||	uri.indexOf("login") != -1 		|| 
 					uri.indexOf("checkDuplication") != -1 ){
 				request.getRequestDispatcher("/index.jsp").forward(request, response);
-				System.out.println("[ ·Î±×ÀÎ »óÅÂ.. ·Î±×ÀÎ ÈÄ ºÒÇÊ¿ä ÇÑ ¿ä±¸.... ]");
+				System.out.println("[ ë¡œê·¸ì¸ ìƒíƒœ.. ë¡œê·¸ì¸ í›„ ë¶ˆí•„ìš” í•œ ìš”êµ¬.... ]");
 				System.out.println("[ LogonCheckInterceptor end........]\n");
 				return false;
 			}
 			
-			System.out.println("[ ·Î±×ÀÎ »óÅÂ ... ]");
+			System.out.println("[ ë¡œê·¸ì¸ ìƒíƒœ ... ]");
 			System.out.println("[ LogonCheckInterceptor end........]\n");
 			return true;
-		}else
-		{   //==> ¹Ì ·Î±×ÀÎÇÑ È­¿øÀÌ¶ó¸é...
-			//==> ·Î±×ÀÎ ½Ãµµ Áß.....
+		}else{ //==> ë¯¸ ë¡œê·¸ì¸í•œ í™”ì›ì´ë¼ë©´...
+			//==> ë¡œê·¸ì¸ ì‹œë„ ì¤‘.....
 			String uri = request.getRequestURI();
-			if(		uri.indexOf("addUser") != -1 	|| 	uri.indexOf("addUser") != -1 || 
-					uri.indexOf("login") != -1 		||	uri.indexOf("login") != -1 	 || 
-					uri.indexOf("listProduct") != -1 	 ||
-					uri.indexOf("checkDuplication") != -1  )
-			{
-				System.out.println("[ ·Î±× ½Ãµµ »óÅÂ .... ]");
+			
+			if(		uri.indexOf("addUser") != -1 ||	uri.indexOf("login") != -1 		|| 
+					uri.indexOf("checkDuplication") != -1 ){
+				System.out.println("[ ë¡œê·¸ ì‹œë„ ìƒíƒœ .... ]");
 				System.out.println("[ LogonCheckInterceptor end........]\n");
 				return true;
 			}
 			
-			request.getRequestDispatcher("/common/loginCheck.jsp").forward(request, response);
-			System.out.println("[ ·Î±×ÀÎ ÀÌÀü ... ]");
+			request.getRequestDispatcher("/index.jsp").forward(request, response);
+			System.out.println("[ ë¡œê·¸ì¸ ì´ì „ ... ]");
 			System.out.println("[ LogonCheckInterceptor end........]\n");
 			return false;
 		}

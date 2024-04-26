@@ -1,15 +1,15 @@
 <%
 	/***************************************************
-	*	ÀÛ¼ºÀÚ : Ãß°æ¿î
-	*	ÀÛ¼ºÀÏ : 2024-03-31
-	*	³»  ¿ë : ±âÁ¸ÀÇ FrameSet Çü½ÄÀ» 
+	*	ìž‘ì„±ìž : ì¶”ê²½ìš´
+	*	ìž‘ì„±ì¼ : 2024-03-31
+	*	ë‚´  ìš© : ê¸°ì¡´ì˜ FrameSet í˜•ì‹ì„ 
 	*			 header / article / footer 
-	*			 jspInclude ¹æ½ÄÀ¸·Î ¼öÁ¤ 
-	*			 Bulma Css FrameWork Àû¿ë¿¡ µû¸¥
-	*			 ÆäÀÌÁö UI ¼öÁ¤
+	*			 jspInclude ë°©ì‹ìœ¼ë¡œ ìˆ˜ì • 
+	*			 Bulma Css FrameWork ì ìš©ì— ë”°ë¥¸
+	*			 íŽ˜ì´ì§€ UI ìˆ˜ì •
 	****************************************************/
 %>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
@@ -32,17 +32,17 @@
 		        $(this).css('cursor', 'pointer');
 		    });
 			
-			// articleList ¿ä¼Ò¿¡ È£¹ö ÀÌº¥Æ®¸¦ ¹ÙÀÎµùÇÕ´Ï´Ù.
+			// articleList ìš”ì†Œì— í˜¸ë²„ ì´ë²¤íŠ¸ë¥¼ ë°”ì¸ë”©í•©ë‹ˆë‹¤.
 		    $(".articleList").on
 		    ({
     	        mouseenter: function() 
     	        {
-    	            // È£¹ö »óÅÂÀÏ ¶§ ¹è°æ»öÀ» »¡°£»öÀ¸·Î º¯°æÇÕ´Ï´Ù.
+    	            // í˜¸ë²„ ìƒíƒœì¼ ë•Œ ë°°ê²½ìƒ‰ì„ ë¹¨ê°„ìƒ‰ìœ¼ë¡œ ë³€ê²½í•©ë‹ˆë‹¤.
     	            $(this).css("background-color", "#B4FAB4");
     	        },
     	        mouseleave: function() 
     	        {
-    	            // È£¹ö°¡ ÇØÁ¦µÉ ¶§ ¹è°æ»öÀ» ¿ø·¡´ë·Î µÇµ¹¸³´Ï´Ù.
+    	            // í˜¸ë²„ê°€ í•´ì œë  ë•Œ ë°°ê²½ìƒ‰ì„ ì›ëž˜ëŒ€ë¡œ ë˜ëŒë¦½ë‹ˆë‹¤.
     	            $(this).css("background-color", "");
     	        }
 		    }, ".card");
@@ -73,7 +73,7 @@
 		        let flag = $(event.target).attr("name");
 		        let no = $(event.target).attr("id");
 		        
-			    // Å¬¸¯µÈ ¿ä¼Ò°¡ ½ÇÁ¦·Î .ct_list_pop ¿ä¼ÒÀÎÁö È®ÀÎÇÕ´Ï´Ù.
+			    // í´ë¦­ëœ ìš”ì†Œê°€ ì‹¤ì œë¡œ .ct_list_pop ìš”ì†Œì¸ì§€ í™•ì¸í•©ë‹ˆë‹¤.
 			    if($(event.target).hasClass("ct_list_pop")) 
 			  	{
 			        if (flag == "prod") 
@@ -85,7 +85,7 @@
 						{
 							if(stock == 0)
 							{
-								alert("Ç°ÀýµÈ »óÇ°ÀÔ´Ï´Ù.");
+								alert("í’ˆì ˆëœ ìƒí’ˆìž…ë‹ˆë‹¤.");
 							}else
 							{
 								$(window.location).attr("href","/product/getProduct?prodNo=" + no + "&menu=" + menu);
@@ -98,7 +98,7 @@
 			        }
 			    }else 
 			    {
-			        // Å¬¸¯µÈ ¿ä¼Ò°¡ .card ¿ä¼ÒÀÎ °æ¿ì¿¡ ½ÇÇàÇÒ ÄÚµå¸¦ ¿©±â¿¡ ÀÛ¼ºÇÕ´Ï´Ù.
+			        // í´ë¦­ëœ ìš”ì†Œê°€ .card ìš”ì†Œì¸ ê²½ìš°ì— ì‹¤í–‰í•  ì½”ë“œë¥¼ ì—¬ê¸°ì— ìž‘ì„±í•©ë‹ˆë‹¤.
 			        let no = $(this).children('div').children('div').children('div').children('p[name="prod"]').attr("id");
 			        $(window.location).attr("href", "/product/getProduct?prodNo=" + no + "&menu=" + menu);
 			    }
@@ -110,35 +110,35 @@
 		$(document).ready(function() 
 		{
 			
-			//ÇöÀç ÆäÀÌÁö value
+			//í˜„ìž¬ íŽ˜ì´ì§€ value
 		    let currentPage = $("input[name='currentPage']").val();	
 		    let searchCondition = $("select[name='searchCondition']").val();	
 		    let searchKeyword = $("input[name='searchKeyword']").val();
-			//ajax Åë½Å ¿©ºÎ ( ÀüÃ¼ µ¥ÀÌÅÍ¸¦ ÀÌ¹Ì È£Ãâ ¸¶¹«¸®ÇÑ °æ¿ì ´õ ÀÌ»óÀÇ request¸¦ ¸·±â À§ÇØ ¼±¾ð )
+			//ajax í†µì‹  ì—¬ë¶€ ( ì „ì²´ ë°ì´í„°ë¥¼ ì´ë¯¸ í˜¸ì¶œ ë§ˆë¬´ë¦¬í•œ ê²½ìš° ë” ì´ìƒì˜ requestë¥¼ ë§‰ê¸° ìœ„í•´ ì„ ì–¸ )
 			let doAjax = true;
 			
-			//ºñµ¿±â ÀÛ¾÷ÀÌ ÁøÇàÁßÀÌ¸é Ãß°¡·Î ¿äÃ»ÇÏÁö ¾Ê±â À§ÇÑ flag
+			//ë¹„ë™ê¸° ìž‘ì—…ì´ ì§„í–‰ì¤‘ì´ë©´ ì¶”ê°€ë¡œ ìš”ì²­í•˜ì§€ ì•Šê¸° ìœ„í•œ flag
 		    let isLoading = false; 
 			
-			//Ã¹ ÆäÀÌÁö ÁøÀÔ ½Ã µ¥ÀÌÅÍ È£Ãâ
+			//ì²« íŽ˜ì´ì§€ ì§„ìž… ì‹œ ë°ì´í„° í˜¸ì¶œ
 		    listAjax();
 		    
-		    // ½ºÅ©·Ñ ÀÌº¥Æ® ÇÚµé·¯ µî·Ï
+		    // ìŠ¤í¬ë¡¤ ì´ë²¤íŠ¸ í•¸ë“¤ëŸ¬ ë“±ë¡
 		    $(window).scroll(function() 
 		    {
-		        // ÆäÀÌÁö°¡ ·Îµù ÁßÀÌ°Å³ª ÀÌ¹Ì Ajax ¿äÃ»À» º¸³½ °æ¿ì¿¡´Â Ãß°¡ ¿äÃ»À» º¸³»Áö ¾ÊÀ½
+		        // íŽ˜ì´ì§€ê°€ ë¡œë”© ì¤‘ì´ê±°ë‚˜ ì´ë¯¸ Ajax ìš”ì²­ì„ ë³´ë‚¸ ê²½ìš°ì—ëŠ” ì¶”ê°€ ìš”ì²­ì„ ë³´ë‚´ì§€ ì•ŠìŒ
 		        if (isLoading) return;
 
 		        let scrollPosition = $(window).scrollTop();
 		        let windowHeight = $(window).height();
 		        let documentHeight = $(document).height();
 
-		        // ½ºÅ©·ÑÀÌ ÆäÀÌÁö ÇÏ´Ü¿¡ µµ´ÞÇßÀ» ¶§ Ajax ¿äÃ»À» º¸³¿
+		        // ìŠ¤í¬ë¡¤ì´ íŽ˜ì´ì§€ í•˜ë‹¨ì— ë„ë‹¬í–ˆì„ ë•Œ Ajax ìš”ì²­ì„ ë³´ëƒ„
 		        if (scrollPosition >= documentHeight - windowHeight * 2) 
 		        {
-		            isLoading = true; // Ajax ¿äÃ» ÁßÀÎ »óÅÂ·Î ¼³Á¤
+		            isLoading = true; // Ajax ìš”ì²­ ì¤‘ì¸ ìƒíƒœë¡œ ì„¤ì •
 		            
-		            //¸®½ºÆ®¸¦ È£Ãâ
+		            //ë¦¬ìŠ¤íŠ¸ë¥¼ í˜¸ì¶œ
 		            if(doAjax)
 		            {
 		            	listAjax();
@@ -194,15 +194,15 @@
 								html += "				<br/>";
 														if(list[i].prodStock <= 0)
 														{
-								html += "					Àç°í¾øÀ½";		
+								html += "					ìž¬ê³ ì—†ìŒ";		
 														}else
 														{
 															if(list[i].prodStock <= 5)
 															{
-								html += "						<b style='color:red;'>Ç°ÀýÀÓ¹Ú</b>";						
+								html += "						<b style='color:red;'>í’ˆì ˆìž„ë°•</b>";						
 															}else
 															{
-								html += "						<b style='color:green;'>ÆÇ¸ÅÁß</b>";							
+								html += "						<b style='color:green;'>íŒë§¤ì¤‘</b>";							
 															}
 														}
 								html += "				<br>";
@@ -221,13 +221,13 @@
 		                    
 		                }else
 		                {
-		                	//´õ ÀÌ»ó Á¶È¸ÇÒ µ¥ÀÌÅÍ°¡ ¾øÀ¸¸é false¸¦ ÅëÇØ ´õ ÀÌ»óÀÇ Åë½ÅÀ» ÇÏÁö ¾Êµµ·Ï flag ¼³Á¤
+		                	//ë” ì´ìƒ ì¡°íšŒí•  ë°ì´í„°ê°€ ì—†ìœ¼ë©´ falseë¥¼ í†µí•´ ë” ì´ìƒì˜ í†µì‹ ì„ í•˜ì§€ ì•Šë„ë¡ flag ì„¤ì •
 		                	doAjax = false;
 		                }
 		            },
 		            complete: function() 
 		            {
-		                isLoading = false; // Ajax ¿äÃ» ¿Ï·á ÈÄ »óÅÂ ¾÷µ¥ÀÌÆ®
+		                isLoading = false; // Ajax ìš”ì²­ ì™„ë£Œ í›„ ìƒíƒœ ì—…ë°ì´íŠ¸
 		            }
 		        });
 		    }
@@ -254,23 +254,23 @@
 						</tr>
 						<tr>
 							<td width="104" class="ct_write">
-								¼Ò°³
+								ì†Œê°œ
 							</td>
 							<td class="ct_write01">${market.marketIntro}</td>
 						</tr>
 						<tr>
 							<td width="104" class="ct_write">
-								¿î¿µÁ¤º¸ <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+								ìš´ì˜ì •ë³´ <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 							</td>
 							<td class="ct_write01">
 								<c:if test="${market.manaFlag == 'Y' }">
-									ÇöÀç ¿î¿µÁßÀÎ ¼îÇÎ¸ôÀÔ´Ï´Ù.
+									í˜„ìž¬ ìš´ì˜ì¤‘ì¸ ì‡¼í•‘ëª°ìž…ë‹ˆë‹¤.
 								</c:if>
 								<c:if test="${market.manaFlag == 'W' }">
-									ÇöÀç ½ÂÀÎ ´ë±âÁßÀÎ ¼îÇÎ¸ôÀÔ´Ï´Ù.
+									í˜„ìž¬ ìŠ¹ì¸ ëŒ€ê¸°ì¤‘ì¸ ì‡¼í•‘ëª°ìž…ë‹ˆë‹¤.
 								</c:if>
 								<c:if test="${market.manaFlag == 'F' }">
-									ÇöÀç ¿î¿µÀÌ Áß´ÜµÈ ¼îÇÎ¸ôÀÔ´Ï´Ù.
+									í˜„ìž¬ ìš´ì˜ì´ ì¤‘ë‹¨ëœ ì‡¼í•‘ëª°ìž…ë‹ˆë‹¤.
 								</c:if>
 							</td>
 						</tr>
@@ -278,11 +278,11 @@
 							<td colspan="13"z bgcolor="D6D7D6" height="1"></td>
 						</tr>
 					</table>
-					<h3 class="title">ÆÇ¸ÅÁßÀÎ »óÇ°</h3>
+					<h3 class="title">íŒë§¤ì¤‘ì¸ ìƒí’ˆ</h3>
 					<div class="articleList" style="align:center;">
 						<div class="columns">
 							<c:if test="${fn:length(list) == 0}">
-								<h3 class="subtitle" style="text-align:center; width:100%; color:red;">µî·ÏµÈ »óÇ°ÀÌ ¾ø½À´Ï´Ù!</h3>
+								<h3 class="subtitle" style="text-align:center; width:100%; color:red;">ë“±ë¡ëœ ìƒí’ˆì´ ì—†ìŠµë‹ˆë‹¤!</h3>
 							</c:if>
 							<c:if test="${fn:length(list) != 0}">
 								<c:forEach var="prod" items="${list}" >
@@ -304,20 +304,20 @@
 													${prod.prodDetail }				
 													<br>		
 													<c:if test="${prod.prodStock <= 0}">
-														Àç°í¾øÀ½
+														ìž¬ê³ ì—†ìŒ
 													</c:if>
 													<c:if test="${prod.prodStock > 0}">
 														<c:if test="${menu != 'manage' || menu != 'bsns'}">
 															<c:if test="${prod.prodStock <= 5}">
-																<b style="color:red;">Ç°ÀýÀÓ¹Ú</b>
+																<b style="color:red;">í’ˆì ˆìž„ë°•</b>
 															</c:if>
 															<c:if test="${prod.prodStock > 5}">
-																<b style="color:green;">ÆÇ¸ÅÁß</b>
+																<b style="color:green;">íŒë§¤ì¤‘</b>
 															</c:if>
 														</c:if>
 														<c:if test="${menu == 'manage' || menu == 'bsns'}">
 															<br>
-															Àç°í : ${prod.prodStock} °³ ³²À½
+															ìž¬ê³  : ${prod.prodStock} ê°œ ë‚¨ìŒ
 														</c:if>
 													</c:if>				
 													<br>				
@@ -339,7 +339,7 @@
 					</table>
 					<table width="100%" border="0" cellspacing="0" cellpadding="0" >
 						<tr>
-							<td style="float:right;"><a class="button ct_btn01" >ÀÌÀü</a></td>	
+							<td style="float:right;"><a class="button ct_btn01" >ì´ì „</a></td>	
 						</tr>
 					</table>
 				</div>

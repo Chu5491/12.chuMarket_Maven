@@ -21,18 +21,18 @@ import com.model2.mvc.service.purchase.impl.PurchaseServiceImpl;
 @Repository("prodDAO")
 public class ProductDAO implements com.model2.mvc.service.product.ProductDAO
 {
-	///ÇÊµå
+	///í•„ë“œ
 	@Autowired
 	@Qualifier("sqlSessionTemplate")
 	private SqlSession sqlSession;
 	
-	///»ı¼ºÀÚ
+	///ìƒì„±ì
 	public ProductDAO()
 	{
 		System.out.println(this.getClass());
 	}
 
-	///¸Ş¼Òµå
+	///ë©”ì†Œë“œ
 	public void addProduct(Product product) throws Exception
 	{
 		sqlSession.insert("ProductMapper.addProduct", product);

@@ -1,15 +1,15 @@
 <%
 	/***************************************************
-	*	ÀÛ¼ºÀÚ : Ãß°æ¿î
-	*	ÀÛ¼ºÀÏ : 2024-03-31
-	*	³»  ¿ë : ±âÁ¸ÀÇ FrameSet Çü½ÄÀ» 
+	*	ìž‘ì„±ìž : ì¶”ê²½ìš´
+	*	ìž‘ì„±ì¼ : 2024-03-31
+	*	ë‚´  ìš© : ê¸°ì¡´ì˜ FrameSet í˜•ì‹ì„ 
 	*			 header / article / footer 
-	*			 jspInclude ¹æ½ÄÀ¸·Î ¼öÁ¤ 
-	*			 Bulma Css FrameWork Àû¿ë¿¡ µû¸¥
-	*			 ÆäÀÌÁö UI ¼öÁ¤
+	*			 jspInclude ë°©ì‹ìœ¼ë¡œ ìˆ˜ì • 
+	*			 Bulma Css FrameWork ì ìš©ì— ë”°ë¥¸
+	*			 íŽ˜ì´ì§€ UI ìˆ˜ì •
 	****************************************************/
 %>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -83,29 +83,29 @@
 				<table class="table" width="100%" height="37" border="0" cellpadding="0" cellspacing="0">
 					<tr>
 						<td background="/images/ct_ttl_img02.gif" width="100%">
-							<b>±¸¸Å ¸ñ·ÏÁ¶È¸</b>
+							<b>êµ¬ë§¤ ëª©ë¡ì¡°íšŒ</b>
 						</td>
 					</tr>
 				</table>
 				<div class="container is-max-desktop" style="align:center;" >
 					<table class="table" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 13px;">
 						<tr>
-							<td colspan="13">ÀüÃ¼ ${resultPage.totalCount} °Ç¼ö, ÇöÀç ${resultPage.currentPage} ÆäÀÌÁö</td>
+							<td colspan="13">ì „ì²´ ${resultPage.totalCount} ê±´ìˆ˜, í˜„ìž¬ ${resultPage.currentPage} íŽ˜ì´ì§€</td>
 						</tr>
 						<tr>
 							<td class="ct_list_b" width="100">No</td>
 							<td class="ct_line02"></td>
-							<td class="ct_list_b" width="150">»óÇ°¸í</td>
+							<td class="ct_list_b" width="150">ìƒí’ˆëª…</td>
 							<td class="ct_line02"></td>
-							<td class="ct_list_b" width="150">È¸¿øID</td>
+							<td class="ct_list_b" width="150">íšŒì›ID</td>
 							<td class="ct_line02"></td>
-							<td class="ct_list_b" width="150">È¸¿ø¸í</td>
+							<td class="ct_list_b" width="150">íšŒì›ëª…</td>
 							<td class="ct_line02"></td>
-							<td class="ct_list_b">ÀüÈ­¹øÈ£</td>
+							<td class="ct_list_b">ì „í™”ë²ˆí˜¸</td>
 							<td class="ct_line02"></td>
-							<td class="ct_list_b">¹è¼ÛÇöÈ²</td>
+							<td class="ct_list_b">ë°°ì†¡í˜„í™©</td>
 							<td class="ct_line02"></td>
-							<td class="ct_list_b">Á¤º¸¼öÁ¤</td>
+							<td class="ct_list_b">ì •ë³´ìˆ˜ì •</td>
 						</tr>
 						<tr>
 							<td colspan="13" bgcolor="808285" height="1"></td>
@@ -142,13 +142,13 @@
 								<td align="left">
 									<c:choose>
 										<c:when test="${pur.tranCode == '1'}">
-											ÇöÀç <b>±¸¸Å¿Ï·á</b> »óÅÂÀÔ´Ï´Ù.
+											í˜„ìž¬ <b>êµ¬ë§¤ì™„ë£Œ</b> ìƒíƒœìž…ë‹ˆë‹¤.
 										</c:when>
 										<c:when test="${pur.tranCode == '2'}">
-											ÇöÀç <b>¹è¼ÛÁß</b> »óÅÂÀÔ´Ï´Ù.
+											í˜„ìž¬ <b>ë°°ì†¡ì¤‘</b> ìƒíƒœìž…ë‹ˆë‹¤.
 										</c:when>
 										<c:otherwise>
-											ÇöÀç <b>¹è¼Û¿Ï·á</b> »óÅÂÀÔ´Ï´Ù.
+											í˜„ìž¬ <b>ë°°ì†¡ì™„ë£Œ</b> ìƒíƒœìž…ë‹ˆë‹¤.
 										</c:otherwise>
 									</c:choose>
 								</td>
@@ -156,7 +156,7 @@
 								<td align="left">
 									<c:if test="${pur.tranCode == '2'}">
 										<a id="${pur.tranNo}" style="color:#4285F4" >
-									  		¹°°ÇµµÂø
+									  		ë¬¼ê±´ë„ì°©
 									  	</a>
 									</c:if>
 								</td>
@@ -167,7 +167,7 @@
 						</tr>
 					</table>
 					
-					<!--  ÆäÀÌÁö Navigator ½ÃÀÛ -->
+					<!--  íŽ˜ì´ì§€ Navigator ì‹œìž‘ -->
 					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="pageNavi" style="margin-top:10px;">
 						<tr>
 							<td align="center">
@@ -176,7 +176,7 @@
 					    	</td>
 						</tr>
 					</table>
-					<!--  ÆäÀÌÁö Navigator ³¡ -->
+					<!--  íŽ˜ì´ì§€ Navigator ë -->
 				</div>
 			</form>
 		</div>

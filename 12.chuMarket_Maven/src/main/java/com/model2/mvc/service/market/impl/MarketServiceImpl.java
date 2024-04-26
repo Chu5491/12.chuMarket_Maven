@@ -20,14 +20,14 @@ import com.model2.mvc.service.market.MarketService;
 @Service("marketServiceImpl")
 public class MarketServiceImpl implements MarketService
 {
-	///ÇÊµå
+	///í•„ë“œ
 	@Autowired
 	@Qualifier("marketDAO")
 	private MarketDAO marketDAO;
 
-	///»ı¼ºÀÚ
+	///ìƒì„±ì
 
-	///¸Ş¼Òµå
+	///ë©”ì†Œë“œ
 	public Market getMarket(int marketNo) throws Exception
 	{
 		Market market = marketDAO.getMarket(marketNo);

@@ -1,14 +1,12 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html; charset=euc-kr" %>
-
 	
 <c:if test="${ resultPage.currentPage <= resultPage.pageUnit }">
-		¢¸ ÀÌÀü
+		â—€ ì´ì „
 </c:if>
 <c:if test="${ resultPage.currentPage > resultPage.pageUnit }">
-		<a href="javascript:fncGetUserList('${ resultPage.currentPage-1}')">¢¸ ÀÌÀü</a>
+		<a href="javascript:fncGetUserList('${ resultPage.currentPage-1}')">â—€ ì´ì „</a>
 </c:if>
 
 <c:forEach var="i"  begin="${resultPage.beginUnitPage}" end="${resultPage.endUnitPage}" step="1">
@@ -16,8 +14,8 @@
 </c:forEach>
 
 <c:if test="${ resultPage.endUnitPage >= resultPage.maxPage }">
-		ÀÌÈÄ ¢º
+		ì´í›„ â–¶
 </c:if>
 <c:if test="${ resultPage.endUnitPage < resultPage.maxPage }">
-		<a href="javascript:fncGetUserList('${resultPage.endUnitPage+1}')">ÀÌÈÄ ¢º</a>
+		<a href="javascript:fncGetUserList('${resultPage.endUnitPage+1}')">ì´í›„ â–¶</a>
 </c:if>

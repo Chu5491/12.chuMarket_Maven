@@ -1,7 +1,7 @@
 /* ***************************************************
- *	ÀÛ¼ºÀÚ : Ãß°æ¿î
- *	ÀÛ¼ºÀÏ : 2024-03-29
- *	³»  ¿ë : ÆÄÀÏÃ·ºÎ¸¦ À§ÇÑ ÆÄÀÏ µµ¸ŞÀÎ ÀÛ¼º
+ *	ì‘ì„±ì : ì¶”ê²½ìš´
+ *	ì‘ì„±ì¼ : 2024-03-29
+ *	ë‚´  ìš© : íŒŒì¼ì²¨ë¶€ë¥¼ ìœ„í•œ íŒŒì¼ ë„ë©”ì¸ ì‘ì„±
  *************************************************** */
 package com.model2.mvc.service.domain;
 
@@ -9,7 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class Upload 
 {
-	///ÇÊµå
+	///í•„ë“œ
     private String fileDir;
     private MultipartFile file;
 	private int fileNo;
@@ -18,13 +18,13 @@ public class Upload
 	private String logiName;
 	
 	
-	///»ı¼ºÀÚ
+	///ìƒì„±ì
 	public Upload()
 	{
 		System.out.println("File Domain Constructor......");
 	}
 	
-	///¸Ş¼Òµå
+	///ë©”ì†Œë“œ
 	//======== Getter ========
 	public int getFileNo() 
 	{

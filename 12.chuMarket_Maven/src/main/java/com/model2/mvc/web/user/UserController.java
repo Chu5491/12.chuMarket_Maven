@@ -17,12 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.model2.mvc.common.Page;
 import com.model2.mvc.common.Search;
-import com.model2.mvc.service.domain.Market;
 import com.model2.mvc.service.domain.User;
-import com.model2.mvc.service.market.MarketService;
 import com.model2.mvc.service.user.UserService;
 
-//==> È¸¿ø°ü¸® Controller
+//==> íšŒì›ê´€ë¦¬ Controller
 @Controller
 @RequestMapping("/user/*")
 public class UserController 
@@ -31,14 +29,10 @@ public class UserController
 	@Autowired
 	@Qualifier("userServiceImpl")
 	private UserService userService;
+	//setter Method êµ¬í˜„ ì•ŠìŒ
 	
-	@Autowired
-	@Qualifier("marketServiceImpl")
-	private MarketService marketService;
-	//setter Method ±¸Çö ¾ÊÀ½
-	
-	//==> classpath:config/common.properties  ,  classpath:config/commonservice.xml ÂüÁ¶ ÇÒ°Í
-	//==> ¾Æ·¡ÀÇ µÎ°³¸¦ ÁÖ¼®À» Ç®¾î ÀÇ¹Ì¸¦ È®ÀÎ ÇÒ°Í
+	//==> classpath:config/common.properties  ,  classpath:config/commonservice.xml ì°¸ì¡° í• ê²ƒ
+	//==> ì•„ë˜ì˜ ë‘ê°œë¥¼ ì£¼ì„ì„ í’€ì–´ ì˜ë¯¸ë¥¼ í™•ì¸ í• ê²ƒ
 	//@Value("#{commonProperties['pageUnit']}")
 	//@Value("#{commonProperties['pageUnit'] ?: 3}")
 	//@Value("${pageUnit ? : 3}")
@@ -82,7 +76,7 @@ public class UserController
 		System.out.println("/user/getUser");
 		//Business Logic
 		User user = userService.getUser(userId);
-		// Model °ú View ¿¬°á
+		// Model ê³¼ View ì—°ê²°
 		model.addAttribute("user", user);
 		
 		return "forward:/user/getUser.jsp";
@@ -95,7 +89,7 @@ public class UserController
 		System.out.println("/user/updateUser : GET");
 		//Business Logic
 		User user = userService.getUser(userId);
-		// Model °ú View ¿¬°á
+		// Model ê³¼ View ì—°ê²°
 		model.addAttribute("user", user);
 		
 		return "forward:/user/updateUser.jsp";
@@ -117,6 +111,7 @@ public class UserController
 			session.setAttribute("userInfo", user);
 		}
 		
+		//return "redirect:/getUser.do?userId="+user.getUserId();
 		return "redirect:/user/getUser?userId="+user.getUserId();
 	}
 	
@@ -137,11 +132,6 @@ public class UserController
 		User dbUser=userService.getUser(user.getUserId());
 		
 		if( user.getPassword().equals(dbUser.getPassword())){
-			if(dbUser.getRole().equals("bsns"))
-			{
-				Market market = marketService.getMarket(dbUser.getUserId());
-				session.setAttribute("bsnsMarket", market);
-			}
 			session.setAttribute("userInfo", dbUser);
 		}
 		
@@ -166,7 +156,7 @@ public class UserController
 		System.out.println("/user/checkDuplication");
 		//Business Logic
 		boolean result=userService.checkDuplication(userId);
-		// Model °ú View ¿¬°á
+		// Model ê³¼ View ì—°ê²°
 		model.addAttribute("result", new Boolean(result));
 		model.addAttribute("userId", userId);
 
@@ -185,13 +175,13 @@ public class UserController
 		}
 		search.setPageSize(pageSize);
 		
-		// Business logic ¼öÇà
+		// Business logic ìˆ˜í–‰
 		Map<String , Object> map=userService.getUserList(search);
 		
 		Page resultPage = new Page( search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
 		System.out.println(resultPage);
 		
-		// Model °ú View ¿¬°á
+		// Model ê³¼ View ì—°ê²°
 		model.addAttribute("list", map.get("list"));
 		model.addAttribute("resultPage", resultPage);
 		model.addAttribute("search", search);

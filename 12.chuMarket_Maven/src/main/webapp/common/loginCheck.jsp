@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <html>
 	<!-- Header -->
@@ -8,6 +8,6 @@
 	<!-- Header -->
 	
 	<body>
-		<h3> �α��� �� �̿��Ͻ� �� �ֽ��ϴ�! </h3>
+		<h3> 로그인 후 이용하실 수 있습니다! </h3>
 	</body>
 </html>

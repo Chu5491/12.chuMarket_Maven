@@ -1,15 +1,15 @@
 <%
 	/***************************************************
-	*	ÀÛ¼ºÀÚ : Ãß°æ¿î
-	*	ÀÛ¼ºÀÏ : 2024-03-31
-	*	³»  ¿ë : ±âÁ¸ÀÇ FrameSet Çü½ÄÀ» 
+	*	ì‘ì„±ì : ì¶”ê²½ìš´
+	*	ì‘ì„±ì¼ : 2024-03-31
+	*	ë‚´  ìš© : ê¸°ì¡´ì˜ FrameSet í˜•ì‹ì„ 
 	*			 header / article / footer 
-	*			 jspInclude ¹æ½ÄÀ¸·Î ¼öÁ¤ 
-	*			 Bulma Css FrameWork Àû¿ë¿¡ µû¸¥
-	*			 ÆäÀÌÁö UI ¼öÁ¤
+	*			 jspInclude ë°©ì‹ìœ¼ë¡œ ìˆ˜ì • 
+	*			 Bulma Css FrameWork ì ìš©ì— ë”°ë¥¸
+	*			 í˜ì´ì§€ UI ìˆ˜ì •
 	****************************************************/
 %>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -31,15 +31,15 @@
 		
 			
 			/* ########################## Product ########################## */
-			$( ".ct_btn01:contains('±¸¸Å')" ).on("click" , function() 
+			$( ".ct_btn01:contains('êµ¬ë§¤')" ).on("click" , function() 
 		 	{
 				///purchase/addPurchase?prodNo=${prod.prodNo}"
 				$(window.location).attr("href","/purchase/addPurchase?prodNo="+$(this).attr('id'));
 				//Debug..
-				//alert(  $( ".ct_btn01:contains('°Ë»ö')" ) );
+				//alert(  $( ".ct_btn01:contains('ê²€ìƒ‰')" ) );
 			}); 
 			
-			$( ".ct_btn01:contains('ÀÌÀü')" ).on("click" , function() 
+			$( ".ct_btn01:contains('ì´ì „')" ).on("click" , function() 
 		 	{
 				history.go(-1);
 			}); 
@@ -73,7 +73,7 @@
 				<table class="table" width="100%" height="37" border="0" cellpadding="0" cellspacing="0">
 					<tr>
 						<td background="/images/ct_ttl_img02.gif" width="100%" >
-							<b>${ ! empty menu && menu == 'search' ? '»óÇ°»ó¼¼Á¶È¸' : '»óÇ°¼öÁ¤'}</b>
+							<b>${ ! empty menu && menu == 'search' ? 'ìƒí’ˆìƒì„¸ì¡°íšŒ' : 'ìƒí’ˆìˆ˜ì •'}</b>
 						</td>
 					</tr>
 				</table>
@@ -84,25 +84,25 @@
 						</tr>
 						<tr>
 							<td width="130" class="ct_write">
-								¼îÇÎ¸ô <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+								ì‡¼í•‘ëª° <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 							</td>
 							<td class="ct_write01">${prod.market.marketName}</td>
 						</tr>
 						<tr>
 							<td width="130" class="ct_write">
-								»óÇ°¹øÈ£ <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+								ìƒí’ˆë²ˆí˜¸ <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 							</td>
 							<td class="ct_write01">${prod.prodNo}</td>
 						</tr>
 						<tr>
 							<td width="130" class="ct_write">
-								»óÇ°¸í <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+								ìƒí’ˆëª… <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 							</td>
 							<td class="ct_write01">${prod.prodName}</td>
 						</tr>
 						<tr>
 							<td width="130" class="ct_write">
-								»óÇ°ÀÌ¹ÌÁö <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+								ìƒí’ˆì´ë¯¸ì§€ <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 							</td>
 							<td class="ct_write01">
 								<img style="width:350px; height:350px;" src = "/images/uploadFiles/${upload.logiName}"/>								
@@ -110,24 +110,24 @@
 						</tr>
 						<tr>
 							<td width="130" class="ct_write">
-								»óÇ°»ó¼¼Á¤º¸ <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+								ìƒí’ˆìƒì„¸ì •ë³´ <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 							</td>
 							<td class="ct_write01">${prod.prodDetail}</td>
 						</tr>
 						<tr>
-							<td width="130" class="ct_write">Á¦Á¶ÀÏÀÚ</td>
+							<td width="130" class="ct_write">ì œì¡°ì¼ì</td>
 							<td class="ct_write01">${prod.manuDate}</td>
 						</tr>
 						<tr>
-							<td width="130" class="ct_write">°¡°İ</td>
+							<td width="130" class="ct_write">ê°€ê²©</td>
 							<td class="ct_write01">${prod.price}</td>
 						</tr>
 						<tr>
-							<td width="130" class="ct_write">Àç°í</td>
+							<td width="130" class="ct_write">ì¬ê³ </td>
 							<td class="ct_write01">${prod.prodStock}</td>
 						</tr>
 						<tr>
-							<td width="130" class="ct_write">µî·ÏÀÏÀÚ</td>
+							<td width="130" class="ct_write">ë“±ë¡ì¼ì</td>
 							<td class="ct_write01">${prod.regDate}</td>
 						</tr>
 						<tr>
@@ -141,8 +141,8 @@
 							<td align="right">
 								<table border="0" cellspacing="0" cellpadding="0">
 									<tr>
-										<td><a class="button ct_btn01"  id="${prod.prodNo}" style="height:40px">±¸¸Å</a></td>
-										<td><a class="button ct_btn01" style="height:40px">ÀÌÀü</a></td>				
+										<td><a class="button ct_btn01"  id="${prod.prodNo}" style="height:40px">êµ¬ë§¤</a></td>
+										<td><a class="button ct_btn01" style="height:40px">ì´ì „</a></td>				
 									</tr>
 								</table>
 							</td>

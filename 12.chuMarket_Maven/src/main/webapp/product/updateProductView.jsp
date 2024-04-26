@@ -1,15 +1,15 @@
 <%
 	/***************************************************
-	*	ÀÛ¼ºÀÚ : Ãß°æ¿î
-	*	ÀÛ¼ºÀÏ : 2024-03-31
-	*	³»  ¿ë : ±âÁ¸ÀÇ FrameSet Çü½ÄÀ» 
+	*	ì‘ì„±ì : ì¶”ê²½ìš´
+	*	ì‘ì„±ì¼ : 2024-03-31
+	*	ë‚´  ìš© : ê¸°ì¡´ì˜ FrameSet í˜•ì‹ì„ 
 	*			 header / article / footer 
-	*			 jspInclude ¹æ½ÄÀ¸·Î ¼öÁ¤ 
-	*			 Bulma Css FrameWork Àû¿ë¿¡ µû¸¥
-	*			 ÆäÀÌÁö UI ¼öÁ¤
+	*			 jspInclude ë°©ì‹ìœ¼ë¡œ ìˆ˜ì • 
+	*			 Bulma Css FrameWork ì ìš©ì— ë”°ë¥¸
+	*			 í˜ì´ì§€ UI ìˆ˜ì •
 	****************************************************/
 %>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -32,10 +32,10 @@
 			
 			
 			/* ########################## Product ########################## */
-			$( ".ct_btn01:contains('¼öÁ¤')" ).on("click" , function() 
+			$( ".ct_btn01:contains('ìˆ˜ì •')" ).on("click" , function() 
 		 	{
-				////////// µî·Ï¹öÆ° Å¬¸¯ ½Ã //////////
-		 		//Form À¯È¿¼º °ËÁõ
+				////////// ë“±ë¡ë²„íŠ¼ í´ë¦­ ì‹œ //////////
+		 		//Form ìœ íš¨ì„± ê²€ì¦
 			 	var name   	 = $("#prodName");
 				var detail	 = $("#prodDetail");
 				var manuDate = $("#manuDate");
@@ -44,57 +44,57 @@
 				
 				if(name.val() == null || name.val().length<1)
 				{
-					alert("»óÇ°¸íÀº ¹İµå½Ã ÀÔ·ÂÇÏ¿©¾ß ÇÕ´Ï´Ù.");
+					alert("ìƒí’ˆëª…ì€ ë°˜ë“œì‹œ ì…ë ¥í•˜ì—¬ì•¼ í•©ë‹ˆë‹¤.");
 					name.focus();
 					return;
 				}
 				if(detail.val() == null || detail.val().length<1)
 				{
-					alert("»óÇ°»ó¼¼Á¤º¸´Â ¹İµå½Ã ÀÔ·ÂÇÏ¿©¾ß ÇÕ´Ï´Ù.");
+					alert("ìƒí’ˆìƒì„¸ì •ë³´ëŠ” ë°˜ë“œì‹œ ì…ë ¥í•˜ì—¬ì•¼ í•©ë‹ˆë‹¤.");
 					detail.focus();
 					return;
 				}
 				if(manuDate.val() == null || manuDate.val().length<1)
 				{
-					alert("Á¦Á¶ÀÏÀÚ´Â ¹İµå½Ã ÀÔ·ÂÇÏ¼Å¾ß ÇÕ´Ï´Ù.");
+					alert("ì œì¡°ì¼ìëŠ” ë°˜ë“œì‹œ ì…ë ¥í•˜ì…”ì•¼ í•©ë‹ˆë‹¤.");
 					manuDate.focus();
 					return;
 				}
 				if(price.val() == null || price.val().length<1)
 				{
-					alert("°¡°İÀº ¹İµå½Ã ÀÔ·ÂÇÏ¼Å¾ß ÇÕ´Ï´Ù.");
+					alert("ê°€ê²©ì€ ë°˜ë“œì‹œ ì…ë ¥í•˜ì…”ì•¼ í•©ë‹ˆë‹¤.");
 					price.focus();
 					return;
 				}
 				if(stock.val() == null || stock.val() < 1)
 				{
-					alert("¼ö·®Àº ¹İµå½Ã 1°³ ÀÌ»ó ÀÔ·ÂÇÏ¼Å¾ß ÇÕ´Ï´Ù.");
+					alert("ìˆ˜ëŸ‰ì€ ë°˜ë“œì‹œ 1ê°œ ì´ìƒ ì…ë ¥í•˜ì…”ì•¼ í•©ë‹ˆë‹¤.");
 					stock.focus();
 					return;
 				}
 				detailForm.attr('action','/product/updateProduct').submit();
 			}); 
 			
-			$( ".ct_btn01:contains('Ãë¼Ò')" ).on("click" , function() 
+			$( ".ct_btn01:contains('ì·¨ì†Œ')" ).on("click" , function() 
 			{
-				////////// Ãë¼Ò¹öÆ° Å¬¸¯ ½Ã //////////
+				////////// ì·¨ì†Œë²„íŠ¼ í´ë¦­ ì‹œ //////////
 				history.go(-1);
 			});
 			
 			$( "#prodStock" ).keyup(function() 
 			{
-				////////// ¼ö·® ÀÔ·Â ½Ã //////////
+				////////// ìˆ˜ëŸ‰ ì…ë ¥ ì‹œ //////////
 				var value = $(this).val();
 				if(value > 100)
 				{
-					alert('ÃÖ´ë 100°³ ±îÁö µî·ÏÇÒ ¼ö ÀÖ½À´Ï´Ù!!');	
+					alert('ìµœëŒ€ 100ê°œ ê¹Œì§€ ë“±ë¡í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤!!');	
 					$("#prodStock").val(100);
 				}
 			});
 			/* ########################## Product ########################## */
 			
 			/* ########################## Market ########################## */
-			$( ".ct_btn01:contains('±¸¸ÅÀÚ Á¤º¸')" ).on("click" , function() 
+			$( ".ct_btn01:contains('êµ¬ë§¤ì ì •ë³´')" ).on("click" , function() 
 			{
 				window.open("/purchase/listSale?prodNo="+$(this).attr('id'),"popWin", "left=300,top=200,width=900,height=500,marginwidth=0,marginheight=0,scrollbars=no,scrolling=no,menubar=no,resizable=no");	
 			});
@@ -114,7 +114,7 @@
 				<table class="table" width="100%" height="37" border="0" cellpadding="0" cellspacing="0">
 					<tr>
 						<td background="/images/ct_ttl_img02.gif" width="100%">
-							<b>»óÇ°¼öÁ¤</b>
+							<b>ìƒí’ˆìˆ˜ì •</b>
 						</td>
 					</tr>
 				</table>
@@ -123,7 +123,7 @@
 					<table class="table" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 13px;">
 						<tr>
 							<td width="130" class="ct_write">
-								»óÇ°¸í 
+								ìƒí’ˆëª… 
 								<img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 							</td>
 							<td class="ct_write01">
@@ -132,7 +132,7 @@
 						</tr>
 						<tr>
 							<td width="130" class="ct_write">
-								»óÇ°»ó¼¼Á¤º¸ 
+								ìƒí’ˆìƒì„¸ì •ë³´ 
 								<img	src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 							</td>
 							<td class="ct_write01">
@@ -141,7 +141,7 @@
 						</tr>
 						<tr>
 							<td width="130" class="ct_write">
-								Á¦Á¶ÀÏÀÚ 
+								ì œì¡°ì¼ì 
 								<img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 							</td>
 							<td class="ct_write01">
@@ -154,16 +154,16 @@
 						</tr>
 						<tr>
 							<td width="130" class="ct_write">
-								°¡°İ 
+								ê°€ê²© 
 								<img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 							</td>
 							<td class="ct_write01">
 								<input type="text" id="price" name="price" value="${prod.price}"
-									class="ct_input_g input" style="width: 130px; height: 30px" maxLength="50"/>&nbsp;¿ø
+									class="ct_input_g input" style="width: 130px; height: 30px" maxLength="50"/>&nbsp;ì›
 							</td>
 						</tr>
 						<tr>
-							<td width="130" class="ct_write">»óÇ°ÀÌ¹ÌÁö</td>
+							<td width="130" class="ct_write">ìƒí’ˆì´ë¯¸ì§€</td>
 							<td class="ct_write01">
 								<img id="preview" style="width:350px; height:350px;" src ="/images/uploadFiles/${upload.logiName}"/>
 								<div class="file is-small">
@@ -173,18 +173,18 @@
 											<span class="file-icon">
 												<i class="fas fa-upload"></i>
 											</span>
-											<span class="file-label"> ÆÄÀÏÃ·ºÎ </span>
+											<span class="file-label"> íŒŒì¼ì²¨ë¶€ </span>
 										</span>
 									</label>
 								</div>
 							</td>
 						</tr>
 						<tr>
-							<td width="130" class="ct_write">¼ö·®</td>
+							<td width="130" class="ct_write">ìˆ˜ëŸ‰</td>
 							<td class="ct_write01">
 								<input type="text" id="prodStock" name="prodStock" class="ct_input_g input" style="width: 50px; height: 30px" maxLength="13"
 										value="${prod.prodStock}" onkeyup="javascript:checkStock(this.value);"/> 
-									°³
+									ê°œ
 							</td>
 						</tr>
 						<tr>
@@ -198,9 +198,9 @@
 							<td align="right">
 								<table border="0" cellspacing="0" cellpadding="0">
 									<tr>
-										<td><a class="button ct_btn01" style="height:40px" id="${prod.prodNo}">±¸¸ÅÀÚ Á¤º¸</a></td>
-										<td><a class="button ct_btn01" style="height:40px">¼öÁ¤</a></td>		
-										<td><a class="button ct_btn01" style="height:40px">Ãë¼Ò</a></td>	
+										<td><a class="button ct_btn01" style="height:40px" id="${prod.prodNo}">êµ¬ë§¤ì ì •ë³´</a></td>
+										<td><a class="button ct_btn01" style="height:40px">ìˆ˜ì •</a></td>		
+										<td><a class="button ct_btn01" style="height:40px">ì·¨ì†Œ</a></td>	
 									</tr>
 								</table>
 							</td>

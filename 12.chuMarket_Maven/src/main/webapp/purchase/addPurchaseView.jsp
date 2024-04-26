@@ -1,15 +1,15 @@
 <%
 	/***************************************************
-	*	ÀÛ¼ºÀÚ : Ãß°æ¿î
-	*	ÀÛ¼ºÀÏ : 2024-03-31
-	*	³»  ¿ë : ±âÁ¸ÀÇ FrameSet Çü½ÄÀ» 
+	*	ìž‘ì„±ìž : ì¶”ê²½ìš´
+	*	ìž‘ì„±ì¼ : 2024-03-31
+	*	ë‚´  ìš© : ê¸°ì¡´ì˜ FrameSet í˜•ì‹ì„ 
 	*			 header / article / footer 
-	*			 jspInclude ¹æ½ÄÀ¸·Î ¼öÁ¤ 
-	*			 Bulma Css FrameWork Àû¿ë¿¡ µû¸¥
-	*			 ÆäÀÌÁö UI ¼öÁ¤
+	*			 jspInclude ë°©ì‹ìœ¼ë¡œ ìˆ˜ì • 
+	*			 Bulma Css FrameWork ì ìš©ì— ë”°ë¥¸
+	*			 íŽ˜ì´ì§€ UI ìˆ˜ì •
 	****************************************************/
 %>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -30,12 +30,12 @@
 				
 			
 			/* ########################## User ########################## */	
-			$( ".ct_btn01:contains('±¸¸Å')" ).on("click" , function() 
+			$( ".ct_btn01:contains('êµ¬ë§¤')" ).on("click" , function() 
 			{
 				fncAddPurchase();
 			});
 			
-			$( ".ct_btn01:contains('Ãë¼Ò')" ).on("click" , function() 
+			$( ".ct_btn01:contains('ì·¨ì†Œ')" ).on("click" , function() 
 			{
 				history.go(-1);
 			});
@@ -47,7 +47,7 @@
 			var count = document.addPurchase.tranStock.value;
 			if(count == "" || count < 0)
 			{
-				alert("ÃÖ¼Ò 1°³ ±¸¸Å¸¦ ÇØ¾ßÇÕ´Ï´Ù!");
+				alert("ìµœì†Œ 1ê°œ êµ¬ë§¤ë¥¼ í•´ì•¼í•©ë‹ˆë‹¤!");
 				document.addPurchase.tranStock.focus();
 				return;
 			}
@@ -59,7 +59,7 @@
 		{
 			if(value > ${prod.prodStock})
 			{
-				alert('ÇöÀç ${prod.prodStock}°³ ±îÁö ±¸¸ÅÇÒ ¼ö ÀÖ½À´Ï´Ù!!');	
+				alert('í˜„ìž¬ ${prod.prodStock}ê°œ ê¹Œì§€ êµ¬ë§¤í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤!!');	
 				document.addPurchase.tranStock.value= ${prod.prodStock};
 			}
 		}
@@ -76,7 +76,7 @@
 				<table class="table" width="100%" height="37" border="0" cellpadding="0"	cellspacing="0">
 					<tr>
 						<td background="/images/ct_ttl_img02.gif" width="100%">
-							<b>»óÇ°±¸¸Å</b>
+							<b>ìƒí’ˆêµ¬ë§¤</b>
 						</td>
 					</tr>
 				</table>
@@ -85,82 +85,82 @@
 					<table class="table" width="600" border="0" cellspacing="0" cellpadding="0" align="center" style="margin-top: 13px;">
 						<tr>
 							<td width="104" class="ct_write">
-								»óÇ°¹øÈ£ <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+								ìƒí’ˆë²ˆí˜¸ <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 							</td>
 							<td class="ct_write01" width="299">${prod.prodNo}</td>
 						</tr>
 						<tr>
 							<td width="104" class="ct_write">
-								»óÇ°¸í <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+								ìƒí’ˆëª… <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 							</td>
 							<td class="ct_write01">${prod.prodName}</td>
 						</tr>
 						<tr>
 							<td width="104" class="ct_write">
-								»óÇ°»ó¼¼Á¤º¸ <img	src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+								ìƒí’ˆìƒì„¸ì •ë³´ <img	src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 							</td>
 							<td class="ct_write01">${prod.prodDetail}</td>
 						</tr>
 						<tr>
-							<td width="104" class="ct_write">Á¦Á¶ÀÏÀÚ</td>
+							<td width="104" class="ct_write">ì œì¡°ì¼ìž</td>
 							<td class="ct_write01">${prod.manuDate}</td>
 						</tr>
 						<tr>
-							<td width="104" class="ct_write">°¡°Ý</td>
+							<td width="104" class="ct_write">ê°€ê²©</td>
 							<td class="ct_write01">${prod.price}</td>
 						</tr>
 						<tr>
-							<td width="104" class="ct_write">µî·ÏÀÏÀÚ</td>
+							<td width="104" class="ct_write">ë“±ë¡ì¼ìž</td>
 							<td class="ct_write01">${prod.regDate}</td>
 						</tr>
 						<tr>
 							<td width="104" class="ct_write">
-								±¸¸ÅÀÚ¾ÆÀÌµð <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+								êµ¬ë§¤ìžì•„ì´ë”” <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 							</td>
 							<td class="ct_write01">${userInfo.userId}</td>
 						</tr>
 						<tr>
-							<td width="104" class="ct_write">±¸¸Å¹æ¹ý</td>
+							<td width="104" class="ct_write">êµ¬ë§¤ë°©ë²•</td>
 							<td class="ct_write01">
 								<div class="select is-small">
 									<select name="paymentOption" class="ct_input_g" 
 											style="width: 150px; height: 30px" maxLength="20">
-										<option value="1" selected="selected">Çö±Ý±¸¸Å</option>
-										<option value="2">½Å¿ë±¸¸Å</option>
+										<option value="1" selected="selected">í˜„ê¸ˆêµ¬ë§¤</option>
+										<option value="2">ì‹ ìš©êµ¬ë§¤</option>
 									</select>
 								</div>
 							</td>
 						</tr>
 						<tr>
-							<td width="104" class="ct_write">±¸¸ÅÀÚÀÌ¸§</td>
+							<td width="104" class="ct_write">êµ¬ë§¤ìžì´ë¦„</td>
 							<td class="ct_write01">
 								<input type="text" name="receiverName" 	class="ct_input_g input" 
 									style="width: 150px; height: 30px" maxLength="20" value="${userInfo.userName}" />
 							</td>
 						</tr>
 						<tr>
-							<td width="104" class="ct_write">±¸¸ÅÀÚ¿¬¶ôÃ³</td>
+							<td width="104" class="ct_write">êµ¬ë§¤ìžì—°ë½ì²˜</td>
 							<td class="ct_write01">
 								<input type="text" name="receiverPhone" class="ct_input_g input" 
 									style="width: 150px; height: 30px" maxLength="20" value="${userInfo.phone}" />
 							</td>
 						</tr>
 						<tr>
-							<td width="104" class="ct_write">±¸¸ÅÀÚÁÖ¼Ò</td>
+							<td width="104" class="ct_write">êµ¬ë§¤ìžì£¼ì†Œ</td>
 							<td class="ct_write01">
 								<input type="text" name="divyAddr" class="ct_input_g input" 
 									style="width: 150px; height: 30px" maxLength="20" 	value="${userInfo.addr}" />
 							</td>
 						</tr>
 						<tr>
-							<td width="104" class="ct_write">±¸¸Å¿äÃ»»çÇ×</td>
+							<td width="104" class="ct_write">êµ¬ë§¤ìš”ì²­ì‚¬í•­</td>
 							<td class="ct_write01">
 								<input type="text" name="divyRequest" 	class="ct_input_g input" 
 									style="width: 150px; height: 30px" maxLength="20" />
 							</td>
 						</tr>
 						<tr>
-							<td width="104" class="ct_write">¹è¼ÛÈñ¸ÁÀÏÀÚ</td>
+							<td width="104" class="ct_write">ë°°ì†¡í¬ë§ì¼ìž</td>
 							<td width="200" class="ct_write01">
 								<input type="text" readonly="readonly" name="divyDate" class="ct_input_g input"  
 									style="width: 150px; height: 30px" maxLength="20"/>
@@ -169,12 +169,12 @@
 							</td>
 						</tr>
 						<tr>
-							<td width="104" class="ct_write">±¸¸Å ¼ö·®</td>
+							<td width="104" class="ct_write">êµ¬ë§¤ ìˆ˜ëŸ‰</td>
 							<td class="ct_write01">
 								<input type="text" name="tranStock" id="tranStock" class="ct_input_g input" style="width: 150px; height: 30px" maxLength="20" 
-									onkeyup="javascript:checkStock(this.value);" value="1"/> °³
+									onkeyup="javascript:checkStock(this.value);" value="1"/> ê°œ
 								<br>
-								¡Ø ¼ýÀÚ¸¸ ÀÔ·Â / ÃÖ´ë ${prod.prodStock}°³±îÁö ±¸¸Å °¡´É
+								â€» ìˆ«ìžë§Œ ìž…ë ¥ / ìµœëŒ€ ${prod.prodStock}ê°œê¹Œì§€ êµ¬ë§¤ ê°€ëŠ¥
 							</td>
 						</tr>
 						<tr>
@@ -188,8 +188,8 @@
 							<td align="center">
 								<table border="0" cellspacing="0" cellpadding="0">
 									<tr>
-										<td><a class="button ct_btn01" style="height:40px">±¸¸Å</a></td>
-										<td><a class="button ct_btn01" style="height:40px">Ãë¼Ò</a></td>				
+										<td><a class="button ct_btn01" style="height:40px">êµ¬ë§¤</a></td>
+										<td><a class="button ct_btn01" style="height:40px">ì·¨ì†Œ</a></td>				
 									</tr>
 								</table>
 							</td>

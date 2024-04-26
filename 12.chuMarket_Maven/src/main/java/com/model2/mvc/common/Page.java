@@ -3,13 +3,13 @@ package com.model2.mvc.common;
 public class Page 
 {
 	///Field
-	private int currentPage;	// ÇöÀçÆäÀÌÁö
-	private int totalCount;		// ÃÑ °Ô½Ã¹° ¼ö
-	private int pageUnit;		// ÇÏ´Ü ÆäÀÌÁö ¹øÈ£ È­¸é¿¡ º¸¿©Áö´Â ¼ö
-	private int pageSize;		// ÇÑ ÆäÀÌÁö´ç º¸¿©Áö´Â °Ô½Ã¹°¼ö
-	private int maxPage;		// ÃÖ´ë ÆäÀÌÁö ¹øÈ£(ÀüÃ¼ ÆäÀÌÁö)
-	private int beginUnitPage;	// È­¸é¿¡ º¸¿©Áö´Â ÆäÀÌÁö ¹øÈ£ÀÇ ÃÖ¼Ò¼ö
-	private int endUnitPage;	// È­¸é¿¡ º¸¿©Áö´Â ÆäÀÌÁö ¹øÈ£ÀÇ ÃÖ´ë¼ö
+	private int currentPage;	// í˜„ì¬í˜ì´ì§€
+	private int totalCount;		// ì´ ê²Œì‹œë¬¼ ìˆ˜
+	private int pageUnit;		// í•˜ë‹¨ í˜ì´ì§€ ë²ˆí˜¸ í™”ë©´ì— ë³´ì—¬ì§€ëŠ” ìˆ˜
+	private int pageSize;		// í•œ í˜ì´ì§€ë‹¹ ë³´ì—¬ì§€ëŠ” ê²Œì‹œë¬¼ìˆ˜
+	private int maxPage;		// ìµœëŒ€ í˜ì´ì§€ ë²ˆí˜¸(ì „ì²´ í˜ì´ì§€)
+	private int beginUnitPage;	// í™”ë©´ì— ë³´ì—¬ì§€ëŠ” í˜ì´ì§€ ë²ˆí˜¸ì˜ ìµœì†Œìˆ˜
+	private int endUnitPage;	// í™”ë©´ì— ë³´ì—¬ì§€ëŠ” í˜ì´ì§€ ë²ˆí˜¸ì˜ ìµœëŒ€ìˆ˜
 	private String paging = "";
 	
 	///Constructor
@@ -50,10 +50,10 @@ public class Page
 		
 		if(getCurrentPage() <= getPageUnit() )
 		{
-			paging += "¢¸ ÀÌÀü";	
+			paging += "â—€ ì´ì „";	
 		}else
 		{
-			paging += "<a id='" + (getCurrentPage()-1) + "'>¢¸ ÀÌÀü</a>";
+			paging += "<a id='" + (getCurrentPage()-1) + "'>â—€ ì´ì „</a>";
 		}
 
 		for(int i = getBeginUnitPage(); i<= getEndUnitPage() ;i++)
@@ -73,10 +73,10 @@ public class Page
 
 		if(getEndUnitPage() >= getMaxPage())
 		{ 
-			paging += "ÀÌÈÄ ¢º";
+			paging += "ì´í›„ â–¶";
 		}else
 		{
-				paging += "<a id='"+ (getEndUnitPage()+1) +"'>ÀÌÈÄ ¢º</a>";
+				paging += "<a id='"+ (getEndUnitPage()+1) +"'>ì´í›„ â–¶</a>";
 		}
 		
 		return paging;

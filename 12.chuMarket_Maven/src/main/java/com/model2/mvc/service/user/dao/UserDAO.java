@@ -19,18 +19,18 @@ import com.model2.mvc.service.domain.User;
 @Repository("userDAO")
 public class UserDAO implements com.model2.mvc.service.user.UserDAO
 {
-	///ÇÊµå
+	///í•„ë“œ
 	@Autowired
 	@Qualifier("sqlSessionTemplate")
 	private SqlSession sqlSession;
 	
-	///»ı¼ºÀÚ
+	///ìƒì„±ì
 	public UserDAO()
 	{
 		System.out.println(this.getClass());
 	}
 
-	///¸Ş¼Òµå
+	///ë©”ì†Œë“œ
 	public int addUser(User user) throws Exception 
 	{
 		return sqlSession.insert("UserMapper.addUser", user);

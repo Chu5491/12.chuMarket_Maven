@@ -1,15 +1,15 @@
 <%
 	/***************************************************
-	*	ÀÛ¼ºÀÚ : Ãß°æ¿î
-	*	ÀÛ¼ºÀÏ : 2024-03-31
-	*	³»  ¿ë : ±âÁ¸ÀÇ FrameSet Çü½ÄÀ» 
+	*	ì‘ì„±ì : ì¶”ê²½ìš´
+	*	ì‘ì„±ì¼ : 2024-03-31
+	*	ë‚´  ìš© : ê¸°ì¡´ì˜ FrameSet í˜•ì‹ì„ 
 	*			 header / article / footer 
-	*			 jspInclude ¹æ½ÄÀ¸·Î ¼öÁ¤ 
-	*			 Bulma Css FrameWork Àû¿ë¿¡ µû¸¥
-	*			 ÆäÀÌÁö UI ¼öÁ¤
+	*			 jspInclude ë°©ì‹ìœ¼ë¡œ ìˆ˜ì • 
+	*			 Bulma Css FrameWork ì ìš©ì— ë”°ë¥¸
+	*			 í˜ì´ì§€ UI ìˆ˜ì •
 	****************************************************/
 %>
-<%@ page contentType="text/html; charset=euc-kr" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <html>
 	<!-- Header -->
 	<header>
@@ -19,7 +19,7 @@
 	
 	<!-- Script -->
 	<script type="text/javascript">
-		//==>"°¡ÀÔ"  Event ¿¬°á
+		//==>"ê°€ì…"  Event ì—°ê²°
 	
 		var duplResult = 'F';
 		
@@ -31,14 +31,14 @@
 				
 			
 			/* ########################## User ########################## */	
-			$( ".ct_btn01:contains('°¡ÀÔ')" ).on("click" , function() 
+			$( ".ct_btn01:contains('ê°€ì…')" ).on("click" , function() 
 			{
 				//Debug..
-				//alert(  $( "td.ct_btn01:contains('°¡ÀÔ')" ).html() );
+				//alert(  $( "td.ct_btn01:contains('ê°€ì…')" ).html() );
 				fncAddUser();
 			});
 			
-			$( ".ct_btn01:contains('Ãë¼Ò')" ).on("click" , function() 
+			$( ".ct_btn01:contains('ì·¨ì†Œ')" ).on("click" , function() 
 			{
 				$("form")[0].reset();
 				checkDupl($("#userId").val());
@@ -50,7 +50,7 @@
 			    
 				 if(email != "" && (email.indexOf('@') < 1 || email.indexOf('.') == -1) )
 				 {
-			    	alert("ÀÌ¸ŞÀÏ Çü½ÄÀÌ ¾Æ´Õ´Ï´Ù.");
+			    	alert("ì´ë©”ì¼ í˜•ì‹ì´ ì•„ë‹™ë‹ˆë‹¤.");
 			     }
 			});
 			
@@ -92,14 +92,14 @@
 							$("#duplResult").text("");
 						}else
 						{
-							$("#duplResult").text("»ç¿ë°¡´ÉÇÕ´Ï´Ù!");
+							$("#duplResult").text("ì‚¬ìš©ê°€ëŠ¥í•©ë‹ˆë‹¤!");
 							$("#duplResult").css('color','green');
 							duplResult = 'Y';
 						}
 						
 					}else
 					{
-						$("#duplResult").text("»ç¿ëÇÒ ¼ö ¾ø½À´Ï´Ù!");
+						$("#duplResult").text("ì‚¬ìš©í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤!");
 						$("#duplResult").css('color','red');
 						duplResult = 'F';
 					}
@@ -117,35 +117,35 @@
 			
 			if(id == null || id.length <1)
 			{
-				alert("¾ÆÀÌµğ´Â ¹İµå½Ã ÀÔ·ÂÇÏ¼Å¾ß ÇÕ´Ï´Ù.");
+				alert("ì•„ì´ë””ëŠ” ë°˜ë“œì‹œ ì…ë ¥í•˜ì…”ì•¼ í•©ë‹ˆë‹¤.");
 				return;
 			}
 			
 			if(duplResult != 'Y')
 			{
-				alert("Áßº¹µÈ ¾ÆÀÌµğÀÔ´Ï´Ù! ´Ù¸¥ ¾ÆÀÌµğ¸¦ »ç¿ëÇØÁÖ¼¼¿ä.")
+				alert("ì¤‘ë³µëœ ì•„ì´ë””ì…ë‹ˆë‹¤! ë‹¤ë¥¸ ì•„ì´ë””ë¥¼ ì‚¬ìš©í•´ì£¼ì„¸ìš”.")
 				$("input[name='userId']").focus();
 				return
 			}
 			if(pw == null || pw.length <1)
 			{
-				alert("ÆĞ½º¿öµå´Â  ¹İµå½Ã ÀÔ·ÂÇÏ¼Å¾ß ÇÕ´Ï´Ù.");
+				alert("íŒ¨ìŠ¤ì›Œë“œëŠ”  ë°˜ë“œì‹œ ì…ë ¥í•˜ì…”ì•¼ í•©ë‹ˆë‹¤.");
 				return;
 			}
 			if(pw_confirm == null || pw_confirm.length <1)
 			{
-				alert("ÆĞ½º¿öµå È®ÀÎÀº  ¹İµå½Ã ÀÔ·ÂÇÏ¼Å¾ß ÇÕ´Ï´Ù.");
+				alert("íŒ¨ìŠ¤ì›Œë“œ í™•ì¸ì€  ë°˜ë“œì‹œ ì…ë ¥í•˜ì…”ì•¼ í•©ë‹ˆë‹¤.");
 				return;
 			}
 			if(name == null || name.length <1)
 			{
-				alert("ÀÌ¸§Àº  ¹İµå½Ã ÀÔ·ÂÇÏ¼Å¾ß ÇÕ´Ï´Ù.");
+				alert("ì´ë¦„ì€  ë°˜ë“œì‹œ ì…ë ¥í•˜ì…”ì•¼ í•©ë‹ˆë‹¤.");
 				return;
 			}
 			
 			if( pw != pw_confirm ) 
 			{				
-				alert("ºñ¹Ğ¹øÈ£ È®ÀÎÀÌ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.");
+				alert("ë¹„ë°€ë²ˆí˜¸ í™•ì¸ì´ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 				$("input:text[name='password2']").focus();
 				return;
 			}
@@ -171,10 +171,10 @@
 			var today; 
 	
 			ssn = document.detailForm.ssn.value;
-			// À¯È¿ÇÑ ÁÖ¹Î¹øÈ£ Çü½ÄÀÎ °æ¿ì¸¸ ³ªÀÌ °è»ê ÁøÇà, PortalJuminCheck ÇÔ¼ö´Â CommonScript.js ÀÇ °øÅë ÁÖ¹Î¹øÈ£ Ã¼Å© ÇÔ¼öÀÓ 
+			// ìœ íš¨í•œ ì£¼ë¯¼ë²ˆí˜¸ í˜•ì‹ì¸ ê²½ìš°ë§Œ ë‚˜ì´ ê³„ì‚° ì§„í–‰, PortalJuminCheck í•¨ìˆ˜ëŠ” CommonScript.js ì˜ ê³µí†µ ì£¼ë¯¼ë²ˆí˜¸ ì²´í¬ í•¨ìˆ˜ì„ 
 			if(!PortalJuminCheck(ssn)) 
 			{
-				alert("Àß¸øµÈ ÁÖ¹Î¹øÈ£ÀÔ´Ï´Ù.");
+				alert("ì˜ëª»ëœ ì£¼ë¯¼ë²ˆí˜¸ì…ë‹ˆë‹¤.");
 				return false;
 			}
 		}
@@ -208,7 +208,7 @@
 		<table class="table" width="100%" height="37" border="0" cellpadding="0"	cellspacing="0">
 			<tr>
 				<td background="/images/ct_ttl_img02.gif" width="100%" style="padding:7 0 0 10px; margin:0 0 10 0px;">
-					<b>È¸¿ø°¡ÀÔ</b>
+					<b>íšŒì›ê°€ì…</b>
 				</td>
 			</tr>
 		</table>
@@ -222,7 +222,7 @@
 				
 				<tr>
 					<td width="130" class="ct_write">
-						¾ÆÀÌµğ <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+						ì•„ì´ë”” <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 					</td>
 					<td class="ct_write01">
 						<input type="text" name="userId" id="userId" style="width:100px; height:30px" class="ct_input_g input"  maxLength="20" >
@@ -232,7 +232,7 @@
 				</tr>
 				<tr>
 					<td width="130" class="ct_write">
-						ºñ¹Ğ¹øÈ£ <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+						ë¹„ë°€ë²ˆí˜¸ <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 					</td>
 					<td class="ct_write01">
 						<input type="password" name="password" class="ct_input_g input" 
@@ -241,7 +241,7 @@
 				</tr>
 				<tr>
 					<td width="135" class="ct_write">
-						ºñ¹Ğ¹øÈ£ È®ÀÎ <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+						ë¹„ë°€ë²ˆí˜¸ í™•ì¸ <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 					</td>
 					<td class="ct_write01">
 						<input type="password" name="password2" class="ct_input_g input" 
@@ -250,7 +250,7 @@
 				</tr>
 				<tr>
 					<td width="130" class="ct_write">
-						ÀÌ¸§ <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
+						ì´ë¦„ <img src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 					</td>
 					<td class="ct_write01">
 						<input type="text" name="userName" class="ct_input_g input" 
@@ -258,21 +258,21 @@
 					</td>
 				</tr>
 				<tr>
-					<td width="130" class="ct_write">ÁÖ¹Î¹øÈ£</td>
+					<td width="130" class="ct_write">ì£¼ë¯¼ë²ˆí˜¸</td>
 					<td class="ct_write01">
 						<input type="text" name="ssn" class="ct_input_g input" style="width:100px; height:30px" 
 							onChange="javascript:checkSsn();"  maxLength="13" />
-						-Á¦¿Ü, 13ÀÚ¸® ÀÔ·Â
+						-ì œì™¸, 13ìë¦¬ ì…ë ¥
 					</td>
 				</tr>
 				<tr>
-					<td width="130" class="ct_write">ÁÖ¼Ò</td>
+					<td width="130" class="ct_write">ì£¼ì†Œ</td>
 					<td class="ct_write01">
 						<input type="text" name="addr" class="ct_input_g input" style="width:370px; height:30px"  maxLength="100"/>
 					</td>
 				</tr>
 				<tr>
-					<td width="130" class="ct_write">ÈŞ´ëÀüÈ­¹øÈ£</td>
+					<td width="130" class="ct_write">íœ´ëŒ€ì „í™”ë²ˆí˜¸</td>
 					<td class="ct_write01">
 						<div class="select is-small">
 							<select name="phone1" class="ct_input_g"  
@@ -294,7 +294,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td width="130" class="ct_write">ÀÌ¸ŞÀÏ </td>
+					<td width="130" class="ct_write">ì´ë©”ì¼ </td>
 					<td class="ct_write01">
 			 			<input 	type="text" name="email" class="ct_input_g input" style="width:100px; height:30px" />										
 					</td>
@@ -310,8 +310,8 @@
 					<td align="right">
 						<table border="0" cellspacing="0" cellpadding="0">
 							<tr>
-								<td><a class="button ct_btn01" style="height:40px">°¡ÀÔ</a></td>
-								<td><a class="button ct_btn01" style="height:40px">Ãë¼Ò</a></td>				
+								<td><a class="button ct_btn01" style="height:40px">ê°€ì…</a></td>
+								<td><a class="button ct_btn01" style="height:40px">ì·¨ì†Œ</a></td>				
 							</tr>
 						</table>
 					</td>

@@ -1,13 +1,13 @@
-<%@ page contentType="text/html; charset=EUC-KR" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 
 <html>
 <head>
 
-<title>��� ��ǰ ����</title>
+<title>열어본 상품 보기</title>
 
 </head>
 <body>
-	����� ��� ��ǰ�� �˰� �ִ�
+	당신이 열어본 상품을 알고 있다
 <br>
 <br>
 <%

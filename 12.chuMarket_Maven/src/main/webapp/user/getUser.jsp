@@ -1,15 +1,15 @@
 <%
 	/***************************************************
-	*	ÀÛ¼ºÀÚ : Ãß°æ¿î
-	*	ÀÛ¼ºÀÏ : 2024-03-31
-	*	³»  ¿ë : ±âÁ¸ÀÇ FrameSet Çü½ÄÀ» 
+	*	ì‘ì„±ì : ì¶”ê²½ìš´
+	*	ì‘ì„±ì¼ : 2024-03-31
+	*	ë‚´  ìš© : ê¸°ì¡´ì˜ FrameSet í˜•ì‹ì„ 
 	*			 header / article / footer 
-	*			 jspInclude ¹æ½ÄÀ¸·Î ¼öÁ¤ 
-	*			 Bulma Css FrameWork Àû¿ë¿¡ µû¸¥
-	*			 ÆäÀÌÁö UI ¼öÁ¤
+	*			 jspInclude ë°©ì‹ìœ¼ë¡œ ìˆ˜ì • 
+	*			 Bulma Css FrameWork ì ìš©ì— ë”°ë¥¸
+	*			 í˜ì´ì§€ UI ìˆ˜ì •
 	****************************************************/
 %>
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
@@ -30,7 +30,7 @@
 		
 		
 		/* ########################## User ########################## */
-		$( ".ct_btn01:contains('¼öÁ¤')" ).on("click" , function() 
+		$( ".ct_btn01:contains('ìˆ˜ì •')" ).on("click" , function() 
 	 	{
 	 		$(window.location).attr("href","/user/updateUser?userId=${user.userId }");
 		}); 
@@ -39,7 +39,7 @@
 		
 		
 		/* ########################## History ########################## */
-		$( ".ct_btn01:contains('È®ÀÎ')" ).on("click" , function() 
+		$( ".ct_btn01:contains('í™•ì¸')" ).on("click" , function() 
 	 	{
 			history.go(-1);
 		}); 
@@ -55,7 +55,7 @@
 			<table class="table"  width="100%" height="37" border="0" cellpadding="0" cellspacing="0">
 				<tr>
 					<td background="/images/ct_ttl_img02.gif" width="100%">
-						<b>È¸¿øÁ¤º¸Á¶È¸</b>
+						<b>íšŒì›ì •ë³´ì¡°íšŒ</b>
 					</td>
 				</tr>
 			</table>
@@ -64,30 +64,30 @@
 				<table class="table" width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top:13px;">
 					<tr>
 						<td width="130" class="ct_write">
-							¾ÆÀÌµğ <img src="/images/ct_icon_red.gif" width="5" height="3" align="absmiddle"/>
+							ì•„ì´ë”” <img src="/images/ct_icon_red.gif" width="5" height="3" align="absmiddle"/>
 						</td>
 						<td class="ct_write01">${user.userId}</td>
 					</tr>
 					<tr>
 						<td width="130" class="ct_write">
-							ÀÌ¸§ <img src="/images/ct_icon_red.gif" width="5" height="3" align="absmiddle"/>
+							ì´ë¦„ <img src="/images/ct_icon_red.gif" width="5" height="3" align="absmiddle"/>
 						</td>
 						<td class="ct_write01">${user.userName}</td>
 					</tr>
 					<tr>
-						<td width="104" class="ct_write">ÁÖ¼Ò</td>
+						<td width="104" class="ct_write">ì£¼ì†Œ</td>
 						<td class="ct_write01">${user.addr }</td>
 					</tr>
 					<tr>
-						<td width="130" class="ct_write">ÈŞ´ëÀüÈ­¹øÈ£</td>
+						<td width="130" class="ct_write">íœ´ëŒ€ì „í™”ë²ˆí˜¸</td>
 						<td class="ct_write01">${user.phone}</td>
 					</tr>
 					<tr>
-						<td width="130" class="ct_write">ÀÌ¸ŞÀÏ </td>
+						<td width="130" class="ct_write">ì´ë©”ì¼ </td>
 						<td class="ct_write01">${user.email }</td>
 					</tr>
 					<tr>
-						<td width="130" class="ct_write">°¡ÀÔÀÏÀÚ</td>
+						<td width="130" class="ct_write">ê°€ì…ì¼ì</td>
 						<td class="ct_write01">${user.regDate }</td>
 					</tr>
 				</table>
@@ -98,8 +98,8 @@
 						<td align="right">
 							<table border="0" cellspacing="0" cellpadding="0">
 								<tr>
-									<td><button class="button ct_btn01" style="height:40px">¼öÁ¤</button></td>
-									<td><button class="button ct_btn01" style="height:40px">È®ÀÎ</button></td>				
+									<td><button class="button ct_btn01" style="height:40px">ìˆ˜ì •</button></td>
+									<td><button class="button ct_btn01" style="height:40px">í™•ì¸</button></td>				
 								</tr>
 							</table>
 						</td>

@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=euc_kr" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 
 <html>
 <head>
@@ -249,7 +249,7 @@ function fncCreate() {
 			<table border="0" cellspacing="0" cellpadding="0">
 				<tr>
 					<td height="26">
-						<input type="text" name="Input3" class="ct_input_g" style="width:370px; height:19px" value="ÇÑ±Û123abc" fieldTitle="char" char="skn">
+						<input type="text" name="Input3" class="ct_input_g" style="width:370px; height:19px" value="í•œê¸€123abc" fieldTitle="char" char="skn">
 					</td>
 				</tr>
 				<tr>

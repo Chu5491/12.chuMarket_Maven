@@ -22,7 +22,7 @@ import com.model2.mvc.service.product.ProductService;
 import com.model2.mvc.service.purchase.PurchaseService;
 import com.model2.mvc.service.user.UserService;
 
-//==> È¸¿ø°ü¸® Controller
+//==> íšŒì›ê´€ë¦¬ Controller
 @Controller
 @RequestMapping("/purchase/*")
 public class PurchaseController 
@@ -39,15 +39,15 @@ public class PurchaseController
 	@Autowired
 	@Qualifier("userServiceImpl")
 	private UserService userService;
-	//setter Method ±¸Çö ¾ÊÀ½
+	//setter Method êµ¬í˜„ ì•ŠìŒ
 		
 	public PurchaseController()
 	{
 		System.out.println(this.getClass());
 	}
 	
-	//==> classpath:config/common.properties  ,  classpath:config/commonservice.xml ÂüÁ¶ ÇÒ°Í
-	//==> ¾Æ·¡ÀÇ µÎ°³¸¦ ÁÖ¼®À» Ç®¾î ÀÇ¹Ì¸¦ È®ÀÎ ÇÒ°Í
+	//==> classpath:config/common.properties  ,  classpath:config/commonservice.xml ì°¸ì¡° í• ê²ƒ
+	//==> ì•„ë˜ì˜ ë‘ê°œë¥¼ ì£¼ì„ì„ í’€ì–´ ì˜ë¯¸ë¥¼ í™•ì¸ í• ê²ƒ
 	//@Value("#{commonProperties['pageUnit']}")
 	//@Value("#{commonProperties['pageUnit'] ?: 3}")
 	//@Value("${pageUnit ? : 3}")
@@ -63,11 +63,11 @@ public class PurchaseController
 	{
 		System.out.println("/purchase/getPurchase");
 		
-		// Business logic ¼öÇà
+		// Business logic ìˆ˜í–‰
 		Purchase pur = purchaseService.getPurchase(tranNo);
 		System.out.println("getPurchaseView :: " + pur);
 		
-		// Model °ú View ¿¬°á
+		// Model ê³¼ View ì—°ê²°
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("pur", pur);
 		modelAndView.setViewName("forward:/purchase/getPurchaseView.jsp");
@@ -87,7 +87,7 @@ public class PurchaseController
 		
 		search.setPageSize(pageSize);
 		
-		// Business logic ¼öÇà
+		// Business logic ìˆ˜í–‰
 		Map<String , Object> map = purchaseService.getPurchaseList(search,user.getUserId());
 		
 		Page resultPage = new Page( search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
@@ -96,7 +96,7 @@ public class PurchaseController
 		int totalCount  = purchaseService.getPurchaseTotal(user.getUserId());
 		System.out.println("PurchaseList :: " + map.get("list"));
 		
-		// Model °ú View ¿¬°á
+		// Model ê³¼ View ì—°ê²°
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("list", map.get("list"));
 		modelAndView.addObject("resultPage", resultPage);
@@ -110,11 +110,11 @@ public class PurchaseController
 	{
 		System.out.println("/purchase/addPurchase :: GET");
 		
-		// Business logic ¼öÇà
+		// Business logic ìˆ˜í–‰
 		Product prod = productService.getProduct(prodNo);
 		System.out.println("addPurchaseView :: " + prod);
 		
-		// Model °ú View ¿¬°á
+		// Model ê³¼ View ì—°ê²°
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("prod", prod);
 		modelAndView.setViewName("forward:/purchase/addPurchaseView.jsp");
@@ -130,7 +130,7 @@ public class PurchaseController
 		System.out.println("/purchase/addPurchase :: post");
 		
 		
-		// Business logic ¼öÇà
+		// Business logic ìˆ˜í–‰
 		Product prod = productService.getProduct(prodNo);
 		User user	 = userService.getUser(buyerId);
 		pur.setBuyer(user);
@@ -141,7 +141,7 @@ public class PurchaseController
 		purchaseService.addPurchase(pur);
 		purchaseService.decreaseStock(pur, pur.getTranStock());
 		
-		// Model °ú View ¿¬°á
+		// Model ê³¼ View ì—°ê²°
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("pur", pur);
 		modelAndView.setViewName("forward:/purchase/addPurchase.jsp");
@@ -155,11 +155,11 @@ public class PurchaseController
 		System.out.println("/purchase/updatePurchase :: get");
 		
 		Purchase pur = purchaseService.getPurchase(tranNo);
-		// Business logic ¼öÇà
+		// Business logic ìˆ˜í–‰
 		
 		System.out.println("updatePurchaseView :: " + pur);
 		
-		// Model °ú View ¿¬°á
+		// Model ê³¼ View ì—°ê²°
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("pur", pur);
 		modelAndView.setViewName("forward:/purchase/updatePurchaseView.jsp");
@@ -172,7 +172,7 @@ public class PurchaseController
 	{
 		System.out.println("/purchase/updatePurchase :: post");
 		
-		// Business logic ¼öÇà
+		// Business logic ìˆ˜í–‰
 		Purchase purchase = purchaseService.getPurchase(pur.getTranNo());
 		int tranStock 	  = pur.getTranStock();
 		int pastTranStock = purchase.getTranStock();
@@ -195,7 +195,7 @@ public class PurchaseController
 		
 		pur = purchaseService.getPurchase(pur.getTranNo());
 		
-		// Model °ú View ¿¬°á
+		// Model ê³¼ View ì—°ê²°
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("pur", pur);
 		modelAndView.setViewName("forward:/purchase/getPurchaseView.jsp");
@@ -209,11 +209,11 @@ public class PurchaseController
 		System.out.println("/purchase/listSale");
 		
 		Map<String , Object> map = purchaseService.getSaleList(prodNo);
-		// Business logic ¼öÇà
+		// Business logic ìˆ˜í–‰
 		
 		System.out.println("listSale :: " + map.get("list"));
 		
-		// Model °ú View ¿¬°á
+		// Model ê³¼ View ì—°ê²°
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("list", map.get("list"));
 		modelAndView.setViewName("forward:/purchase/listSaleView.jsp");
@@ -228,12 +228,12 @@ public class PurchaseController
 		System.out.println("/purchase/updateTranCode");
 	
 		
-		// Business logic ¼öÇà
+		// Business logic ìˆ˜í–‰
 		Purchase pur = purchaseService.getPurchase(tranNo);
 		pur.setTranCode(Integer.toString(Integer.parseInt(pur.getTranCode().trim()) + 1));
 		
 		purchaseService.updateTranCode(pur);
-		// Model °ú View ¿¬°á
+		// Model ê³¼ View ì—°ê²°
 		ModelAndView modelAndView = new ModelAndView();
 		if(menu.equals("sale"))
 		{
