@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="PurchaseMapper">
+	
+	<resultMap id="purchaseSelectMap" type="pur">
+		<result property="tranNo" 		 		 column="TRAN_NO" 			jdbcType="INTEGER"/>
+		<result property="purchaseProd.prodNo" 	 column="PROD_NO" 			jdbcType="INTEGER"/>
+		<result property="buyer.userId" 	 	 column="BUYER_ID" 			jdbcType="VARCHAR"/>
+		<result property="paymentOption" 	 	 column="PAYMENT_OPTION" 	jdbcType="VARCHAR" />
+		<result property="receiverName"  	 	 column="RECEIVER_NAME" 	jdbcType="VARCHAR" />
+		<result property="receiverPhone" 	 	 column="RECEIVER_PHONE" 	jdbcType="VARCHAR" />
+		<result property="divyAddr" 	 	 	 column="DEMAILADDR" 		jdbcType="VARCHAR" />
+		<result property="divyRequest" 	 	 	 column="DLVY_REQUEST" 		jdbcType="VARCHAR" />
+		<result property="tranCode" 	 	 	 column="TRAN_STATUS_CODE" 	jdbcType="VARCHAR" />
+		<result property="orderDate" 	 	 	 column="ORDER_DATA" 		jdbcType="DATE" />
+		<result property="divyDate" 	 	 	 column="DLVY_DATE" 		jdbcType="DATE" />
+		<result property="tranStock" 	 	 	 column="TRAN_STOCK" 		jdbcType="INTEGER"/>
+		<!-- 
+		<association property="prodNo" resultMap="prod">
+			<result property="prodNo" 	 column="PROD_NO" 			jdbcType="INTEGER"/>
+		</association>
+		<association property="userId" resultMap="user">
+			<result property="buyerId" 	 column="BUYER_ID" 			jdbcType="VARCHAR"/>
+		</association>
+		 -->
+	</resultMap>
+  	
+	<!-- INSERT 매핑구문 (insert SQL 등록) :: insert element -->
+  	<insert id="addPurchase" parameterType="pur" useGeneratedKeys="true" keyProperty="tranNo,orderDate" keyColumn="TRAN_NO,ORDER_DATA">
+		INSERT INTO 
+		TRANSACTION 
+		VALUES (
+					SEQ_TRANSACTION_TRAN_NO.NEXTVAL,
+					#{purchaseProd.prodNo},
+					#{buyer.userId},
+					#{paymentOption},
+					#{receiverName},
+					#{receiverPhone},
+					#{divyAddr},
+					#{divyRequest},
+					'1',
+					SYSDATE,
+					#{divyDate},
+					#{tranStock}
+				)
+  	</insert>
+  	<!-- INSERT 매핑구문 (insert SQL 등록) :: insert element -->
+  	
+  	
+  	<!-- SELECT 매핑구문 (select SQL 등록) :: select element -->  	
+  	<select id="getPurchase" parameterType="int" resultMap="purchaseSelectMap">
+  		SELECT 
+  			TRAN_NO,
+  			PROD_NO,
+  			BUYER_ID,
+  			PAYMENT_OPTION,
+  			RECEIVER_NAME,
+  			RECEIVER_PHONE,
+			DEMAILADDR,
+			DLVY_REQUEST,
+			TRAN_STATUS_CODE,
+			TO_CHAR(ORDER_DATA,'yyyy-mm-dd') as ORDER_DATA,
+			TO_CHAR(DLVY_DATE, 'yyyy-mm-dd') as DLVY_DATE,
+			TRAN_STOCK
+			FROM TRANSACTION 
+			WHERE TRAN_NO = #{value}
+  	</select>
+  	<!-- SELECT 매핑구문 (select SQL 등록) :: select element -->  	
+  	
+  	
+  	<!-- UPDATE 매핑구문 (update SQL 등록) :: update element -->  	
+  	<update id="updatePurchase" parameterType="pur">
+  		UPDATE TRANSACTION 
+  			<set>
+	  			<if test="paymentOption != null">PAYMENT_OPTION = #{paymentOption},</if>
+	  			<if test="receiverName != null">RECEIVER_NAME = #{receiverName},</if>
+	  			<if test="receiverPhone != null">RECEIVER_PHONE = #{receiverPhone},</if>
+	  			<if test="divyAddr != null">DEMAILADDR = #{divyAddr},</if>
+	  			<if test="divyRequest != null">DLVY_REQUEST = #{divyRequest},</if>
+	  			<if test="tranCode != null">TRAN_STATUS_CODE = #{tranCode},</if>
+	  			<if test="divyDate != null">DLVY_DATE = #{divyDate},</if>
+	  			<if test="tranStock != null">TRAN_STOCK = #{tranStock},</if>
+	  			ORDER_DATA = SYSDATE
+  			</set>
+			<where>
+				<if test="tranNo != null">TRAN_NO = #{tranNo}</if>
+			</where>
+  	</update>
+  	<!-- UPDATE 매핑구문 (update SQL 등록) :: update element -->  
+  	
+  	
+  	<!-- UPDATE 매핑구문 (update SQL 등록) :: update element -->  	
+  	<update id="decreaseStock" parameterType="map">
+  		UPDATE PRODUCT 
+  			<set>
+	  			PROD_STOCK = #{pur.purchaseProd.prodStock} - #{buyCount}
+  			</set>
+			<where>
+				PROD_NO = #{pur.purchaseProd.prodNo}
+			</where>
+  	</update>
+  	
+  	<update id="increaseStock" parameterType="map">
+  		UPDATE PRODUCT 
+  			<set>
+	  			PROD_STOCK = #{pur.purchaseProd.prodStock} + #{buyCount}
+  			</set>
+			<where>
+				PROD_NO = #{pur.purchaseProd.prodNo}
+			</where>
+  	</update>
+  	<!-- UPDATE 매핑구문 (update SQL 등록) :: update element -->
+  	
+  	
+  	<!-- UPDATE 매핑구문 (update SQL 등록) :: update element -->  	
+  	<update id="updateTranCode" parameterType="map">
+  		UPDATE TRANSACTION 
+  			<set>
+	  			<if test="tranCode != null">TRAN_STATUS_CODE = #{tranCode}</if>
+  			</set>
+			<where>
+				<if test="tranNo != null">TRAN_NO = #{tranNo}</if>
+			</where>
+  	</update>
+  	<!-- UPDATE 매핑구문 (update SQL 등록) :: update element -->   
+  	
+  	
+  	<!-- DELETE 매핑구문 (delete SQL 등록) :: delete element -->  	
+  	<delete id="removePurchase" parameterType="string" >
+  	</delete>
+  	<!-- DELETE 매핑구문 (delete SQL 등록) :: delete element -->  
+  	
+  	
+  	<!-- SELECT 매핑구문 (select SQL 등록) :: select element -->  	
+  	<select id="getPurchaseList" parameterType="map" resultMap="purchaseSelectMap">
+  		SELECT 
+			*
+		FROM 
+			( 
+				SELECT inner_table. * ,  ROWNUM AS row_seq FROM 
+				( 
+					SELECT * FROM TRANSACTION 
+					WHERE BUYER_ID = #{userId}
+		      		ORDER BY tran_no
+				)inner_table
+				
+				WHERE ROWNUM &lt;= #{search.endRowNum}
+			)
+			WHERE row_seq BETWEEN #{search.startRowNum} AND #{search.endRowNum} 
+  	</select>
+	<!-- SELECT 매핑구문 (select SQL 등록) :: select element -->  
+	
+	<!-- SELECT 매핑구문 (select SQL 등록) :: select element -->  	
+  	<select id="getSaleList" parameterType="int" resultMap="purchaseSelectMap">
+  		SELECT 
+			*
+		FROM 
+		TRANSACTION
+		WHERE PROD_NO = #{value}
+  	</select>
+	<!-- SELECT 매핑구문 (select SQL 등록) :: select element -->  
+	
+	<!-- SQL : SELECT ROW Count -->	 
+	<select  id="getPurchaseTotal"  parameterType="string" resultType="int">
+		SELECT COUNT(*) AS COUNT from TRANSACTION
+		<where>
+			BUYER_ID = #{value}
+		</where>
+	</select>
+	<!-- SQL : SELECT ROW Count -->	 
+
+</mapper>

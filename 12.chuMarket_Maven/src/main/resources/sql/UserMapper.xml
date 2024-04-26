@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="UserMapper">
+ 	
+	<resultMap id="userSelectMap" type="user">
+		<result property="userId" 	column="user_id" 	jdbcType="VARCHAR"/>
+		<result property="userName"	column="user_name" 	jdbcType="VARCHAR" />
+		<result property="password" column="password" 	jdbcType="VARCHAR" />
+		<result property="role" 	column="role" 		jdbcType="VARCHAR" />
+		<result property="ssn" 		column="ssn" 		jdbcType="VARCHAR" />
+		<result property="phone" 	column="cell_phone" jdbcType="VARCHAR" />
+		<result property="addr" 	column="addr" 		jdbcType="VARCHAR" />
+		<result property="email" 	column="email" 		jdbcType="NUMERIC" />
+		<result property="regDate" 	column="reg_date" 	jdbcType="DATE" />
+	</resultMap>
+	
+	<!-- SQL 을 컴포넌트(모듈화) 할 수 있는 sql, include element -->
+  	<sql id="select-users">
+  		SELECT
+  			user_id, user_name, password, 
+ 			role, ssn, cell_phone, addr, 
+ 			email, reg_date
+  		FROM users
+  	</sql>
+  	
+  	<sql id="orderby-userId-desc">
+  		ORDER BY user_id DESC
+  	</sql>
+  	<!-- SQL 을 컴포넌트(모듈화) 할 수 있는 sql, include element -->
+  	
+	<!-- INSERT 매핑구문 (insert SQL 등록) :: insert element -->
+  	<insert id="addUser" parameterType="user">
+  		INSERT 
+  		INTO users 
+  			(
+  				user_id, user_name, password, 
+  				role, ssn, cell_phone, addr, 
+  				email, reg_date
+  			)
+  		VALUES 
+  		(
+  			#{userId},#{userName},#{password},
+  			'user',#{ssn},#{phone},#{addr},
+  			#{email},SYSDATE
+  		)
+  	</insert>
+  	<!-- INSERT 매핑구문 (insert SQL 등록) :: insert element -->
+  	
+  	<!-- SELECT 매핑구문 (select SQL 등록) :: select element -->  	
+  	<select id="getUser" parameterType="string" resultMap="userSelectMap">
+  		SELECT
+  			user_id, user_name, password, 
+ 			role, ssn, cell_phone, addr, 
+ 			email, reg_date
+  		FROM users
+  		WHERE user_id = #{value}
+  	</select>
+  	<!-- SELECT 매핑구문 (select SQL 등록) :: select element -->  	
+  	
+  	<!-- UPDATE 매핑구문 (update SQL 등록) :: update element -->  	
+  	<update id="updateUser" parameterType="user">
+  		UPDATE users
+  		<set>
+  			<if test="role != null">role = #{role},</if>
+  			<if test="userName != null">user_name = #{userName},</if>
+  			<if test="phone != null">cell_phone = #{phone},</if>
+  			<if test="addr != null">addr = #{addr},</if>
+  			<if test="email != null">email = #{email}</if>
+  		</set>
+  		WHERE user_id = #{userId}
+  	</update>
+  	<!-- UPDATE 매핑구문 (update SQL 등록) :: update element -->  
+  	
+  	<!-- DELETE 매핑구문 (delete SQL 등록) :: delete element -->  	
+  	<delete id="removeUser" parameterType="string" >
+  		DELETE
+  		FROM users
+  		WHERE user_id = #{value}
+  	</delete>
+  	<!-- DELETE 매핑구문 (delete SQL 등록) :: delete element -->  
+  	
+  	<!-- SELECT 매핑구문 (select SQL 등록) :: select element -->  	
+  	<select id="getUserList" 
+  			  parameterType="com.model2.mvc.common.Search" 
+  			  resultMap="userSelectMap">
+  			  
+	 	SELECT *
+	  	FROM (	SELECT inner_table.* , ROWNUM AS row_seq
+	  					FROM		(	SELECT user_id , user_name , email
+											FROM users
+											<if test="searchCondition != null">
+												<where>
+													<if test="searchCondition == 0 and searchKeyword !='' ">
+										 				user_id = #{searchKeyword}
+													</if>
+													<if test="searchCondition == 1 and searchKeyword !='' ">
+										 				user_name = #{searchKeyword}
+													</if>
+												</where>
+											</if>
+											ORDER BY user_id ) inner_table
+						WHERE ROWNUM &lt;= #{endRowNum} )
+		WHERE row_seq BETWEEN #{startRowNum} AND #{endRowNum} 
+		
+  	</select>
+	<!-- SELECT 매핑구문 (select SQL 등록) :: select element -->  
+	
+	<!-- SQL : SELECT ROW Count -->	 
+	 <select  id="getUserTotal"  parameterType="search" resultType="INTEGER">
+	  	SELECT COUNT(*)
+	  	FROM(	SELECT user_id , user_name , email
+						FROM users
+						<if test="searchCondition != null">
+							<where>
+								<if test="searchCondition == 0 and searchKeyword !='' ">
+						 			user_id = #{searchKeyword}
+								</if>
+								<if test="searchCondition == 1 and searchKeyword !='' ">
+						 			user_name = #{searchKeyword}
+								</if>
+							</where>
+						</if> ) countTable						
+	 </select>
+	 
+</mapper>
