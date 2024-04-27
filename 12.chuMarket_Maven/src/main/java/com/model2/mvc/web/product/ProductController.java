@@ -1,6 +1,10 @@
 package com.model2.mvc.web.product;
 
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.Map;
 import java.util.UUID;
 
@@ -12,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -39,7 +44,7 @@ import com.model2.mvc.service.user.UserService;
 public class ProductController 
 {
 	///Field
-	@Value("#['fileDir']")
+	@Value("${fileDir}")
     private String fileDir;
 	
 	@Autowired
@@ -176,9 +181,7 @@ public class ProductController
 			System.out.println("file Domain :: " + file);
             
 			//파일 저장을 위한 path 설정
-			String fullPath = request.getServletContext().getRealPath("/") + file.getFileDir() + file.getLogiName();
-           
-            System.out.println("파일 저장 fullPath :: "+ fullPath);; 
+			String fullPath = fileDir+ "\\" + file.getLogiName();
             
             //파일 경로에 저장
             file.getFile().transferTo(new File(fullPath));
@@ -225,12 +228,11 @@ public class ProductController
 			System.out.println("file Domain :: " + file);
             
 			//파일 저장을 위한 path 설정
-			String fullPath = request.getServletContext().getRealPath("/") + file.getFileDir() + file.getLogiName();
-           
-            System.out.println("파일 저장 fullPath :: "+ fullPath);; 
+			String fullPath = fileDir+ "\\" + file.getLogiName();
             
             //파일 경로에 저장
             file.getFile().transferTo(new File(fullPath));
+	        //Files.copy(upload.getInputStream(), fileDir, StandardCopyOption.REPLACE_EXISTING);
             
             //파일정보 db에 저장
             if(pastFile == null)
